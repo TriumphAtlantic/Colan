@@ -1,4 +1,4 @@
-<!-- Fonts -->
+<!-- Preload critical fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -8,24 +8,28 @@
         box-sizing: border-box;
     }
     
-    * {
+    *, *::before, *::after {
         margin: 0;
         padding: 0;
         box-sizing: inherit;
     }
     
     :root {
-        --navy: #0D1B2A;
-        --amber: #F5A300;
-        --gray: #E9ECEF;
-        --teal: #14B8A6;
+        --navy: #0B1B34;
+        --indigo: #1F3358;
+        --cyan: #00CCFF;
+        --amber: #F6A701;
+        --concrete: #F4F6F8;
+        --rebar: #A0A8B3;
         --white: #FFFFFF;
         --text-dark: #1F2937;
         --text-light: #6B7280;
+        --shadow: 0 4px 20px rgba(11, 27, 52, 0.08);
+        --shadow-lg: 0 10px 40px rgba(11, 27, 52, 0.12);
     }
     
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         line-height: 1.6;
         color: var(--text-dark);
         background: var(--white);
@@ -44,14 +48,20 @@
         padding: 0 1.5rem;
     }
     
+    /* Focus styles for accessibility */
+    *:focus {
+        outline: 2px solid var(--cyan);
+        outline-offset: 2px;
+    }
+    
     /* Header */
     .header {
-        background: var(--white);
-        border-bottom: 1px solid var(--gray);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--concrete);
         position: sticky;
         top: 0;
         z-index: 100;
-        backdrop-filter: blur(10px);
     }
     
     .header-content {
@@ -83,7 +93,7 @@
     }
     
     .nav a:hover {
-        color: var(--teal);
+        color: var(--cyan);
     }
     
     .btn {
@@ -96,6 +106,7 @@
         border: none;
         cursor: pointer;
         font-size: 1rem;
+        text-align: center;
     }
     
     .btn-primary {
@@ -121,25 +132,56 @@
     
     /* Hero Section */
     .hero {
-        background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+        background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
         color: var(--white);
-        padding: 6rem 0;
+        padding: 6rem 0 8rem;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 204, 255, 0.03) 10px,
+            rgba(0, 204, 255, 0.03) 20px
+        );
     }
     
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: clamp(2.5rem, 5vw, 4rem);
         margin-bottom: 1.5rem;
         color: var(--white);
+        line-height: 1.1;
     }
     
     .hero-subtitle {
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
-        color: var(--gray);
+        margin-bottom: 1.5rem;
+        color: var(--concrete);
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+    }
+    
+    .cost-badge {
+        display: inline-block;
+        background: rgba(0, 204, 255, 0.1);
+        border: 1px solid var(--cyan);
+        color: var(--cyan);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 2.5rem;
     }
     
     .hero-cta {
@@ -150,101 +192,155 @@
         margin-bottom: 4rem;
     }
     
-    /* AI Helper Box */
+    /* AI Helper */
     .ai-helper {
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 204, 255, 0.2);
         border-radius: 16px;
-        padding: 2rem;
-        max-width: 500px;
+        padding: 2.5rem;
+        max-width: 760px;
         margin: 0 auto;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        box-shadow: 0 0 40px rgba(0, 204, 255, 0.1);
     }
     
     .ai-helper h3 {
-        color: var(--navy);
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-    }
-    
-    .search-box {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .search-input {
-        flex: 1;
-        padding: 0.75rem;
-        border: 2px solid var(--gray);
-        border-radius: 8px;
-        font-size: 1rem;
-    }
-    
-    .search-input:focus {
-        outline: none;
-        border-color: var(--teal);
-    }
-    
-    .search-btn {
-        background: var(--teal);
         color: var(--white);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .ai-input-container {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ai-textarea {
+        width: 100%;
+        min-height: 80px;
+        max-height: 200px;
+        padding: 1rem 3rem 1rem 3rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        font-size: 1rem;
+        resize: vertical;
+        font-family: inherit;
+    }
+    
+    .ai-textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .ai-textarea:focus {
+        border-color: var(--cyan);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .ai-icon {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        font-size: 1.2rem;
+        color: var(--amber);
+    }
+    
+    .ai-submit {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--amber);
+        color: var(--navy);
         border: none;
-        padding: 0.75rem;
+        padding: 0.5rem 1rem;
         border-radius: 8px;
+        font-weight: 600;
         cursor: pointer;
+        font-size: 0.875rem;
+    }
+    
+    .ai-submit:hover {
+        background: #E6930A;
+    }
+    
+    .ai-hint {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: right;
+        margin-top: 0.5rem;
     }
     
     .suggestions {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
+        justify-content: center;
     }
     
     .chip {
-        background: var(--gray);
-        color: var(--text-dark);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
         padding: 0.5rem 1rem;
         border-radius: 20px;
         font-size: 0.875rem;
         cursor: pointer;
         transition: all 0.2s;
+        border: 1px solid transparent;
     }
     
     .chip:hover {
-        background: var(--teal);
-        color: var(--white);
+        background: var(--cyan);
+        color: var(--navy);
+    }
+    
+    /* AI Result Panel */
+    .ai-result {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        color: var(--text-dark);
+        display: none;
+    }
+    
+    .ai-result.show {
+        display: block;
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .ai-result h4 {
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+    }
+    
+    .ai-result-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
     }
     
     /* Trust Strip */
     .trust-strip {
-        background: var(--gray);
+        background: var(--concrete);
         padding: 2rem 0;
         text-align: center;
-    }
-    
-    .trust-logos {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-    }
-    
-    .logo-placeholder {
-        width: 120px;
-        height: 60px;
-        background: var(--white);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-light);
-        font-size: 0.875rem;
     }
     
     .trust-text {
         color: var(--text-light);
         font-weight: 500;
+        font-size: 1.1rem;
     }
     
     /* Section Styles */
@@ -268,16 +364,21 @@
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
     
+    .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+    
     .card {
         background: var(--white);
         border-radius: 16px;
         padding: 2rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        transition: transform 0.2s;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
     }
     
     .card:hover {
         transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
     }
     
     .card-icon {
@@ -302,7 +403,7 @@
         line-height: 1.6;
     }
     
-    /* Technology Section */
+    /* Technology Grid */
     .tech-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -312,7 +413,7 @@
     
     .tech-card {
         background: var(--white);
-        border: 2px solid var(--gray);
+        border: 2px solid var(--concrete);
         border-radius: 12px;
         padding: 1.5rem;
         text-align: center;
@@ -320,20 +421,21 @@
     }
     
     .tech-card:hover {
-        border-color: var(--teal);
+        border-color: var(--cyan);
         transform: translateY(-2px);
     }
     
     .tech-logo {
         width: 80px;
         height: 80px;
-        background: var(--gray);
+        background: var(--concrete);
         border-radius: 8px;
         margin: 0 auto 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--text-light);
+        font-weight: 600;
     }
     
     /* Who We Serve */
@@ -345,7 +447,7 @@
     }
     
     .serve-card {
-        background: linear-gradient(135deg, var(--teal) 0%, #0F9488 100%);
+        background: linear-gradient(135deg, var(--cyan) 0%, #0099CC 100%);
         color: var(--white);
         border-radius: 16px;
         padding: 2rem;
@@ -360,7 +462,7 @@
     /* Process Timeline */
     .process-timeline {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 2rem;
         margin-top: 3rem;
     }
@@ -434,7 +536,7 @@
     
     .pricing-card {
         background: var(--white);
-        border: 2px solid var(--gray);
+        border: 2px solid var(--concrete);
         border-radius: 16px;
         padding: 2rem;
         text-align: center;
@@ -443,7 +545,7 @@
     
     .pricing-card.featured {
         border-color: var(--amber);
-        transform: scale(1.05);
+        transform: scale(1.02);
     }
     
     .pricing-card h3 {
@@ -458,8 +560,13 @@
     }
     
     /* FAQ */
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
     .faq-item {
-        border-bottom: 1px solid var(--gray);
+        border-bottom: 1px solid var(--concrete);
         padding: 1.5rem 0;
     }
     
@@ -475,12 +582,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0;
     }
     
     .faq-answer {
         margin-top: 1rem;
         color: var(--text-light);
         display: none;
+        line-height: 1.6;
     }
     
     .faq-answer.active {
@@ -489,7 +598,7 @@
     
     /* Final CTA */
     .final-cta {
-        background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+        background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
         color: var(--white);
         padding: 4rem 0;
         text-align: center;
@@ -527,10 +636,11 @@
     }
     
     .footer-section a {
-        color: var(--gray);
+        color: var(--concrete);
         text-decoration: none;
         display: block;
         margin-bottom: 0.5rem;
+        transition: color 0.2s;
     }
     
     .footer-section a:hover {
@@ -541,7 +651,7 @@
         border-top: 1px solid rgba(255,255,255,0.1);
         padding-top: 1rem;
         text-align: center;
-        color: var(--gray);
+        color: var(--concrete);
     }
     
     /* Mobile Responsive */
@@ -550,13 +660,23 @@
             display: none;
         }
         
-        .hero h1 {
-            font-size: 2.5rem;
+        .hero {
+            padding: 4rem 0 6rem;
         }
         
-        .hero-cta {
-            flex-direction: column;
-            align-items: center;
+        .ai-helper {
+            padding: 2rem;
+        }
+        
+        .ai-textarea {
+            padding: 1rem 1rem 3rem 3rem;
+        }
+        
+        .ai-submit {
+            position: static;
+            transform: none;
+            margin-top: 1rem;
+            width: 100%;
         }
         
         .section-title {
@@ -569,6 +689,10 @@
         
         .pricing-card.featured {
             transform: none;
+        }
+        
+        .ai-result-buttons {
+            flex-direction: column;
         }
     }
     
@@ -588,6 +712,11 @@
         opacity: 1;
         transform: translateY(0);
     }
+    
+    /* Utility classes */
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 2rem; }
+    .italic { font-style: italic; }
 </style>
 <!-- Hero Section -->
 <section class="hero">
@@ -595,23 +724,54 @@
         <h1>IT Consulting for Construction Growth.</h1>
         <p class="hero-subtitle">Cut costs. Streamline workflows. Build processes that scale.</p>
         
+        <div class="cost-badge">
+            No vendor commissions • Cost-First™ promise
+        </div>
+        
         <div class="hero-cta">
             <a href="#contact" class="btn btn-primary">Book a Call</a>
             <a href="#process" class="btn btn-secondary">See How We Work</a>
         </div>
         
-        <!-- AI Helper Box -->
+        <!-- AI Helper -->
         <div class="ai-helper">
-            <h3>What are you looking for?</h3>
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Describe your challenge..." id="aiSearch">
-                <button class="search-btn" onclick="handleSearch()">→</button>
+            <h3>
+                <span>🏗️</span>
+                Describe your situation in plain language
+            </h3>
+            <div class="ai-input-container">
+                <span class="ai-icon">⚡</span>
+                <textarea 
+                    class="ai-textarea" 
+                    id="aiInput"
+                    placeholder="e.g., 'Estimating→PM handoff is messy; duplicate entry; subs send wrong bids'"
+                    aria-label="Describe your IT challenges"
+                    rows="3"
+                ></textarea>
+                <button class="ai-submit" onclick="processAIInput()" aria-label="Ask the AI">
+                    Ask the AI
+                </button>
             </div>
+            <div class="ai-hint">Press Enter or click the button</div>
+            
             <div class="suggestions">
-                <span class="chip" onclick="navigateToSection('services')">Standardize systems</span>
-                <span class="chip" onclick="navigateToSection('technology')">Procore training</span>
-                <span class="chip" onclick="navigateToSection('services')">Bid workflows</span>
-                <span class="chip" onclick="navigateToSection('services')">Cost control</span>
+                <span class="chip" onclick="quickSearch('standardize systems')" tabindex="0" role="button">Standardize systems</span>
+                <span class="chip" onclick="quickSearch('procore setup')" tabindex="0" role="button">Procore setup</span>
+                <span class="chip" onclick="quickSearch('bid handoff')" tabindex="0" role="button">Bid handoff</span>
+                <span class="chip" onclick="quickSearch('cost control')" tabindex="0" role="button">Cost control</span>
+                <span class="chip" onclick="quickSearch('job cost dashboards')" tabindex="0" role="button">Job cost dashboards</span>
+                <span class="chip" onclick="quickSearch('license cleanup')" tabindex="0" role="button">License cleanup</span>
+                <span class="chip" onclick="quickSearch('field adoption')" tabindex="0" role="button">Field adoption</span>
+                <span class="chip" onclick="quickSearch('document chaos')" tabindex="0" role="button">Document chaos</span>
+            </div>
+            
+            <div class="ai-result" id="aiResult" role="region" aria-live="polite">
+                <h4 id="resultTitle"></h4>
+                <p id="resultText"></p>
+                <div class="ai-result-buttons">
+                    <button class="btn btn-primary" id="resultAction" onclick="scrollToSection('')">Show me the plan</button>
+                    <a href="#contact" class="btn btn-secondary">Book a Call</a>
+                </div>
             </div>
         </div>
     </div>
@@ -620,25 +780,19 @@
 <!-- Trust Strip -->
 <section class="trust-strip">
     <div class="container">
-        <div class="trust-logos">
-            <div class="logo-placeholder">GC Partner</div>
-            <div class="logo-placeholder">Specialty Co.</div>
-            <div class="logo-placeholder">Developer</div>
-            <div class="logo-placeholder">Contractor</div>
-        </div>
         <p class="trust-text">Independent. Vendor-neutral. Honest opinions.</p>
     </div>
 </section>
 
-<!-- Value Pillars -->
-<section class="section" id="pillars">
+<!-- How We Drive Growth -->
+<section class="section" id="growth">
     <div class="container">
         <h2 class="section-title">How We Drive Growth</h2>
         <div class="grid grid-3">
             <div class="card fade-in">
                 <div class="card-icon">💰</div>
                 <h3>Cutting Costs</h3>
-                <p>Eliminate unused tools, negotiate better licenses, and right-size your technology stack. Stop paying for software that doesn't deliver ROI.</p>
+                <p>We cut spend before we add tools. Eliminate unused licenses, negotiate better deals, and right-size your technology stack for actual ROI.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">⚡</div>
@@ -680,7 +834,7 @@
                 <p>Document Management</p>
             </div>
         </div>
-        <p style="text-align: center; color: var(--text-light); font-style: italic;">We train your teams and harden adoption—field to front office.</p>
+        <p class="text-center italic" style="color: var(--text-light);">We train your teams and harden adoption—field to front office.</p>
     </div>
 </section>
 
@@ -688,8 +842,8 @@
 <section class="section" id="sectors">
     <div class="container">
         <h2 class="section-title">Who We Serve</h2>
-        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 1rem;">Small Commercial, Mid-Market, and Growth-Stage Contractors</p>
-        <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;"><em>Not residential-only contractors</em></p>
+        <p class="text-center" style="font-size: 1.1rem; margin-bottom: 1rem;">Small Commercial, Mid-Market, and Growth-Stage Contractors</p>
+        <p class="text-center italic" style="color: var(--text-light); margin-bottom: 2rem;"><em>Not residential-only contractors</em></p>
         
         <div class="serve-grid">
             <div class="serve-card">
@@ -716,32 +870,32 @@
             <div class="card fade-in">
                 <div class="card-icon">📊</div>
                 <h3>Tool Stack Evaluation</h3>
-                <p>Audit your current tools. Identify what to keep, cut, or add. Get a clear roadmap for technology investments.</p>
+                <p>Audit your current tools. Identify what to keep, cut, or add. Get a clear roadmap for technology investments that actually pay off.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">🗺️</div>
                 <h3>Workflow Mapping & SOPs</h3>
-                <p>Document and standardize processes across PM, Estimating, Procurement, and AP. Build consistency that scales.</p>
+                <p>Document and standardize processes across PM, Estimating, Procurement, and AP. Build consistency that scales with growth.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">⚙️</div>
                 <h3>Procore & App Implementation</h3>
-                <p>Configure platforms properly from day one. Set up standards, permissions, and workflows that stick.</p>
+                <p>Configure platforms properly from day one. Set up standards, permissions, and workflows that stick long-term.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">📈</div>
                 <h3>Data & Dashboards</h3>
-                <p>Build meaningful reports for job cost, WIP, and labor productivity. Turn data into actionable insights.</p>
+                <p>Build meaningful reports for job cost, WIP, and labor productivity. Turn data into actionable insights for better decisions.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">🎯</div>
                 <h3>Change Management & Training</h3>
-                <p>On-site and remote training that ensures adoption. Help your teams embrace new processes and tools.</p>
+                <p>On-site and remote training that ensures adoption. Help your teams embrace new processes and tools effectively.</p>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">💼</div>
                 <h3>License & Vendor Management</h3>
-                <p>Negotiate better deals, consolidate vendors, and eliminate redundant subscriptions. Optimize your software spend.</p>
+                <p>Negotiate better deals, consolidate vendors, and eliminate redundant subscriptions. Optimize your software spend strategically.</p>
             </div>
         </div>
     </div>
@@ -772,9 +926,11 @@
                 <h3>Deploy & Train</h3>
                 <p>Execute the plan with hands-on support. Train your teams and ensure sustainable adoption of new processes.</p>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <button class="btn btn-secondary" onclick="openModal()">See Sample Playbook</button>
+            <div class="process-step fade-in">
+                <div class="process-number">5</div>
+                <h3>Sustain</h3>
+                <p>Monitor performance, refine processes, and provide ongoing support to maintain momentum and continuous improvement.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -793,7 +949,7 @@
                     <li>• Reduced training time by 40%</li>
                     <li>• Improved data consistency across projects</li>
                 </ul>
-                <a href="#" class="btn btn-primary">Read the Story</a>
+                <a href="#contact" class="btn btn-primary">Get Similar Results</a>
             </div>
             <div class="result-card fade-in">
                 <h3>"Bid handoff process → 2 hrs saved per project kickoff"</h3>
@@ -804,7 +960,7 @@
                     <li>• Reduced project setup errors by 60%</li>
                     <li>• Improved PM satisfaction scores</li>
                 </ul>
-                <a href="#" class="btn btn-primary">Read the Story</a>
+                <a href="#contact" class="btn btn-primary">Get Similar Results</a>
             </div>
         </div>
     </div>
@@ -844,7 +1000,7 @@
 </section>
 
 <!-- Testimonials -->
-<section class="section">
+<section class="section" id="insights">
     <div class="container">
         <h2 class="section-title">What Clients Say</h2>
         <div class="grid grid-3">
@@ -865,50 +1021,50 @@
 </section>
 
 <!-- FAQ -->
-<section class="section" id="insights">
+<section class="section" id="faq">
     <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
+        <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
                     How do you maintain vendor neutrality?
-                    <span>+</span>
+                    <span aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer">
                     We don't sell software or receive commissions from vendors. Our recommendations are based solely on what's best for your business, not what pays us the most.
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
                     Are you Procore specialists?
-                    <span>+</span>
+                    <span aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer">
                     We're experienced with Procore but platform-agnostic. We'll recommend Procore when it fits, but we're equally comfortable with other solutions if they better serve your needs.
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
                     What's the typical project timeline?
-                    <span>+</span>
+                    <span aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer">
                     Assessment: 2-3 weeks. Implementation varies by scope, typically 3-6 months for comprehensive process improvements. We work in phases to minimize disruption.
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
                     How do you handle data security?
-                    <span>+</span>
+                    <span aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer">
                     We follow construction industry security standards, sign NDAs, and work within your existing security protocols. Your data stays yours—we don't retain or share it.
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+                <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
                     Who owns the processes we develop?
-                    <span>+</span>
+                    <span aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer">
                     You do. All documentation, processes, and training materials become your property. We're here to help you build capabilities, not create dependencies.
@@ -923,7 +1079,7 @@
     <div class="container">
         <h2>Ready to grow without wasting budget?</h2>
         <div class="final-cta-buttons">
-            <a href="#" class="btn btn-primary">Book a Call</a>
+            <a href="tel:+15554643967" class="btn btn-primary">Book a Call</a>
             <a href="mailto:hello@dogework.com" class="btn btn-secondary">Email Us</a>
         </div>
     </div>
@@ -967,100 +1123,172 @@
     </div>
 </footer>
 
-<!-- Modal for Sample Playbook -->
-<div id="playbookModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
-    <div style="background: white; padding: 3rem; border-radius: 16px; max-width: 600px; margin: 2rem;">
-        <h3 style="color: var(--navy); margin-bottom: 1rem;">Sample Implementation Playbook</h3>
-        <p style="margin-bottom: 2rem;">Our playbooks include detailed process maps, training materials, and implementation timelines. Here's what you get:</p>
-        <ul style="margin-bottom: 2rem; color: var(--text-light);">
-            <li>• Current state assessment findings</li>
-            <li>• Prioritized improvement roadmap</li>
-            <li>• Step-by-step implementation guide</li>
-            <li>• Training materials and checklists</li>
-            <li>• Success metrics and KPIs</li>
-        </ul>
-        <div style="display: flex; gap: 1rem; justify-content: center;">
-            <a href="#contact" class="btn btn-primary">Get Your Playbook</a>
-            <button class="btn btn-secondary" onclick="closeModal()">Close</button>
-        </div>
-    </div>
-</div>
-
 <script>
-    // AI Helper Search Functionality
-    function handleSearch() {
-        const searchInput = document.getElementById('aiSearch');
-        const query = searchInput.value.toLowerCase();
-        
-        // Simple keyword matching to sections
-        if (query.includes('cost') || query.includes('save') || query.includes('budget')) {
-            navigateToSection('pillars');
-        } else if (query.includes('procore') || query.includes('software') || query.includes('tool')) {
-            navigateToSection('technology');
-        } else if (query.includes('process') || query.includes('workflow') || query.includes('sop')) {
-            navigateToSection('services');
-        } else if (query.includes('training') || query.includes('adoption')) {
-            navigateToSection('services');
-        } else if (query.includes('price') || query.includes('pricing')) {
-            navigateToSection('pricing');
-        } else {
-            navigateToSection('services'); // Default to services
+    // AI Helper functionality
+    const keywordGroups = {
+        workflow: {
+            keywords: ['bid', 'bidding', 'estimating', 'estimate', 'takeoff', 'handoff', 'qualification', 'workflow', 'process', 'sop', 'standard', 'procedure'],
+            title: 'Workflow Mapping & SOPs',
+            description: 'It sounds like you need standardized processes for estimating and project handoffs.',
+            section: 'services'
+        },
+        implementation: {
+            keywords: ['procore', 'buildingconnected', 'plangrid', 'autodesk', 'software', 'platform', 'implementation', 'setup', 'configure', 'training'],
+            title: 'Procore & App Implementation',
+            description: 'Looks like you need help with platform setup and team training.',
+            section: 'technology'
+        },
+        costs: {
+            keywords: ['cost', 'costs', 'license', 'licenses', 'shelfware', 'renewals', 'too many tools', 'expensive', 'budget', 'spend', 'waste', 'redundant'],
+            title: 'Tool Stack Evaluation',
+            description: 'You need a cost audit to eliminate redundant tools and optimize spending.',
+            section: 'services'
+        },
+        data: {
+            keywords: ['dashboard', 'dashboards', 'wip', 'job cost', 'cost code', 'forecasting', 'report', 'reports', 'data', 'analytics', 'kpi'],
+            title: 'Data & Dashboards',
+            description: 'Sounds like you need better visibility into project costs and performance.',
+            section: 'services'
+        },
+        adoption: {
+            keywords: ['timesheet', 'timesheets', 'field ticket', 'mobile app', 'adoption', 'training', 'field', 'crews', 'superintendents'],
+            title: 'Change Management & Training',
+            description: 'You need help getting your field teams to actually use the technology.',
+            section: 'services'
+        },
+        documents: {
+            keywords: ['sharepoint', 'teams', 'document', 'documents', 'chaos', 'versioning', 'files', 'storage', 'collaboration'],
+            title: 'Document Management Solutions',
+            description: 'Looks like you need to organize and standardize document workflows.',
+            section: 'technology'
         }
+    };
+
+    function processAIInput() {
+        const input = document.getElementById('aiInput').value.toLowerCase().trim();
+        if (!input) return;
+
+        const result = classifyInput(input);
+        showResult(result);
+    }
+
+    function quickSearch(query) {
+        document.getElementById('aiInput').value = query;
+        processAIInput();
+    }
+
+    function classifyInput(input) {
+        let bestMatch = null;
+        let maxScore = 0;
+
+        for (const [key, group] of Object.entries(keywordGroups)) {
+            const score = group.keywords.reduce((acc, keyword) => {
+                return acc + (input.includes(keyword) ? 1 : 0);
+            }, 0);
+
+            if (score > maxScore) {
+                maxScore = score;
+                bestMatch = group;
+            }
+        }
+
+        if (maxScore > 0) {
+            return {
+                confidence: 'high',
+                title: bestMatch.title,
+                description: bestMatch.description,
+                section: bestMatch.section
+            };
+        } else {
+            return {
+                confidence: 'low',
+                title: 'Let\'s discuss your specific needs',
+                description: 'Not sure? We\'ll translate it together and find the right solution.',
+                section: 'contact'
+            };
+        }
+    }
+
+    function showResult(result) {
+        const resultDiv = document.getElementById('aiResult');
+        const titleEl = document.getElementById('resultTitle');
+        const textEl = document.getElementById('resultText');
+        const actionBtn = document.getElementById('resultAction');
+
+        titleEl.textContent = result.title;
+        textEl.textContent = result.description;
+
+        if (result.confidence === 'high') {
+            actionBtn.textContent = 'Show me the plan';
+            actionBtn.onclick = () => scrollToSection(result.section);
+        } else {
+            actionBtn.textContent = 'Book a Call';
+            actionBtn.onclick = () => scrollToSection('contact');
+        }
+
+        resultDiv.classList.add('show');
         
-        searchInput.value = '';
+        // Announce to screen readers
+        resultDiv.setAttribute('aria-live', 'polite');
     }
-    
-    function navigateToSection(sectionId) {
-        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
-    
-    // Enter key support for search
-    document.getElementById('aiSearch').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleSearch();
+
+    // Enter key support for AI input
+    document.getElementById('aiInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            processAIInput();
         }
     });
-    
+
+    // Auto-resize textarea
+    document.getElementById('aiInput').addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+    });
+
     // FAQ Toggle
     function toggleFaq(button) {
         const answer = button.nextElementSibling;
         const icon = button.querySelector('span');
-        
-        if (answer.classList.contains('active')) {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
             answer.classList.remove('active');
             icon.textContent = '+';
+            button.setAttribute('aria-expanded', 'false');
         } else {
             // Close all other FAQs
             document.querySelectorAll('.faq-answer.active').forEach(item => {
                 item.classList.remove('active');
             });
-            document.querySelectorAll('.faq-question span').forEach(span => {
-                span.textContent = '+';
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.setAttribute('aria-expanded', 'false');
+                btn.querySelector('span').textContent = '+';
             });
-            
+
             answer.classList.add('active');
             icon.textContent = '−';
+            button.setAttribute('aria-expanded', 'true');
         }
     }
-    
-    // Modal Functions
-    function openModal() {
-        const modal = document.getElementById('playbookModal');
-        modal.style.display = 'flex';
-    }
-    
-    function closeModal() {
-        const modal = document.getElementById('playbookModal');
-        modal.style.display = 'none';
-    }
-    
-    // Close modal when clicking outside
-    document.getElementById('playbookModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeModal();
-        }
+
+    // Keyboard support for chips
+    document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
     });
-    
+
     // Fade-in animation on scroll
     function observeElements() {
         const observer = new IntersectionObserver((entries) => {
@@ -1070,22 +1298,31 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
     }
-    
+
     // Initialize animations when page loads
-    document.addEventListener('DOMContentLoaded', observeElements);
-    
+    document.addEventListener('DOMContentLoaded', function() {
+        observeElements();
+        
+        // Auto-focus AI input on desktop
+        if (window.innerWidth > 768) {
+            setTimeout(() => {
+                document.getElementById('aiInput').focus();
+            }, 1000);
+        }
+    });
+
     // Smooth scrolling for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
