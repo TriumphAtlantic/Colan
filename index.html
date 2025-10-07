@@ -474,6 +474,202 @@
             font-weight: 600;
         }
         
+        /* ROI Calculator */
+        .calculator {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(246, 167, 1, 0.03) 20px,
+                rgba(246, 167, 1, 0.03) 40px
+            );
+        }
+        
+        .calculator h2 {
+            color: white;
+        }
+        
+        .calc-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .calc-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+        }
+        
+        .calc-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(246, 167, 1, 0.15);
+        }
+        
+        .calc-inputs {
+            display: grid;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .calc-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .calc-label {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .calc-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .calc-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--navy);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+        
+        .calc-slider {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--amber);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .calc-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--amber);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .calc-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--amber);
+            min-width: 120px;
+            text-align: right;
+        }
+        
+        .calc-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .calc-result-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(246, 167, 1, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .calc-result-label {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .calc-result-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--amber);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .calc-result-subtext {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .calc-total {
+            background: var(--amber);
+            color: var(--navy);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .calc-total-label {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .calc-total-value {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .calc-cta {
+            text-align: center;
+        }
+        
+        .calc-disclaimer {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        
         /* Problem */
         .problem {
             background: var(--light);
@@ -1210,6 +1406,23 @@
             .contact-options {
                 grid-template-columns: 1fr;
             }
+            
+            .calc-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .calc-results {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .calc-result-value {
+                font-size: 2.5rem;
+            }
+            
+            .calc-total-value {
+                font-size: 3rem;
+            }
         }
         
         /* Animations */
@@ -1230,6 +1443,7 @@
         <div class="header-content">
             <a href="#" class="logo">DOGE Work</a>
             <nav class="nav">
+                <a href="#calculator">Calculator</a>
                 <a href="#solution">Services</a>
                 <a href="#how">Process</a>
                 <a href="#cases">Results</a>
@@ -1325,6 +1539,82 @@
                 </div>
                 <div class="visual-box fade-up">
                     💸
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <div class="calc-wrapper">
+                <h2 class="section-title">Calculate Your Waste</h2>
+                <p class="calc-subtitle">See exactly how much you're losing — and what you could gain</p>
+                
+                <div class="calc-box">
+                    <div class="calc-inputs">
+                        <div class="calc-input-group">
+                            <label class="calc-label">Annual Revenue</label>
+                            <div class="calc-input-wrapper">
+                                <input 
+                                    type="range" 
+                                    id="revenueSlider" 
+                                    class="calc-slider"
+                                    min="1000000" 
+                                    max="100000000" 
+                                    step="1000000"
+                                    value="10000000"
+                                    oninput="updateCalculator()"
+                                >
+                                <div class="calc-value" id="revenueDisplay">$10M</div>
+                            </div>
+                        </div>
+                        
+                        <div class="calc-input-group">
+                            <label class="calc-label">Project Managers / Estimators</label>
+                            <div class="calc-input-wrapper">
+                                <input 
+                                    type="range" 
+                                    id="teamSlider" 
+                                    class="calc-slider"
+                                    min="1" 
+                                    max="50" 
+                                    step="1"
+                                    value="5"
+                                    oninput="updateCalculator()"
+                                >
+                                <div class="calc-value" id="teamDisplay">5</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calc-results">
+                        <div class="calc-result-box">
+                            <div class="calc-result-label">Annual Waste</div>
+                            <div class="calc-result-value" id="wasteAmount">$0</div>
+                            <div class="calc-result-subtext">Software + Process inefficiency</div>
+                        </div>
+                        
+                        <div class="calc-result-box">
+                            <div class="calc-result-label">Potential Gains</div>
+                            <div class="calc-result-value" id="gainsAmount">$0</div>
+                            <div class="calc-result-subtext">Better communication + tools</div>
+                        </div>
+                    </div>
+                    
+                    <div class="calc-total">
+                        <div class="calc-total-label">Total Opportunity</div>
+                        <div class="calc-total-value" id="totalOpportunity">$0</div>
+                    </div>
+                    
+                    <div class="calc-cta">
+                        <a href="#contact" class="cta-primary">Get Your Exact Assessment</a>
+                    </div>
+                    
+                    <p class="calc-disclaimer">
+                        Estimates based on industry averages: 3% revenue to software waste, 60% license inefficiency, 
+                        20hrs/week process waste per PM at $100/hr, 6% revenue improvement potential from optimization.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1596,6 +1886,64 @@
     </footer>
 
     <script>
+        // ROI Calculator
+        function formatMoney(amount) {
+            if (amount >= 1000000) {
+                return '$' + (amount / 1000000).toFixed(1) + 'M';
+            } else if (amount >= 1000) {
+                return '$' + (amount / 1000).toFixed(0) + 'K';
+            }
+            return '$' + amount.toFixed(0);
+        }
+        
+        function formatRevenue(amount) {
+            if (amount >= 1000000) {
+                return '$' + (amount / 1000000).toFixed(0) + 'M';
+            }
+            return '$' + (amount / 1000).toFixed(0) + 'K';
+        }
+        
+        function updateCalculator() {
+            const revenue = parseInt(document.getElementById('revenueSlider').value);
+            const teamSize = parseInt(document.getElementById('teamSlider').value);
+            
+            // Update displays
+            document.getElementById('revenueDisplay').textContent = formatRevenue(revenue);
+            document.getElementById('teamDisplay').textContent = teamSize;
+            
+            // Calculate waste
+            // 3% of revenue in software waste + license inefficiency
+            const softwareWaste = revenue * 0.03;
+            
+            // Process waste: 20 hours per week per PM/estimator at $100/hr
+            // 20 hrs/week * 52 weeks * team size * $100/hr
+            const processWaste = teamSize * 20 * 52 * 100;
+            
+            const totalWaste = softwareWaste + processWaste;
+            
+            // Calculate potential gains
+            // Better communication: 2% revenue improvement
+            const communicationGains = revenue * 0.02;
+            
+            // Tool optimization: 4% revenue improvement from better processes
+            const toolGains = revenue * 0.04;
+            
+            const totalGains = communicationGains + toolGains;
+            
+            // Total opportunity
+            const totalOpportunity = totalWaste + totalGains;
+            
+            // Update UI
+            document.getElementById('wasteAmount').textContent = formatMoney(totalWaste);
+            document.getElementById('gainsAmount').textContent = formatMoney(totalGains);
+            document.getElementById('totalOpportunity').textContent = formatMoney(totalOpportunity);
+        }
+        
+        // Initialize calculator on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCalculator();
+        });
+        
         // AI keyword classification
         const keywordGroups = {
             'workflow': {
