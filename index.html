@@ -1832,7 +1832,7 @@
                     <a href="#contact" style="display: block; background: var(--amber); color: var(--navy); padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 800; text-align: center; font-size: 1rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Get Your Assessment</a>
                     
                     <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: center; margin-top: 1rem; font-style: italic;">
-                        Based on 3% revenue waste + process inefficiency
+                        Based on 0.10% revenue software waste + process inefficiency
                     </p>
                 </div>
             </div>
@@ -1986,8 +1986,9 @@
                     </div>
                     
                     <p class="calc-disclaimer">
-                        Estimates based on industry averages: 3% revenue to software waste, 60% of paid software seats not being used, 
-                        20 hrs/week process waste per PM at $100/hr, 6% revenue improvement potential from optimization.
+                        Estimates based on industry benchmarks: 0.10% of revenue to direct software waste (unused licenses, redundant tools), 
+                        20 hrs/week process inefficiency per PM at $100/hr, 2% revenue potential from better communication, 
+                        3% revenue potential from reduced rework and better planning. Sources: Deloitte IT spending benchmarks, Gartner software analysis, CIO Dive SaaS utilization studies.
                     </p>
                 </div>
             </div>
@@ -2284,8 +2285,12 @@
             document.getElementById('revenueDisplayHero').textContent = formatRevenue(revenue);
             document.getElementById('teamDisplayHero').textContent = teamSize;
             
-            const softwareWaste = revenue * 0.03;
+            // Software waste: 0.10% of revenue (industry benchmark)
+            const softwareWaste = revenue * 0.0010;
+            
+            // Process waste: 20 hrs/week per PM at $100/hr
             const processWaste = teamSize * 20 * 52 * 100;
+            
             const totalWaste = softwareWaste + processWaste;
             
             document.getElementById('totalOpportunityHero').textContent = formatMoney(totalWaste);
@@ -2299,12 +2304,19 @@
             document.getElementById('revenueDisplay').textContent = formatRevenue(revenue);
             document.getElementById('teamDisplay').textContent = teamSize;
             
-            const softwareWaste = revenue * 0.03;
+            // Software waste: 0.10% of revenue (0.08-0.19% range, using middle)
+            const softwareWaste = revenue * 0.0010;
+            
+            // Process waste: 20 hrs/week per PM/Estimator at $100/hr
             const processWaste = teamSize * 20 * 52 * 100;
+            
             const totalWaste = softwareWaste + processWaste;
             
+            // Potential gains from optimization
+            // Communication improvements: 2% of revenue
             const communicationGains = revenue * 0.02;
-            const toolGains = revenue * 0.04;
+            // Better tool adoption (reduced rework, better planning): 3% of revenue
+            const toolGains = revenue * 0.03;
             const totalGains = communicationGains + toolGains;
             
             const totalOpportunity = totalWaste + totalGains;
