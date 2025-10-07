@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOGE Work - IT Business Consulting for Construction</title>
+    <title>DOGE Work - Cut IT Costs 30%</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Merriweather+Sans:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -18,14 +17,12 @@
         }
         
         :root {
-            --blueprint-navy: #0B1B34;
-            --steel-indigo: #1F3358;
-            --electric-cyan: #00CCFF;
-            --safety-amber: #F6A701;
-            --concrete: #F4F6F8;
-            --rebar-gray: #A0A8B3;
-            --white: #FFFFFF;
-            --text-dark: #1F2937;
+            --navy: #0B1B34;
+            --indigo: #1F3358;
+            --cyan: #00CCFF;
+            --amber: #F6A701;
+            --gray: #A0A8B3;
+            --light: #F4F6F8;
         }
         
         html {
@@ -33,51 +30,43 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background: var(--white);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Merriweather Sans', sans-serif;
-            line-height: 1.3;
-            margin-bottom: 1rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--navy);
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
         }
         
         a:focus, button:focus, input:focus, textarea:focus {
-            outline: 3px solid var(--electric-cyan);
+            outline: 3px solid var(--cyan);
             outline-offset: 2px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--concrete);
-            position: sticky;
+        /* Header with Nav */
+        header {
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
             z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
         
         .logo {
             font-family: 'Merriweather Sans', sans-serif;
-            font-weight: 800;
             font-size: 1.5rem;
-            color: var(--blueprint-navy);
+            font-weight: 900;
+            color: var(--navy);
             text-decoration: none;
         }
         
@@ -89,56 +78,38 @@
         
         .nav a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--navy);
             font-weight: 500;
             transition: color 0.2s;
         }
         
         .nav a:hover {
-            color: var(--electric-cyan);
+            color: var(--cyan);
         }
         
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 16px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
+        .nav .cta-btn {
+            background: var(--amber);
+            color: var(--navy);
+            padding: 0.65rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 700;
         }
         
-        .btn-primary {
-            background: var(--safety-amber);
-            color: var(--blueprint-navy);
+        .nav .cta-btn:hover {
+            transform: scale(1.05);
+            color: var(--navy);
         }
         
-        .btn-primary:hover {
-            background: #E69600;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(246, 167, 1, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--blueprint-navy);
-        }
-        
-        /* Hero Section */
+        /* Hero - Full Screen */
         .hero {
-            background: linear-gradient(135deg, var(--blueprint-navy) 0%, var(--steel-indigo) 100%);
-            color: var(--white);
-            padding: 5rem 0 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 100%);
+            color: white;
             text-align: center;
+            padding: 8rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -157,51 +128,88 @@
                 rgba(0, 204, 255, 0.03) 20px,
                 rgba(0, 204, 255, 0.03) 40px
             );
-            pointer-events: none;
         }
         
         .hero-content {
+            max-width: 1100px;
             position: relative;
             z-index: 1;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--white);
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
+        }
+        
+        .hero-number {
+            color: var(--amber);
         }
         
         .hero-subtitle {
-            font-size: 1.35rem;
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            color: rgba(255,255,255,0.85);
             margin-bottom: 1.5rem;
-            color: var(--concrete);
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
+            font-weight: 400;
         }
         
-        .cost-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .badge {
+            display: inline-block;
             background: rgba(0, 204, 255, 0.1);
             border: 1px solid rgba(0, 204, 255, 0.3);
-            padding: 0.5rem 1rem;
+            color: var(--cyan);
+            padding: 0.5rem 1.25rem;
             border-radius: 24px;
             font-size: 0.9rem;
-            color: var(--electric-cyan);
-            margin-bottom: 2.5rem;
-            font-weight: 500;
+            margin-bottom: 3rem;
+            font-weight: 600;
         }
         
-        .hero-cta {
+        .hero-cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
             margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: var(--amber);
+            color: var(--navy);
+            padding: 1.25rem 3.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.35rem;
+            display: inline-block;
+            transition: all 0.2s;
+            box-shadow: 0 8px 24px rgba(246,167,1,0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(246,167,1,0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: var(--navy);
         }
         
         /* AI Helper - Glassmorphic */
@@ -218,7 +226,7 @@
         }
         
         .ai-helper h3 {
-            color: var(--white);
+            color: white;
             margin-bottom: 1rem;
             font-size: 1.2rem;
             font-weight: 600;
@@ -234,7 +242,7 @@
         .hard-hat-icon {
             width: 48px;
             height: 48px;
-            background: var(--safety-amber);
+            background: var(--amber);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -251,19 +259,19 @@
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
             background: rgba(255, 255, 255, 0.95);
-            color: var(--text-dark);
+            color: var(--navy);
             resize: none;
             min-height: 3.5rem;
             line-height: 1.5;
         }
         
         .search-input::placeholder {
-            color: var(--rebar-gray);
+            color: var(--gray);
         }
         
         .search-btn {
-            background: var(--safety-amber);
-            color: var(--blueprint-navy);
+            background: var(--amber);
+            color: var(--navy);
             border: none;
             padding: 0.875rem 1.5rem;
             border-radius: 12px;
@@ -282,7 +290,8 @@
         .search-hint {
             font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.6);
-            margin-left: 0.5rem;
+            display: block;
+            margin-top: 0.25rem;
         }
         
         .suggestions {
@@ -294,7 +303,7 @@
         
         .chip {
             background: rgba(255, 255, 255, 0.15);
-            color: var(--white);
+            color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.875rem;
@@ -304,9 +313,9 @@
         }
         
         .chip:hover {
-            background: var(--safety-amber);
-            color: var(--blueprint-navy);
-            border-color: var(--safety-amber);
+            background: var(--amber);
+            color: var(--navy);
+            border-color: var(--amber);
         }
         
         .ai-result {
@@ -315,7 +324,7 @@
             border-radius: 12px;
             padding: 1.5rem;
             margin-top: 1rem;
-            color: var(--text-dark);
+            color: var(--navy);
         }
         
         .ai-result.show {
@@ -335,9 +344,10 @@
         }
         
         .ai-result h4 {
-            color: var(--blueprint-navy);
+            color: var(--navy);
             margin-bottom: 0.75rem;
             font-size: 1rem;
+            font-weight: 700;
         }
         
         .ai-result-buttons {
@@ -347,360 +357,448 @@
             flex-wrap: wrap;
         }
         
-        .ai-result .btn {
-            padding: 0.5rem 1rem;
+        .ai-result .btn-small {
+            padding: 0.6rem 1.25rem;
             font-size: 0.9rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: inline-block;
         }
         
-        /* Trust Strip */
-        .trust-strip {
-            background: var(--concrete);
-            padding: 2rem 0;
-            text-align: center;
+        .ai-result .btn-primary-small {
+            background: var(--amber);
+            color: var(--navy);
         }
         
-        .trust-text {
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 1rem;
+        .ai-result .btn-secondary-small {
+            background: transparent;
+            border: 2px solid var(--navy);
+            color: var(--navy);
         }
         
         /* Sections */
-        .section {
-            padding: 5rem 0;
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Problem */
+        .problem {
+            background: var(--light);
+        }
+        
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .split h2 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 2.5rem;
+            color: var(--navy);
+        }
+        
+        .stat-box {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .stat {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-text {
+            font-size: 1.125rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .visual-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 32px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        /* Solution */
+        .solution {
+            background: white;
         }
         
         .section-title {
+            font-family: 'Merriweather Sans', sans-serif;
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--blueprint-navy);
-            margin-bottom: 3rem;
-            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--navy);
         }
         
-        .grid {
+        .subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+        }
+        
+        .cards {
             display: grid;
-            gap: 2rem;
-        }
-        
-        .grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(11, 27, 52, 0.08);
-            transition: transform 0.3s;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
         }
         
         .card:hover {
-            transform: translateY(-4px);
+            border-color: var(--cyan);
+            transform: translateY(-12px);
+            box-shadow: 0 24px 64px rgba(0,204,255,0.15);
         }
         
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--safety-amber);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .card-emoji {
+            font-size: 4.5rem;
+            display: block;
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
         }
         
         .card h3 {
-            color: var(--blueprint-navy);
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            font-weight: 700;
+            color: var(--navy);
         }
         
         .card p {
-            color: var(--text-dark);
-            line-height: 1.7;
+            font-size: 1.125rem;
+            color: var(--gray);
+            line-height: 1.6;
         }
         
-        /* Technology Section */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .tech-card {
-            background: var(--white);
-            border: 2px solid var(--concrete);
-            border-radius: 16px;
-            padding: 1.5rem;
+        /* Results */
+        .results {
+            background: var(--navy);
+            color: white;
             text-align: center;
-            transition: all 0.2s;
         }
         
-        .tech-card:hover {
-            border-color: var(--electric-cyan);
-            transform: translateY(-2px);
+        .results h2 {
+            color: white;
         }
         
-        .tech-logo {
-            width: 80px;
-            height: 80px;
-            background: var(--concrete);
-            border-radius: 12px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--blueprint-navy);
-            font-weight: 700;
-            font-size: 1.1rem;
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        /* Who We Serve */
-        .serve-grid {
+        .result {
+            padding: 2rem;
+        }
+        
+        .result-num {
+            font-size: clamp(4.5rem, 10vw, 7rem);
+            font-weight: 900;
+            color: var(--amber);
+            line-height: 0.95;
+            margin-bottom: 1.25rem;
+        }
+        
+        .result-label {
+            font-size: 1.65rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+        
+        /* How */
+        .how {
+            background: white;
+        }
+        
+        .steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 3.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .serve-card {
-            background: linear-gradient(135deg, var(--electric-cyan) 0%, #00A3CC 100%);
-            color: var(--white);
-            border-radius: 16px;
-            padding: 2rem;
+        .step {
             text-align: center;
         }
         
-        .serve-card h3 {
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-        
-        .exclusion {
-            text-align: center;
-            color: var(--rebar-gray);
-            font-style: italic;
-            margin-top: 1.5rem;
-        }
-        
-        /* Process Timeline */
-        .process-timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .process-step {
-            text-align: center;
-        }
-        
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--safety-amber);
-            color: var(--blueprint-navy);
+        .step-num {
+            width: 90px;
+            height: 90px;
+            background: var(--amber);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 auto 1rem;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin: 0 auto 2rem;
         }
         
-        .process-step h3 {
-            color: var(--blueprint-navy);
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Results */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .result-card {
-            background: var(--blueprint-navy);
-            color: var(--white);
-            border-radius: 16px;
-            padding: 2rem;
-        }
-        
-        .result-card h3 {
-            color: var(--safety-amber);
-            font-size: 1.5rem;
+        .step h3 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            color: var(--navy);
         }
         
-        .result-kpis {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-        
-        .result-kpis li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .result-kpis li:last-child {
-            border-bottom: none;
+        .step p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            line-height: 1.6;
         }
         
         /* Pricing */
-        .pricing-grid {
+        .pricing {
+            background: var(--light);
+        }
+        
+        .price-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .pricing-card {
-            background: var(--white);
-            border: 2px solid var(--concrete);
-            border-radius: 16px;
-            padding: 2rem;
+        .price-card {
+            background: white;
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
             text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transition: all 0.3s;
         }
         
-        .pricing-card.featured {
-            border-color: var(--safety-amber);
+        .price-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+        }
+        
+        .price-card.featured {
+            background: var(--navy);
+            color: white;
             transform: scale(1.05);
         }
         
-        .pricing-card h3 {
-            color: var(--blueprint-navy);
-            margin-bottom: 0.5rem;
+        .price-card.featured:hover {
+            transform: scale(1.05) translateY(-12px);
         }
         
-        .pricing-type {
-            color: var(--rebar-gray);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        /* FAQ */
-        .faq-item {
-            border-bottom: 1px solid var(--concrete);
-            padding: 1.5rem 0;
-        }
-        
-        .faq-question {
-            background: none;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1.1rem;
+        .price-label {
+            font-size: 1.25rem;
             font-weight: 600;
-            color: var(--blueprint-navy);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Merriweather Sans', sans-serif;
+            margin-bottom: 1.25rem;
+            color: var(--gray);
         }
         
-        .faq-answer {
-            margin-top: 1rem;
-            color: var(--text-dark);
-            display: none;
-            line-height: 1.7;
+        .price-card.featured .price-label {
+            color: rgba(255,255,255,0.75);
         }
         
-        .faq-answer.active {
+        .price-value {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .price-card.featured .price-value {
+            color: var(--amber);
+        }
+        
+        .price-term {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+        }
+        
+        .price-card.featured .price-term {
+            color: rgba(255,255,255,0.65);
+        }
+        
+        .price-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        
+        .price-features li {
+            padding: 0.875rem 0;
+            font-size: 1.125rem;
+            color: var(--gray);
+        }
+        
+        .price-card.featured .price-features li {
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .price-features li::before {
+            content: "✓";
+            color: var(--cyan);
+            font-weight: 900;
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .price-cta {
             display: block;
+            background: var(--amber);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.125rem;
+            transition: all 0.2s;
+        }
+        
+        .price-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(246,167,1,0.3);
         }
         
         /* Final CTA */
         .final-cta {
-            background: linear-gradient(135deg, var(--blueprint-navy) 0%, var(--steel-indigo) 100%);
-            color: var(--white);
-            padding: 4rem 0;
+            background: var(--navy);
+            color: white;
             text-align: center;
+            padding: 6rem 2rem;
+            min-height: auto;
         }
         
         .final-cta h2 {
-            color: var(--white);
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
             margin-bottom: 2rem;
+            color: white;
         }
         
-        .final-cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .final-cta p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.85);
         }
         
         /* Footer */
-        .footer {
-            background: var(--blueprint-navy);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h4 {
-            color: var(--safety-amber);
-            margin-bottom: 1rem;
-        }
-        
-        .footer-section a {
-            color: var(--concrete);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section a:hover {
-            color: var(--electric-cyan);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.65);
+            padding: 3rem 2rem 2rem;
             text-align: center;
-            color: var(--concrete);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            min-height: auto;
         }
         
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+        
+        /* Mobile */
+        @media (max-width: 968px) {
             .nav {
                 display: none;
             }
             
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .results-grid {
+            .split {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
             
-            .pricing-card.featured {
+            .visual-box {
+                order: -1;
+                font-size: 6rem;
+            }
+            
+            section {
+                min-height: auto;
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero {
+                min-height: 100vh;
+                padding: 6rem 1.5rem 4rem;
+            }
+            
+            .price-card.featured {
                 transform: none;
             }
             
-            .ai-helper {
-                padding: 1.5rem;
+            .header-content {
+                padding: 1rem 1.5rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
             }
             
             .search-box {
@@ -712,378 +810,221 @@
             }
         }
         
-        .fade-in {
+        /* Animations */
+        .fade-up {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
         
-        .fade-in.visible {
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">DOGE Work</a>
-                <nav class="nav">
-                    <a href="#services">Services</a>
-                    <a href="#sectors">Sectors</a>
-                    <a href="#process">Process</a>
-                    <a href="#results">Results</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#insights">Insights</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#contact" class="btn btn-primary">Book a Call</a>
-                </nav>
-            </div>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">DOGE Work</a>
+            <nav class="nav">
+                <a href="#solution">Services</a>
+                <a href="#how">Process</a>
+                <a href="#results">Results</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact" class="cta-btn">Book Call</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>IT Consulting for Construction Growth.</h1>
-                <p class="hero-subtitle">Cut costs. Streamline workflows. Build processes that scale.</p>
-                
-                <div class="cost-badge">
-                    No vendor commissions • Cost-First™ promise
-                </div>
-                
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Book a Call</a>
-                    <a href="#process" class="btn btn-secondary">See How We Work</a>
-                </div>
-                
-                <!-- AI Helper Box -->
-                <div class="ai-helper">
-                    <h3>What challenge are you facing?</h3>
-                    <div class="search-box">
-                        <div class="hard-hat-icon">🏗️</div>
-                        <textarea 
-                            id="aiSearch" 
-                            class="search-input" 
-                            placeholder="Describe your situation in plain language (e.g., 'Estimating→PM handoff is messy; duplicate entry; subs send wrong bids')"
-                            rows="3"
-                            aria-label="Describe your IT challenge"
-                        ></textarea>
-                        <button class="search-btn" onclick="handleSearch()" aria-label="Ask the AI">
-                            Ask the AI <span class="search-hint">Press Enter</span>
-                        </button>
-                    </div>
-                    <div class="suggestions">
-                        <button class="chip" onclick="fillSearch('We need to standardize our systems across divisions')">Standardize systems</button>
-                        <button class="chip" onclick="fillSearch('Need help setting up Procore properly')">Procore setup</button>
-                        <button class="chip" onclick="fillSearch('Bid handoff from estimating to PM is chaotic')">Bid handoff</button>
-                        <button class="chip" onclick="fillSearch('We need better cost control and tracking')">Cost control</button>
-                        <button class="chip" onclick="fillSearch('Want job cost dashboards and WIP reports')">Job cost dashboards</button>
-                        <button class="chip" onclick="fillSearch('Too many software licenses we don\'t use')">License cleanup</button>
-                        <button class="chip" onclick="fillSearch('Field teams won\'t adopt new software')">Field adoption</button>
-                        <button class="chip" onclick="fillSearch('Timesheet and field ticket chaos')">Timesheets</button>
-                        <button class="chip" onclick="fillSearch('Document versioning is a nightmare')">Document chaos</button>
-                    </div>
-                    
-                    <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust Strip -->
-    <section class="trust-strip">
-        <div class="container">
-            <p class="trust-text">Independent. Vendor-neutral. Honest opinions.</p>
-        </div>
-    </section>
-
-    <!-- Value Pillars -->
-    <section class="section" id="pillars">
-        <div class="container">
-            <h2 class="section-title">How We Drive Growth</h2>
-            <div class="grid grid-3">
-                <div class="card fade-in">
-                    <div class="card-icon">💰</div>
-                    <h3>Cutting Costs</h3>
-                    <p>We cut spend before we add tools. Eliminate unused software, negotiate better licenses, and right-size your technology stack for actual ROI.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">⚡</div>
-                    <h3>Streamlining Workflows</h3>
-                    <p>Build standard operating procedures across PM, Estimating, Field, and Finance. Create consistency that scales with your growth.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">🔧</div>
-                    <h3>Process Development</h3>
-                    <p>Identify operational gaps and build repeatable processes. Train your teams to execute consistently, project after project.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technology & Training -->
-    <section class="section" id="technology">
-        <div class="container">
-            <h2 class="section-title">Technology & Training</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-logo">PC</div>
-                    <h3>Procore</h3>
-                    <p>Implementation & Training</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">BC</div>
-                    <h3>BuildingConnected</h3>
-                    <p>Bid Management</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">PG</div>
-                    <h3>PlanGrid/Autodesk</h3>
-                    <p>Field Collaboration</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-logo">SP</div>
-                    <h3>SharePoint/Teams</h3>
-                    <p>Document Management</p>
-                </div>
-            </div>
-            <p style="text-align: center; color: var(--text-dark); font-style: italic;">We train your teams and harden adoption—field to front office.</p>
-        </div>
-    </section>
-
-    <!-- Who We Serve -->
-    <section class="section" id="sectors">
-        <div class="container">
-            <h2 class="section-title">Who We Serve</h2>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 0.5rem;">Commercial & Industrial Construction Only</p>
-            <p class="exclusion">Not residential-only contractors</p>
+        <div class="hero-content">
+            <h1>Cut IT Costs <span class="hero-number">30%</span></h1>
+            <p class="hero-subtitle">Construction companies waste money on software they don't use.</p>
+            <div class="badge">No commissions • Cost-First™</div>
             
-            <div class="serve-grid">
-                <div class="serve-card">
-                    <h3>General Contractors</h3>
-                    <p>Commercial and industrial projects requiring integrated project management and cost control systems.</p>
+            <div class="hero-cta-buttons">
+                <a href="#contact" class="cta-primary">Book 15-Min Call</a>
+                <a href="#how" class="cta-secondary">See How</a>
+            </div>
+            
+            <!-- AI Helper -->
+            <div class="ai-helper">
+                <h3>What challenge are you facing?</h3>
+                <div class="search-box">
+                    <div class="hard-hat-icon">🏗️</div>
+                    <textarea 
+                        id="aiSearch" 
+                        class="search-input" 
+                        placeholder="Describe your situation (e.g., 'Estimating→PM handoff is messy; subs send wrong bids')"
+                        rows="3"
+                        aria-label="Describe your challenge"
+                    ></textarea>
+                    <button class="search-btn" onclick="handleSearch()">
+                        Ask AI
+                        <span class="search-hint">Press Enter</span>
+                    </button>
                 </div>
-                <div class="serve-card">
-                    <h3>Specialty Trades</h3>
-                    <p>Electrical, mechanical, and specialty contractors looking to standardize operations and improve margins.</p>
+                <div class="suggestions">
+                    <button class="chip" onclick="fillSearch('Need to standardize systems across divisions')">Standardize systems</button>
+                    <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
+                    <button class="chip" onclick="fillSearch('Bid handoff is chaotic')">Bid handoff</button>
+                    <button class="chip" onclick="fillSearch('Better cost control')">Cost control</button>
+                    <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
+                    <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
+                    <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
+                    <button class="chip" onclick="fillSearch('Document chaos')">Documents</button>
                 </div>
-                <div class="serve-card">
-                    <h3>Developers/Owners</h3>
-                    <p>Development companies managing multiple projects and seeking better visibility into costs and timelines.</p>
+                
+                <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+        <div class="container">
+            <div class="split">
+                <div>
+                    <h2>You're overpaying</h2>
+                    <div class="stat-box">
+                        <div class="stat fade-up">
+                            <div class="stat-number">$47K</div>
+                            <div class="stat-text">Wasted per year</div>
+                        </div>
+                        <div class="stat fade-up">
+                            <div class="stat-number">60%</div>
+                            <div class="stat-text">Of licenses unused</div>
+                        </div>
+                        <div class="stat fade-up">
+                            <div class="stat-number">23hrs</div>
+                            <div class="stat-text">Lost weekly to duplicates</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-box fade-up">
+                    💸
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
-    <section class="section" id="services">
+    <!-- Solution -->
+    <section class="solution" id="solution">
         <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="grid grid-3">
-                <div class="card fade-in">
-                    <div class="card-icon">📊</div>
-                    <h3>Tool Stack Evaluation</h3>
-                    <p>Audit your current tools. Identify what to keep, cut, or add. Get a clear roadmap for technology investments.</p>
+            <h2 class="section-title">Three things</h2>
+            <p class="subtitle">Nothing else.</p>
+            
+            <div class="cards">
+                <div class="card fade-up">
+                    <span class="card-emoji">🔍</span>
+                    <h3>Audit</h3>
+                    <p>Find the waste</p>
                 </div>
-                <div class="card fade-in">
-                    <div class="card-icon">🗺️</div>
-                    <h3>Workflow Mapping & SOPs</h3>
-                    <p>Document and standardize processes across PM, Estimating, Procurement, and AP. Build consistency that scales.</p>
+                <div class="card fade-up">
+                    <span class="card-emoji">⚡</span>
+                    <h3>Fix</h3>
+                    <p>Cut it, keep what works</p>
                 </div>
-                <div class="card fade-in">
-                    <div class="card-icon">⚙️</div>
-                    <h3>Procore & App Implementation</h3>
-                    <p>Configure platforms properly from day one. Set up standards, permissions, and workflows that stick.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">📈</div>
-                    <h3>Data & Dashboards</h3>
-                    <p>Build meaningful reports for job cost, WIP, and labor productivity. Turn data into actionable insights.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">🎯</div>
-                    <h3>Change Management & Training</h3>
-                    <p>On-site and remote training that ensures adoption. Help your teams embrace new processes and tools.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon">💼</div>
-                    <h3>License & Vendor Management</h3>
-                    <p>Negotiate better deals, consolidate vendors, and eliminate redundant subscriptions. Optimize your software spend.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process -->
-    <section class="section" id="process">
-        <div class="container">
-            <h2 class="section-title">Our Process</h2>
-            <div class="process-timeline">
-                <div class="process-step fade-in">
-                    <div class="process-number">1</div>
-                    <h3>Discover</h3>
-                    <p>Understand your current state, pain points, and growth objectives through stakeholder interviews and system audits.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">2</div>
-                    <h3>Diagnose</h3>
-                    <p>Identify gaps, inefficiencies, and opportunities. Prioritize improvements based on impact and feasibility.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">3</div>
-                    <h3>Design</h3>
-                    <p>Create detailed implementation plans, process maps, and training materials tailored to your organization.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">4</div>
-                    <h3>Deploy & Train</h3>
-                    <p>Execute the plan with hands-on support. Train your teams and ensure sustainable adoption of new processes.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="process-number">5</div>
-                    <h3>Sustain</h3>
-                    <p>Monitor progress, refine processes, and provide ongoing support to ensure long-term success and continuous improvement.</p>
+                <div class="card fade-up">
+                    <span class="card-emoji">📈</span>
+                    <h3>Optimize</h3>
+                    <p>Make teams use it</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Results -->
-    <section class="section" id="results">
+    <section class="results" id="results">
         <div class="container">
-            <h2 class="section-title">Results</h2>
+            <h2 class="section-title">Real results</h2>
             <div class="results-grid">
-                <div class="result-card fade-in">
-                    <h3>−27% software spend</h3>
-                    <p>Mid-market GC reduced tool redundancy and negotiated enterprise pricing across divisions.</p>
-                    <ul class="result-kpis">
-                        <li>• Eliminated 12 redundant software licenses</li>
-                        <li>• Standardized on 3 core platforms</li>
-                        <li>• Reduced training time by 40%</li>
-                        <li>• Improved data consistency across projects</li>
-                    </ul>
+                <div class="result fade-up">
+                    <div class="result-num">−27%</div>
+                    <div class="result-label">Software spend</div>
                 </div>
-                <div class="result-card fade-in">
-                    <h3>2 hrs saved per kickoff</h3>
-                    <p>Specialty contractor streamlined estimating-to-PM handoff with standardized workflows.</p>
-                    <ul class="result-kpis">
-                        <li>• Created standard handoff checklist</li>
-                        <li>• Automated data transfer from estimating</li>
-                        <li>• Reduced project setup errors by 60%</li>
-                        <li>• Improved PM satisfaction scores</li>
-                    </ul>
+                <div class="result fade-up">
+                    <div class="result-num">2hrs</div>
+                    <div class="result-label">Saved per project</div>
+                </div>
+                <div class="result fade-up">
+                    <div class="result-num">6mo</div>
+                    <div class="result-label">To full ROI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How -->
+    <section class="how" id="how">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <div class="steps">
+                <div class="step fade-up">
+                    <div class="step-num">1</div>
+                    <h3>Audit</h3>
+                    <p>2-week assessment</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-num">2</div>
+                    <h3>Fix</h3>
+                    <p>Cut waste, implement</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-num">3</div>
+                    <h3>Train</h3>
+                    <p>Get adoption</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section class="section" id="pricing">
+    <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">Transparent Pricing</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Assessment</h3>
-                    <p class="pricing-type">Fixed Fee</p>
-                    <p>Comprehensive evaluation of your current state with deliverable roadmap and cost model. Know exactly where you stand and where to go next.</p>
-                    <div style="margin-top: 2rem;">
-                        <a href="#contact" class="btn btn-secondary" style="border-color: var(--blueprint-navy); color: var(--blueprint-navy);">Get Started</a>
-                    </div>
+            <h2 class="section-title">Pricing</h2>
+            <p class="subtitle">No surprises. No commissions.</p>
+            
+            <div class="price-cards">
+                <div class="price-card fade-up">
+                    <div class="price-label">Assessment</div>
+                    <div class="price-value">$5K</div>
+                    <div class="price-term">Fixed fee</div>
+                    <ul class="price-features">
+                        <li>Complete tech audit</li>
+                        <li>Cost breakdown</li>
+                        <li>Action plan</li>
+                        <li>2 weeks</li>
+                    </ul>
+                    <a href="#contact" class="price-cta">Get Started</a>
                 </div>
-                <div class="pricing-card featured">
-                    <h3>Implementation</h3>
-                    <p class="pricing-type">Project-Based</p>
-                    <p>Milestone-based implementation of your technology and process improvements. Pay as we deliver results, with clear success criteria.</p>
-                    <div style="margin-top: 2rem;">
-                        <a href="#contact" class="btn btn-primary">Talk to an Expert</a>
-                    </div>
+                
+                <div class="price-card featured fade-up">
+                    <div class="price-label">Implementation</div>
+                    <div class="price-value">$15K+</div>
+                    <div class="price-term">Project-based</div>
+                    <ul class="price-features">
+                        <li>Full implementation</li>
+                        <li>Team training</li>
+                        <li>Process docs</li>
+                        <li>3-6 months</li>
+                    </ul>
+                    <a href="#contact" class="price-cta">Book Call</a>
                 </div>
-                <div class="pricing-card">
-                    <h3>Fractional CIO</h3>
-                    <p class="pricing-type">Monthly Retainer</p>
-                    <p>Ongoing IT leadership for growing teams without a full-time IT executive. Strategic guidance and hands-on support as needed.</p>
-                    <div style="margin-top: 2rem;">
-                        <a href="#contact" class="btn btn-secondary" style="border-color: var(--blueprint-navy); color: var(--blueprint-navy);">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">What Clients Say</h2>
-            <div class="grid grid-3">
-                <div class="card fade-in">
-                    <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"They told us what not to buy."</p>
-                    <p style="color: var(--rebar-gray);">— Operations Director, Commercial GC</p>
-                </div>
-                <div class="card fade-in">
-                    <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"Field adoption finally stuck."</p>
-                    <p style="color: var(--rebar-gray);">— Project Manager, Specialty Contractor</p>
-                </div>
-                <div class="card fade-in">
-                    <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"ROI was clear within 6 months."</p>
-                    <p style="color: var(--rebar-gray);">— CFO, Mid-Market Developer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        How do you maintain vendor neutrality?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-answer">
-                        We don't sell software or receive commissions from vendors. Our recommendations are based solely on what's best for your business, not what pays us the most.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Are you Procore specialists?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-answer">
-                        We're experienced with Procore but platform-agnostic. We'll recommend Procore when it fits, but we're equally comfortable with other solutions if they better serve your needs.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        What's the typical project timeline?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-answer">
-                        Assessment: 2-3 weeks. Implementation varies by scope, typically 3-6 months for comprehensive process improvements. We work in phases to minimize disruption.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        How do you handle data security?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-answer">
-                        We follow construction industry security standards, sign NDAs, and work within your existing security protocols. Your data stays yours—we don't retain or share it.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Who owns the processes we develop?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-answer">
-                        You do. All documentation, processes, and training materials become your property. We're here to help you build capabilities, not create dependencies.
-                    </div>
+                
+                <div class="price-card fade-up">
+                    <div class="price-label">Ongoing</div>
+                    <div class="price-value">$3K</div>
+                    <div class="price-term">Per month</div>
+                    <ul class="price-features">
+                        <li>Fractional CIO</li>
+                        <li>Strategic guidance</li>
+                        <li>Vendor management</li>
+                        <li>On-demand support</li>
+                    </ul>
+                    <a href="#contact" class="price-cta">Learn More</a>
                 </div>
             </div>
         </div>
@@ -1092,113 +1033,71 @@
     <!-- Final CTA -->
     <section class="final-cta" id="contact">
         <div class="container">
-            <h2>Ready to grow without wasting budget?</h2>
-            <div class="final-cta-buttons">
-                <a href="#" class="btn btn-primary">Book a Call</a>
-                <a href="mailto:hello@dogework.com" class="btn btn-secondary">Email Us</a>
-            </div>
+            <h2>Stop wasting money</h2>
+            <p>15-minute call. No pitch, just diagnosis.</p>
+            <a href="mailto:hello@dogework.com" class="cta-primary">hello@dogework.com</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>hello@dogework.com</p>
-                    <p>Serving US Commercial Construction</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <a href="#services">Tool Stack Evaluation</a>
-                    <a href="#services">Workflow Mapping</a>
-                    <a href="#services">Implementation</a>
-                    <a href="#services">Training</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <a href="#process">How We Work</a>
-                    <a href="#results">Case Studies</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <a href="#">Construction Tech Guide</a>
-                    <a href="#">Process Templates</a>
-                    <a href="#">ROI Calculator</a>
-                    <a href="#">Newsletter</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 DOGE Work. Independent IT consulting for construction growth.</p>
-            </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="mailto:hello@dogework.com">Contact</a>
         </div>
+        <p>© 2025 DOGE Work • Independent IT for Construction</p>
     </footer>
 
     <script>
-        // Keyword classification system for AI Helper
+        // AI keyword classification
         const keywordGroups = {
             'workflow': {
-                keywords: ['bid', 'bidding', 'estimat', 'takeoff', 'handoff', 'hand-off', 'qualification', 'qualify', 'preconstruction', 'sop', 'standard operating', 'process', 'workflow', 'procedure', 'messy', 'chaotic', 'duplicate', 'duplication'],
+                keywords: ['bid', 'estimat', 'handoff', 'sop', 'process', 'workflow', 'messy', 'chaotic', 'duplicate'],
                 result: 'Workflow Mapping & SOPs',
-                section: 'services',
-                description: 'It sounds like you need workflow standardization and process documentation.'
+                section: 'solution'
             },
             'implementation': {
-                keywords: ['procore', 'buildingconnected', 'plangrid', 'autodesk', 'implement', 'setup', 'configure', 'install', 'platform', 'system'],
-                result: 'Procore & App Implementation',
-                section: 'technology',
-                description: 'It sounds like you need help with platform implementation and configuration.'
+                keywords: ['procore', 'buildingconnected', 'plangrid', 'implement', 'setup', 'configure', 'platform'],
+                result: 'Platform Implementation',
+                section: 'solution'
             },
             'license': {
-                keywords: ['cost', 'license', 'subscription', 'shelfware', 'renewal', 'too many tools', 'redundant', 'consolidate', 'vendor', 'spend', 'expensive'],
-                result: 'Tool Stack Evaluation & License Management',
-                section: 'services',
-                description: 'It sounds like you need help optimizing your software spend and tool stack.'
+                keywords: ['cost', 'license', 'subscription', 'too many', 'redundant', 'vendor', 'spend', 'expensive'],
+                result: 'License & Cost Optimization',
+                section: 'solution'
             },
             'data': {
-                keywords: ['dashboard', 'wip', 'job cost', 'cost code', 'forecast', 'report', 'reporting', 'analytics', 'data', 'kpi', 'metric'],
+                keywords: ['dashboard', 'wip', 'job cost', 'report', 'analytics', 'data', 'kpi'],
                 result: 'Data & Dashboards',
-                section: 'services',
-                description: 'It sounds like you need better reporting and data visibility.'
+                section: 'solution'
             },
             'training': {
-                keywords: ['timesheet', 'field ticket', 'mobile app', 'adoption', 'training', 'change management', 'resistance', 'won\'t use', 'field team', 'user adoption'],
-                result: 'Change Management & Training',
-                section: 'services',
-                description: 'It sounds like you need help with user adoption and training.'
+                keywords: ['adoption', 'training', 'resistance', 'won\'t use', 'field team'],
+                result: 'Training & Adoption',
+                section: 'solution'
             },
             'documents': {
-                keywords: ['sharepoint', 'teams', 'document', 'docs', 'versioning', 'version control', 'file', 'storage', 'organization'],
-                result: 'Document Management & Collaboration',
-                section: 'technology',
-                description: 'It sounds like you need help organizing and managing documents.'
+                keywords: ['document', 'docs', 'versioning', 'file', 'storage'],
+                result: 'Document Management',
+                section: 'solution'
             }
         };
 
-        // AI Search Handler with keyword classification
         function handleSearch() {
             const input = document.getElementById('aiSearch');
             const query = input.value.toLowerCase().trim();
             const resultDiv = document.getElementById('aiResult');
             
-            if (!query) {
-                resultDiv.classList.remove('show');
-                return;
-            }
+            if (!query) return;
 
             let bestMatch = null;
             let highestScore = 0;
 
-            // Score each category based on keyword matches
             for (const [category, data] of Object.entries(keywordGroups)) {
                 let score = 0;
                 for (const keyword of data.keywords) {
-                    if (query.includes(keyword)) {
-                        score++;
-                    }
+                    if (query.includes(keyword)) score++;
                 }
                 if (score > highestScore) {
                     highestScore = score;
@@ -1206,22 +1105,21 @@
                 }
             }
 
-            // Display result
             if (bestMatch && highestScore > 0) {
                 resultDiv.innerHTML = `
-                    <h4>${bestMatch.description}</h4>
-                    <p><strong>Recommended:</strong> ${bestMatch.result}</p>
+                    <h4>Sounds like: ${bestMatch.result}</h4>
+                    <p>We can help with that.</p>
                     <div class="ai-result-buttons">
-                        <button class="btn btn-primary" onclick="navigateToSection('${bestMatch.section}')">Show me the plan</button>
-                        <button class="btn btn-secondary" style="border-color: var(--blueprint-navy); color: var(--blueprint-navy);" onclick="navigateToSection('contact')">Book a Call</button>
+                        <a href="#${bestMatch.section}" class="btn-small btn-primary-small">See Solution</a>
+                        <a href="#contact" class="btn-small btn-secondary-small">Book Call</a>
                     </div>
                 `;
             } else {
                 resultDiv.innerHTML = `
-                    <h4>Not sure? We'll translate it together.</h4>
-                    <p>Let's discuss your specific situation and find the right solution.</p>
+                    <h4>Let's talk about it</h4>
+                    <p>We'll figure out what you need.</p>
                     <div class="ai-result-buttons">
-                        <button class="btn btn-primary" onclick="navigateToSection('contact')">Book a Call</button>
+                        <a href="#contact" class="btn-small btn-primary-small">Book Call</a>
                     </div>
                 `;
             }
@@ -1230,21 +1128,12 @@
             input.value = '';
         }
 
-        // Fill search with chip text
         function fillSearch(text) {
             document.getElementById('aiSearch').value = text;
             handleSearch();
         }
 
-        // Navigation helper
-        function navigateToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-
-        // Enter key support for AI search
+        // Enter key
         document.getElementById('aiSearch').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -1255,59 +1144,30 @@
         // Auto-resize textarea
         document.getElementById('aiSearch').addEventListener('input', function() {
             this.style.height = 'auto';
-            const newHeight = Math.min(this.scrollHeight, 200); // Max 8 rows approximately
-            this.style.height = newHeight + 'px';
+            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
         });
 
-        // FAQ Toggle
-        function toggleFaq(button) {
-            const answer = button.nextElementSibling;
-            const icon = button.querySelector('span');
-            const isActive = answer.classList.contains('active');
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-            // Close all FAQs
-            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
-            document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
-
-            // Open clicked FAQ if it wasn't active
-            if (!isActive) {
-                answer.classList.add('active');
-                icon.textContent = '−';
-            }
-        }
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-        // Initialize animations on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
