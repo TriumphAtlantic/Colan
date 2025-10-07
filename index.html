@@ -117,6 +117,30 @@
       box-shadow:0 -4px 24px rgba(0,0,0,.15);
     }
     .sticky-cta.visible{ transform:translateY(0); }
+    .sticky-cta.hidden{ display:none; }
+
+    .sticky-cta-close{
+      display:none;
+      position:absolute;
+      top:8px;
+      right:8px;
+      width:32px;
+      height:32px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:6px;
+      color:#fff;
+      font-size:1.25rem;
+      line-height:1;
+      cursor:pointer;
+      transition:all .2s;
+      align-items:center;
+      justify-content:center;
+    }
+    .sticky-cta-close:hover{
+      background:rgba(255,255,255,.2);
+      transform:scale(1.1);
+    }
 
     .sticky-cta-content{
       max-width:1400px; margin:0 auto; display:flex;
@@ -604,6 +628,9 @@
         white-space:normal !important;
       }
       .ai-helper .search-box{ width:100%; }
+      
+      /* Show close button on sticky CTA on mobile only */
+      .sticky-cta-close{ display:flex !important; }
     }
 
     /* Animations helper */
@@ -614,6 +641,7 @@
 <body>
   <!-- Sticky CTA -->
   <div class="sticky-cta" id="stickyCta">
+    <button class="sticky-cta-close" onclick="closeStickyCta()" aria-label="Close">✕</button>
     <div class="sticky-cta-content">
       <div class="sticky-cta-text">
         Stop wasting money on unused software • <span>Most save $50K+/year</span>
@@ -1210,6 +1238,13 @@
       if(window.scrollY>800){ stickyCta.classList.add('visible'); }
       else{ stickyCta.classList.remove('visible'); }
     });
+
+    // Close sticky CTA (mobile)
+    function closeStickyCta(){
+      const stickyCta=document.getElementById('stickyCta');
+      stickyCta.classList.add('hidden');
+      stickyCta.classList.remove('visible');
+    }
 
     // Simple AI keyword classifier
     const keywordGroups={
