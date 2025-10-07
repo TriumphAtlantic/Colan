@@ -1831,6 +1831,19 @@
                     
                     <a href="#contact" style="display: block; background: var(--amber); color: var(--navy); padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 800; text-align: center; font-size: 1rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Get Your Assessment</a>
                     
+                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(0, 204, 255, 0.1); border-radius: 8px; border: 1px solid rgba(0, 204, 255, 0.2);">
+                        <details>
+                            <summary style="cursor: pointer; font-weight: 600; color: white; font-size: 0.85rem;">
+                                ℹ️ How is this calculated?
+                            </summary>
+                            <div style="margin-top: 0.75rem; color: rgba(255,255,255,0.85); font-size: 0.75rem; line-height: 1.6;">
+                                <strong>Software:</strong> Revenue × 0.10%<br>
+                                <strong>Process:</strong> PMs × 7.5 hrs/week × 52 × $100/hr<br>
+                                <em style="opacity: 0.7;">Based on 5-10 hrs/week of avoidable friction per PM (searching docs, duplicate entry, status chasing)</em>
+                            </div>
+                        </details>
+                    </div>
+                    
                     <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: center; margin-top: 1rem; font-style: italic;">
                         Based on 0.10% revenue software waste + 7.5 hrs/week process friction per PM
                     </p>
@@ -1994,6 +2007,31 @@
                         2% revenue potential from better communication; 3% revenue potential from reduced rework and better planning. 
                         Sources: McKinsey IT spending, Deloitte construction tech benchmarks, PlanGrid productivity studies, Gartner SaaS utilization research.
                     </p>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 204, 255, 0.1); border-radius: 12px; border-left: 4px solid var(--cyan);">
+                        <details>
+                            <summary style="cursor: pointer; font-weight: 700; color: white; font-size: 1rem; margin-bottom: 0;">
+                                📊 How We Calculate This (Click to Expand)
+                            </summary>
+                            <div style="margin-top: 1rem; color: rgba(255,255,255,0.9); font-size: 0.9rem; line-height: 1.7;">
+                                <p style="margin-bottom: 1rem;"><strong>Software Waste Formula:</strong><br>
+                                Revenue × 0.10% = Direct license waste<br>
+                                <em>Example: $50M × 0.001 = $50K/year in unused software</em></p>
+                                
+                                <p style="margin-bottom: 1rem;"><strong>Process Waste Formula:</strong><br>
+                                PMs × 7.5 hrs/week × 52 weeks × $100/hr = Process friction cost<br>
+                                <em>Example: 15 PMs × 7.5 × 52 × $100 = $585K/year in wasted time</em></p>
+                                
+                                <p style="margin-bottom: 1rem;"><strong>Why 7.5 hours per week?</strong><br>
+                                Industry research shows PMs spend 5-10 hrs/week on avoidable friction: searching for documents, duplicate data entry, 
+                                chasing status updates, fixing handoff errors. We use the midpoint (7.5 hrs) for conservative estimates.</p>
+                                
+                                <p style="margin-bottom: 0;"><strong>Total Opportunity:</strong><br>
+                                Software Waste + Process Waste + Communication Gains (2% revenue) + Tool Optimization (3% revenue)<br>
+                                <em>This is the full potential value of fixing your IT and process issues.</em></p>
+                            </div>
+                        </details>
+                    </div>
                 </div>
             </div>
         </div>
