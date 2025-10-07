@@ -237,9 +237,10 @@
         }
         
         .hero-content {
-            max-width: 1100px;
+            max-width: 1400px;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
         
         .hero h1 {
@@ -350,17 +351,32 @@
             margin-bottom: 0.5rem;
         }
         
-        /* AI Helper */
+        /* Hero Grid - AI Helper & Calculator */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto;
+        }
+        
         .ai-helper {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             padding: 2rem;
-            max-width: 760px;
-            margin: 3rem auto;
             box-shadow: 0 8px 32px rgba(0, 204, 255, 0.15), 
                         0 0 0 1px rgba(0, 204, 255, 0.1);
+        }
+        
+        .hero-calculator {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(246, 167, 1, 0.15);
         }
         
         .ai-helper h3 {
@@ -1567,6 +1583,11 @@
                 display: none;
             }
             
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
             .split {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1679,7 +1700,7 @@
     <div class="sticky-cta" id="stickyCta">
         <div class="sticky-cta-content">
             <div class="sticky-cta-text">
-                Stop wasting <span>$50K+</span> per year on unused software
+                Stop wasting money on unused software • <span>Most save $50K+/year</span>
             </div>
             <div class="sticky-cta-buttons">
                 <a href="tel:6093183470" class="sticky-phone">📞 609-318-3470</a>
@@ -1709,15 +1730,15 @@
             
             <!-- Guarantee Banner -->
             <div class="guarantee-banner">
-                <h3>💰 Save $50K Per Year or Assessment is FREE</h3>
-                <p>If we can't identify at least 10% savings in 2 weeks, you pay nothing.</p>
+                <h3>💰 Assessment is FREE if We Can't Find Savings</h3>
+                <p>If we can't identify at least 10% savings in 2 weeks, you pay nothing. (Most save $50K+/year)</p>
             </div>
             
             <div class="urgency-badge">⚡ Only 3 assessment slots available this month</div>
             
             <!-- Problem Buttons (Simplified) -->
             <div class="problem-buttons">
-                <a href="#calculator" class="problem-btn">
+                <a href="#contact" class="problem-btn">
                     <span>💸</span>
                     Save $50K+ Per Year
                 </a>
@@ -1731,36 +1752,89 @@
                 </a>
             </div>
             
-            <!-- AI Helper -->
-            <div class="ai-helper">
-                <h3>Or describe your specific challenge:</h3>
-                <div class="search-box">
-                    <div class="hard-hat-icon">🏗️</div>
-                    <textarea 
-                        id="aiSearch" 
-                        class="search-input" 
-                        placeholder="Examples: 'Our subs send wrong bids,' 'Too many Procore permissions,' 'Timesheets don't match work-in-progress report (WIP)'"
-                        rows="3"
-                        aria-label="Describe your challenge"
-                    ></textarea>
-                    <button class="search-btn" onclick="handleSearch()">
-                        Ask AI
-                        <span class="search-hint">Press Enter</span>
-                    </button>
-                </div>
-                <div class="suggestions">
-                    <button class="chip" onclick="fillSearch('Need to standardize systems')">Standardize systems</button>
-                    <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
-                    <button class="chip" onclick="fillSearch('Bid handoff chaos')">Bid handoff</button>
-                    <button class="chip" onclick="fillSearch('Cost control')">Cost control</button>
-                    <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
-                    <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
-                    <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
-                    <button class="chip" onclick="fillSearch('Document chaos')">Documents</button>
+            <!-- AI Helper & Calculator Grid -->
+            <div class="hero-grid">
+                <!-- AI Helper -->
+                <div class="ai-helper">
+                    <h3>Describe your specific challenge:</h3>
+                    <div class="search-box">
+                        <div class="hard-hat-icon">🏗️</div>
+                        <textarea 
+                            id="aiSearch" 
+                            class="search-input" 
+                            placeholder="Examples: 'Our subs send wrong bids,' 'Too many Procore permissions,' 'Timesheets don't match work-in-progress report (WIP)'"
+                            rows="3"
+                            aria-label="Describe your challenge"
+                        ></textarea>
+                        <button class="search-btn" onclick="handleSearch()">
+                            Ask AI
+                            <span class="search-hint">Press Enter</span>
+                        </button>
+                    </div>
+                    <div class="suggestions">
+                        <button class="chip" onclick="fillSearch('Need to standardize systems')">Standardize systems</button>
+                        <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
+                        <button class="chip" onclick="fillSearch('Bid handoff chaos')">Bid handoff</button>
+                        <button class="chip" onclick="fillSearch('Cost control')">Cost control</button>
+                        <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
+                        <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
+                        <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
+                        <button class="chip" onclick="fillSearch('Document chaos')">Documents</button>
+                    </div>
+                    
+                    <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
+                    <p class="ai-privacy">We translate plain language to a plan. We don't store or share queries.</p>
                 </div>
                 
-                <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
-                <p class="ai-privacy">We translate plain language to a plan. We don't store or share queries.</p>
+                <!-- Calculator -->
+                <div class="hero-calculator">
+                    <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600;">Calculate Your Waste</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="calc-label" style="font-size: 1rem; margin-bottom: 0.5rem; display: block;">Annual Revenue</label>
+                        <div class="calc-input-wrapper">
+                            <input 
+                                type="range" 
+                                id="revenueSliderHero" 
+                                class="calc-slider"
+                                min="1000000" 
+                                max="100000000" 
+                                step="1000000"
+                                value="10000000"
+                                oninput="updateHeroCalculator()"
+                            >
+                            <div class="calc-value" id="revenueDisplayHero">$10M</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="calc-label" style="font-size: 1rem; margin-bottom: 0.5rem; display: block;">Project Managers / Estimators</label>
+                        <div class="calc-input-wrapper">
+                            <input 
+                                type="range" 
+                                id="teamSliderHero" 
+                                class="calc-slider"
+                                min="1" 
+                                max="50" 
+                                step="1"
+                                value="5"
+                                oninput="updateHeroCalculator()"
+                            >
+                            <div class="calc-value" id="teamDisplayHero">5</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(246, 167, 1, 0.3); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1rem;">
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Total Annual Waste</div>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--amber); line-height: 1;" id="totalOpportunityHero">$0</div>
+                    </div>
+                    
+                    <a href="#contact" style="display: block; background: var(--amber); color: var(--navy); padding: 0.875rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 800; text-align: center; font-size: 1rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Get Your Assessment</a>
+                    
+                    <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: center; margin-top: 1rem; font-style: italic;">
+                        Based on 3% revenue waste + process inefficiency
+                    </p>
+                </div>
             </div>
             
             <!-- Video Section -->
@@ -1780,7 +1854,7 @@
             
             <div class="hero-cta-buttons">
                 <a href="tel:6093183470" class="cta-primary">📞 Call Now: 609-318-3470</a>
-                <a href="#calculator" class="cta-secondary">Calculate Your Waste</a>
+                <a href="#calculator" class="cta-secondary">See Detailed Breakdown</a>
             </div>
         </div>
     </section>
@@ -1848,8 +1922,8 @@
     <section class="calculator" id="calculator">
         <div class="container">
             <div class="calc-wrapper">
-                <h2 class="section-title">Calculate Your Waste</h2>
-                <p class="calc-subtitle">See exactly how much you're losing — and what you could gain</p>
+                <h2 class="section-title">Detailed Waste Calculator</h2>
+                <p class="calc-subtitle">Get a complete breakdown of your costs and potential savings</p>
                 
                 <div class="calc-box">
                     <div class="calc-inputs">
@@ -2185,7 +2259,7 @@
     </footer>
 
     <script>
-        // ROI Calculator
+        // ROI Calculator Functions
         function formatMoney(amount) {
             if (amount >= 1000000) {
                 return '$' + (amount / 1000000).toFixed(1) + 'M';
@@ -2202,6 +2276,22 @@
             return '$' + (amount / 1000).toFixed(0) + 'K';
         }
         
+        // Hero Calculator
+        function updateHeroCalculator() {
+            const revenue = parseInt(document.getElementById('revenueSliderHero').value);
+            const teamSize = parseInt(document.getElementById('teamSliderHero').value);
+            
+            document.getElementById('revenueDisplayHero').textContent = formatRevenue(revenue);
+            document.getElementById('teamDisplayHero').textContent = teamSize;
+            
+            const softwareWaste = revenue * 0.03;
+            const processWaste = teamSize * 20 * 52 * 100;
+            const totalWaste = softwareWaste + processWaste;
+            
+            document.getElementById('totalOpportunityHero').textContent = formatMoney(totalWaste);
+        }
+        
+        // Detailed Calculator
         function updateCalculator() {
             const revenue = parseInt(document.getElementById('revenueSlider').value);
             const teamSize = parseInt(document.getElementById('teamSlider').value);
@@ -2225,6 +2315,7 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            updateHeroCalculator();
             updateCalculator();
         });
 
