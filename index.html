@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOGE Work - Cut IT Costs 30%</title>
+    <title>DOGE Work - Cut Construction IT Costs 30% | Vendor-Neutral IT Consulting</title>
+    <meta name="description" content="Independent IT consulting for commercial construction. Cut software costs 30%, eliminate waste, standardize processes. Procore experts. No vendor commissions. Cost-First™ guarantee.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Merriweather+Sans:wght@800;900&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DOGE Work",
+      "description": "Independent IT consulting for commercial construction",
+      "url": "https://dogework.com",
+      "logo": "https://dogework.com/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "US",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@dogework.com",
+        "contactType": "Sales"
+      }
+    }
+    </script>
     
     <style>
         * {
@@ -23,6 +45,7 @@
             --amber: #F6A701;
             --gray: #A0A8B3;
             --light: #F4F6F8;
+            --red: #EF4444;
         }
         
         html {
@@ -41,7 +64,7 @@
             outline-offset: 2px;
         }
         
-        /* Header with Nav */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -100,7 +123,7 @@
             color: var(--navy);
         }
         
-        /* Hero - Full Screen */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -212,7 +235,7 @@
             color: var(--navy);
         }
         
-        /* AI Helper - Glassmorphic */
+        /* AI Helper */
         .ai-helper {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -378,6 +401,13 @@
             color: var(--navy);
         }
         
+        .ai-privacy {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+        
         /* Sections */
         section {
             min-height: 100vh;
@@ -390,6 +420,58 @@
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
+        }
+        
+        /* Proof Section */
+        .proof {
+            background: white;
+            min-height: auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .proof-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .proof-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .proof-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge-item {
+            background: var(--light);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.9rem;
+        }
+        
+        .proof-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .proof-note {
+            font-size: 1rem;
+            color: var(--cyan);
+            font-weight: 600;
         }
         
         /* Problem */
@@ -476,7 +558,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 4rem;
         }
         
         .card {
@@ -514,46 +596,174 @@
             line-height: 1.6;
         }
         
-        /* Results */
-        .results {
+        /* Cost-First Promise */
+        .promise-card {
+            background: linear-gradient(135deg, var(--cyan) 0%, #00A3CC 100%);
+            color: white;
+            border: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .promise-card:hover {
+            border-color: var(--cyan);
+        }
+        
+        .promise-card h3 {
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .promise-list {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        
+        .promise-list li {
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .promise-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .promise-list li::before {
+            content: "✓";
+            margin-right: 0.75rem;
+            font-weight: 900;
+            font-size: 1.25rem;
+        }
+        
+        .promise-card .what-we-dont {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Assessment */
+        .assessment {
             background: var(--navy);
             color: white;
-            text-align: center;
         }
         
-        .results h2 {
+        .assessment h2 {
             color: white;
         }
         
-        .results-grid {
+        .assessment-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .assessment-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+        }
+        
+        .deliverables {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .deliverable-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .deliverable-item::before {
+            content: "✓";
+            color: var(--amber);
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Case Studies */
+        .cases {
+            background: white;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .result {
-            padding: 2rem;
+        .case-card {
+            background: var(--light);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 2px solid var(--light);
+            transition: all 0.3s;
         }
         
-        .result-num {
-            font-size: clamp(4.5rem, 10vw, 7rem);
-            font-weight: 900;
+        .case-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-8px);
+        }
+        
+        .case-title {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-list {
+            list-style: none;
+        }
+        
+        .case-list li {
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            color: var(--navy);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .case-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .case-list li::before {
+            content: "→";
             color: var(--amber);
-            line-height: 0.95;
-            margin-bottom: 1.25rem;
+            font-weight: 900;
+            margin-right: 0.75rem;
         }
         
-        .result-label {
-            font-size: 1.65rem;
-            font-weight: 600;
-            opacity: 0.95;
+        .case-result {
+            background: var(--navy);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .case-result span {
+            color: var(--amber);
+            font-size: 2rem;
         }
         
         /* How */
         .how {
-            background: white;
+            background: var(--light);
         }
         
         .steps {
@@ -596,9 +806,32 @@
             line-height: 1.6;
         }
         
+        /* Training */
+        .training-note {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--cyan);
+        }
+        
+        .training-note h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .training-note p {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
         /* Pricing */
         .pricing {
-            background: var(--light);
+            background: white;
         }
         
         .price-cards {
@@ -606,11 +839,12 @@
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2.5rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
         }
         
         .price-card {
             background: white;
+            border: 2px solid var(--light);
             border-radius: 24px;
             padding: 3.5rem 2.5rem;
             text-align: center;
@@ -626,6 +860,7 @@
         .price-card.featured {
             background: var(--navy);
             color: white;
+            border-color: var(--amber);
             transform: scale(1.05);
         }
         
@@ -707,16 +942,68 @@
             box-shadow: 0 8px 24px rgba(246,167,1,0.3);
         }
         
-        /* Final CTA */
-        .final-cta {
+        .pricing-notes {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Not For */
+        .not-for {
+            background: var(--light);
+            min-height: auto;
+            padding: 4rem 2rem;
+        }
+        
+        .not-for-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .not-for h3 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 2rem;
+        }
+        
+        .not-for-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .not-for-list li {
+            padding: 1rem 0;
+            font-size: 1.125rem;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .not-for-list li::before {
+            content: "✗";
+            color: var(--red);
+            font-weight: 900;
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        /* Contact */
+        .contact {
             background: var(--navy);
             color: white;
             text-align: center;
-            padding: 6rem 2rem;
             min-height: auto;
+            padding: 5rem 2rem;
         }
         
-        .final-cta h2 {
+        .contact h2 {
             font-family: 'Merriweather Sans', sans-serif;
             font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
@@ -724,39 +1011,146 @@
             color: white;
         }
         
-        .final-cta p {
+        .contact p {
             font-size: 1.5rem;
             margin-bottom: 3rem;
             color: rgba(255,255,255,0.85);
+        }
+        
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: left;
+        }
+        
+        .contact-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.95);
+            color: var(--navy);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
+            background: var(--amber);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.125rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(246,167,1,0.3);
+        }
+        
+        .calendar-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calendar-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .calendar-box p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.8);
         }
         
         /* Footer */
         footer {
             background: var(--navy);
             color: rgba(255,255,255,0.65);
-            padding: 3rem 2rem 2rem;
-            text-align: center;
+            padding: 4rem 2rem 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            min-height: auto;
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
         
-        .footer-links a {
+        .footer-section h4 {
+            color: var(--amber);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
             color: rgba(255,255,255,0.65);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
         }
         
-        .footer-links a:hover {
+        .footer-section a:hover {
             color: var(--cyan);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
         }
         
         /* Mobile */
@@ -808,6 +1202,14 @@
             .hard-hat-icon {
                 align-self: flex-start;
             }
+            
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Animations */
@@ -830,7 +1232,7 @@
             <nav class="nav">
                 <a href="#solution">Services</a>
                 <a href="#how">Process</a>
-                <a href="#results">Results</a>
+                <a href="#cases">Results</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact" class="cta-btn">Book Call</a>
             </nav>
@@ -857,7 +1259,7 @@
                     <textarea 
                         id="aiSearch" 
                         class="search-input" 
-                        placeholder="Describe your situation (e.g., 'Estimating→PM handoff is messy; subs send wrong bids')"
+                        placeholder="Examples: 'Our subs send wrong bids,' 'Too many Procore permissions,' 'Timesheets don't match WIP'"
                         rows="3"
                         aria-label="Describe your challenge"
                     ></textarea>
@@ -867,10 +1269,10 @@
                     </button>
                 </div>
                 <div class="suggestions">
-                    <button class="chip" onclick="fillSearch('Need to standardize systems across divisions')">Standardize systems</button>
+                    <button class="chip" onclick="fillSearch('Need to standardize systems')">Standardize systems</button>
                     <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
-                    <button class="chip" onclick="fillSearch('Bid handoff is chaotic')">Bid handoff</button>
-                    <button class="chip" onclick="fillSearch('Better cost control')">Cost control</button>
+                    <button class="chip" onclick="fillSearch('Bid handoff chaos')">Bid handoff</button>
+                    <button class="chip" onclick="fillSearch('Cost control')">Cost control</button>
                     <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
                     <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
                     <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
@@ -878,7 +1280,25 @@
                 </div>
                 
                 <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
+                <p class="ai-privacy">We translate plain language to a plan. We don't store or share queries.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Industry Proof -->
+    <section class="proof">
+        <div class="proof-content">
+            <h3 class="proof-title">Construction-first, not tool-first</h3>
+            <div class="proof-badges">
+                <span class="badge-item">✓ Commercial GC</span>
+                <span class="badge-item">✓ Specialty Trades</span>
+                <span class="badge-item">✓ Developers</span>
+                <span class="badge-item">Procore Certified</span>
+            </div>
+            <p class="proof-text">
+                We've led process work on active jobsites across GC and specialty trades. Procore-ready, BuildingConnected-fluent, and vendor-neutral.
+            </p>
+            <p class="proof-note">We coordinate with your MSP to fix the business side</p>
         </div>
     </section>
 
@@ -933,25 +1353,70 @@
                     <p>Make teams use it</p>
                 </div>
             </div>
+            
+            <!-- Cost-First Promise -->
+            <div class="card promise-card fade-up">
+                <h3>Cost-First™ Promise</h3>
+                <ul class="promise-list">
+                    <li>No reseller commissions</li>
+                    <li>We recommend the cheapest option that meets requirements</li>
+                    <li>If Assessment can't identify ≥10% savings or hard ROI, you don't proceed</li>
+                </ul>
+                <div class="what-we-dont">
+                    <strong>What we don't do:</strong> Network support, break/fix, reselling software, residential work
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Results -->
-    <section class="results" id="results">
+    <!-- Assessment -->
+    <section class="assessment">
+        <div class="container">
+            <h2 class="section-title">Assessment</h2>
+            <p class="assessment-subtitle">2 weeks. Here's what you get:</p>
+            
+            <div class="assessment-content">
+                <div class="deliverables">
+                    <div class="deliverable-item fade-up">Current-state map</div>
+                    <div class="deliverable-item fade-up">License & cost table</div>
+                    <div class="deliverable-item fade-up">Waste report</div>
+                    <div class="deliverable-item fade-up">"Keep/cut/add" stack</div>
+                    <div class="deliverable-item fade-up">SOP & handoff gaps</div>
+                    <div class="deliverable-item fade-up">Target KPIs</div>
+                    <div class="deliverable-item fade-up">Phased roadmap</div>
+                    <div class="deliverable-item fade-up">Board-ready summary</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="cases" id="cases">
         <div class="container">
             <h2 class="section-title">Real results</h2>
-            <div class="results-grid">
-                <div class="result fade-up">
-                    <div class="result-num">−27%</div>
-                    <div class="result-label">Software spend</div>
+            <div class="case-grid">
+                <div class="case-card fade-up">
+                    <h3 class="case-title">Mid-Market GC — 5 divisions</h3>
+                    <ul class="case-list">
+                        <li>Consolidated 11 tools → 4 standards</li>
+                        <li>Negotiated 18% lower license costs</li>
+                        <li>SOP playbook for Estimating→PM handoff</li>
+                    </ul>
+                    <div class="case-result">
+                        <span>−27%</span> total software spend in 90 days
+                    </div>
                 </div>
-                <div class="result fade-up">
-                    <div class="result-num">2hrs</div>
-                    <div class="result-label">Saved per project</div>
-                </div>
-                <div class="result fade-up">
-                    <div class="result-num">6mo</div>
-                    <div class="result-label">To full ROI</div>
+                
+                <div class="case-card fade-up">
+                    <h3 class="case-title">Specialty Electrical — bid→build</h3>
+                    <ul class="case-list">
+                        <li>Standard kickoff checklist + templates</li>
+                        <li>Automated estimate → job setup</li>
+                        <li>60% fewer setup errors</li>
+                    </ul>
+                    <div class="case-result">
+                        <span>2hrs</span> saved per project start
+                    </div>
                 </div>
             </div>
         </div>
@@ -977,6 +1442,11 @@
                     <h3>Train</h3>
                     <p>Get adoption</p>
                 </div>
+            </div>
+            
+            <div class="training-note fade-up">
+                <h4>Training & Adoption</h4>
+                <p>PM, PE, Sup't, Foreman tracks • Office & field • Job aids • 30/60/90 reinforcement • Competency checks</p>
             </div>
         </div>
     </section>
@@ -1027,26 +1497,102 @@
                     <a href="#contact" class="price-cta">Learn More</a>
                 </div>
             </div>
+            
+            <div class="pricing-notes">
+                <strong>Fixed scope</strong> • Any tool purchases billed by vendors directly • No markups • Milestone billing • Pause/cancel between phases
+            </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="final-cta" id="contact">
+    <!-- Not For -->
+    <section class="not-for">
+        <div class="not-for-content">
+            <h3>Who we're not for</h3>
+            <ul class="not-for-list">
+                <li>Residential-only contractors</li>
+                <li>Tool-shopping without process change</li>
+                <li>Infrastructure-only projects</li>
+                <li>Looking for break/fix IT support</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
         <div class="container">
             <h2>Stop wasting money</h2>
             <p>15-minute call. No pitch, just diagnosis.</p>
-            <a href="mailto:hello@dogework.com" class="cta-primary">hello@dogework.com</a>
+            
+            <div class="contact-options">
+                <div class="contact-form">
+                    <h3>Quick Contact</h3>
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="problem">What's the problem? (1 line)</label>
+                            <textarea id="problem" name="problem" rows="2" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="calendar-box">
+                    <h3>Book a Call</h3>
+                    <p>Schedule directly on our calendar</p>
+                    <a href="mailto:hello@dogework.com" class="cta-primary">hello@dogework.com</a>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem;">Or call: <strong>+1-555-DOGE-WORK</strong></p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="mailto:hello@dogework.com">Contact</a>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>DOGE Work</h4>
+                <p>Independent IT consulting for commercial and industrial construction.</p>
+                <p style="margin-top: 1rem;">Philadelphia, PA Region<br>Serving US Commercial Construction</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#solution">Tool Stack Evaluation</a>
+                <a href="#solution">Workflow Mapping & SOPs</a>
+                <a href="#solution">Implementation & Training</a>
+                <a href="#pricing">Fractional CIO</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="#how">How We Work</a>
+                <a href="#cases">Case Studies</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="mailto:hello@dogework.com">hello@dogework.com</a>
+                <p>+1-555-DOGE-WORK</p>
+            </div>
         </div>
-        <p>© 2025 DOGE Work • Independent IT for Construction</p>
+        
+        <div class="footer-bottom">
+            <p>© 2025 DOGE Work LLC. Independent IT consulting for construction growth. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
@@ -1058,7 +1604,7 @@
                 section: 'solution'
             },
             'implementation': {
-                keywords: ['procore', 'buildingconnected', 'plangrid', 'implement', 'setup', 'configure', 'platform'],
+                keywords: ['procore', 'buildingconnected', 'plangrid', 'implement', 'setup', 'configure', 'platform', 'permissions'],
                 result: 'Platform Implementation',
                 section: 'solution'
             },
@@ -1068,14 +1614,14 @@
                 section: 'solution'
             },
             'data': {
-                keywords: ['dashboard', 'wip', 'job cost', 'report', 'analytics', 'data', 'kpi'],
+                keywords: ['dashboard', 'wip', 'job cost', 'report', 'analytics', 'data', 'kpi', 'timesheet', 'match'],
                 result: 'Data & Dashboards',
                 section: 'solution'
             },
             'training': {
-                keywords: ['adoption', 'training', 'resistance', 'won\'t use', 'field team'],
+                keywords: ['adoption', 'training', 'resistance', 'won\'t use', 'field team', 'subs'],
                 result: 'Training & Adoption',
-                section: 'solution'
+                section: 'how'
             },
             'documents': {
                 keywords: ['document', 'docs', 'versioning', 'file', 'storage'],
@@ -1146,6 +1692,18 @@
             this.style.height = 'auto';
             this.style.height = Math.min(this.scrollHeight, 200) + 'px';
         });
+
+        // Form submit
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // In production, send to your backend
+            console.log('Form submitted:', data);
+            alert('Thank you! We\'ll be in touch within 24 hours.');
+            e.target.reset();
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
