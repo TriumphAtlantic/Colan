@@ -2357,8 +2357,12 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize both calculators
             updateHeroCalculator();
             updateCalculator();
+            
+            // Debug: Log to console
+            console.log('Calculators initialized');
         });
 
         // Sticky CTA Bar
