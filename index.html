@@ -572,6 +572,28 @@
     .footer-section p,.footer-section a{ color:rgba(255,255,255,.65); text-decoration:none; display:block; margin-bottom:.75rem; line-height:1.6; }
     .footer-section a:hover{ color:var(--cyan); }
     .footer-bottom{ text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); font-size:.9rem; }
+    
+    .footer-dev-credit{ font-size:.85rem; margin-top:.5rem; }
+    .footer-dev-text{
+      background:linear-gradient(135deg, var(--cyan) 0%, #00A3CC 50%, var(--amber) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      font-weight:700;
+      letter-spacing:.02em;
+      text-shadow:0 0 20px rgba(0,204,255,.3);
+    }
+    .footer-dev-link{
+      color:var(--amber);
+      text-decoration:none;
+      font-weight:600;
+      transition:all .3s;
+    }
+    .footer-dev-link:hover{
+      color:var(--cyan);
+      text-shadow:0 0 10px rgba(0,204,255,.5);
+    }
+    .footer-break-mobile{ display:none; }
 
     /* Mobile */
     @media (max-width:968px){
@@ -631,6 +653,9 @@
       
       /* Show close button on sticky CTA on mobile only */
       .sticky-cta-close{ display:flex !important; }
+      
+      /* Footer credit line break on mobile */
+      .footer-break-mobile{ display:inline; }
     }
 
     /* Animations helper */
@@ -1176,7 +1201,10 @@
 
     <div class="footer-bottom">
       <p>© 2025 Cecola Development LLC. Independent IT consulting for construction growth. All rights reserved.</p>
-      <p style="margin-top:.5rem; font-size:.85rem;">Custom Web Development powered by <a href="https://www.reddoormarketingco.com" target="_blank" rel="noopener noreferrer" style="color:var(--amber); text-decoration:none; font-weight:600;">Red Door Marketing Co</a></p>
+      <p class="footer-dev-credit">
+        <span class="footer-dev-text">Custom Web Development</span> powered by<br class="footer-break-mobile"> 
+        <a href="https://www.reddoormarketingco.com" target="_blank" rel="noopener noreferrer" class="footer-dev-link">Red Door Marketing Co</a>
+      </p>
     </div>
   </footer>
 
