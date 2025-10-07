@@ -1,0 +1,1092 @@
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        box-sizing: border-box;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+    }
+    
+    :root {
+        --navy: #0D1B2A;
+        --amber: #F5A300;
+        --gray: #E9ECEF;
+        --teal: #14B8A6;
+        --white: #FFFFFF;
+        --text-dark: #1F2937;
+        --text-light: #6B7280;
+    }
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background: var(--white);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Merriweather Sans', sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    
+    /* Header */
+    .header {
+        background: var(--white);
+        border-bottom: 1px solid var(--gray);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+    
+    .logo {
+        font-family: 'Merriweather Sans', sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--navy);
+        text-decoration: none;
+    }
+    
+    .nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .nav a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    
+    .nav a:hover {
+        color: var(--teal);
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        background: var(--amber);
+        color: var(--navy);
+    }
+    
+    .btn-primary:hover {
+        background: #E6930A;
+        transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        color: var(--navy);
+        border: 2px solid var(--navy);
+    }
+    
+    .btn-secondary:hover {
+        background: var(--navy);
+        color: var(--white);
+    }
+    
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+        color: var(--white);
+        padding: 6rem 0;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        color: var(--gray);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 4rem;
+    }
+    
+    /* AI Helper Box */
+    .ai-helper {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    
+    .ai-helper h3 {
+        color: var(--navy);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .search-box {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .search-input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid var(--gray);
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: var(--teal);
+    }
+    
+    .search-btn {
+        background: var(--teal);
+        color: var(--white);
+        border: none;
+        padding: 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    
+    .suggestions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .chip {
+        background: var(--gray);
+        color: var(--text-dark);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .chip:hover {
+        background: var(--teal);
+        color: var(--white);
+    }
+    
+    /* Trust Strip */
+    .trust-strip {
+        background: var(--gray);
+        padding: 2rem 0;
+        text-align: center;
+    }
+    
+    .trust-logos {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .logo-placeholder {
+        width: 120px;
+        height: 60px;
+        background: var(--white);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-light);
+        font-size: 0.875rem;
+    }
+    
+    .trust-text {
+        color: var(--text-light);
+        font-weight: 500;
+    }
+    
+    /* Section Styles */
+    .section {
+        padding: 5rem 0;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--navy);
+        margin-bottom: 3rem;
+    }
+    
+    .grid {
+        display: grid;
+        gap: 2rem;
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--amber);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+    
+    .card h3 {
+        color: var(--navy);
+        margin-bottom: 1rem;
+    }
+    
+    .card p {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+    
+    /* Technology Section */
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .tech-card {
+        background: var(--white);
+        border: 2px solid var(--gray);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.2s;
+    }
+    
+    .tech-card:hover {
+        border-color: var(--teal);
+        transform: translateY(-2px);
+    }
+    
+    .tech-logo {
+        width: 80px;
+        height: 80px;
+        background: var(--gray);
+        border-radius: 8px;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-light);
+    }
+    
+    /* Who We Serve */
+    .serve-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .serve-card {
+        background: linear-gradient(135deg, var(--teal) 0%, #0F9488 100%);
+        color: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .serve-card h3 {
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+    
+    /* Process Timeline */
+    .process-timeline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .process-step {
+        text-align: center;
+        position: relative;
+    }
+    
+    .process-number {
+        width: 60px;
+        height: 60px;
+        background: var(--amber);
+        color: var(--navy);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .process-step h3 {
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Results Cards */
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .result-card {
+        background: var(--navy);
+        color: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+    }
+    
+    .result-card h3 {
+        color: var(--amber);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .result-kpis {
+        list-style: none;
+        margin: 1.5rem 0;
+    }
+    
+    .result-kpis li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .result-kpis li:last-child {
+        border-bottom: none;
+    }
+    
+    /* Pricing */
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .pricing-card {
+        background: var(--white);
+        border: 2px solid var(--gray);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+    }
+    
+    .pricing-card.featured {
+        border-color: var(--amber);
+        transform: scale(1.05);
+    }
+    
+    .pricing-card h3 {
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+    }
+    
+    .pricing-type {
+        color: var(--text-light);
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* FAQ */
+    .faq-item {
+        border-bottom: 1px solid var(--gray);
+        padding: 1.5rem 0;
+    }
+    
+    .faq-question {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--navy);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .faq-answer {
+        margin-top: 1rem;
+        color: var(--text-light);
+        display: none;
+    }
+    
+    .faq-answer.active {
+        display: block;
+    }
+    
+    /* Final CTA */
+    .final-cta {
+        background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+        color: var(--white);
+        padding: 4rem 0;
+        text-align: center;
+    }
+    
+    .final-cta h2 {
+        color: var(--white);
+        margin-bottom: 2rem;
+    }
+    
+    .final-cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Footer */
+    .footer {
+        background: var(--navy);
+        color: var(--white);
+        padding: 3rem 0 1rem;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .footer-section h4 {
+        color: var(--amber);
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section a {
+        color: var(--gray);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-section a:hover {
+        color: var(--white);
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 1rem;
+        text-align: center;
+        color: var(--gray);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .nav {
+            display: none;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .results-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .pricing-card.featured {
+            transform: none;
+        }
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Loading animation */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>IT Consulting for Construction Growth.</h1>
+        <p class="hero-subtitle">Cut costs. Streamline workflows. Build processes that scale.</p>
+        
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Book a Call</a>
+            <a href="#process" class="btn btn-secondary">See How We Work</a>
+        </div>
+        
+        <!-- AI Helper Box -->
+        <div class="ai-helper">
+            <h3>What are you looking for?</h3>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Describe your challenge..." id="aiSearch">
+                <button class="search-btn" onclick="handleSearch()">→</button>
+            </div>
+            <div class="suggestions">
+                <span class="chip" onclick="navigateToSection('services')">Standardize systems</span>
+                <span class="chip" onclick="navigateToSection('technology')">Procore training</span>
+                <span class="chip" onclick="navigateToSection('services')">Bid workflows</span>
+                <span class="chip" onclick="navigateToSection('services')">Cost control</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Strip -->
+<section class="trust-strip">
+    <div class="container">
+        <div class="trust-logos">
+            <div class="logo-placeholder">GC Partner</div>
+            <div class="logo-placeholder">Specialty Co.</div>
+            <div class="logo-placeholder">Developer</div>
+            <div class="logo-placeholder">Contractor</div>
+        </div>
+        <p class="trust-text">Independent. Vendor-neutral. Honest opinions.</p>
+    </div>
+</section>
+
+<!-- Value Pillars -->
+<section class="section" id="pillars">
+    <div class="container">
+        <h2 class="section-title">How We Drive Growth</h2>
+        <div class="grid grid-3">
+            <div class="card fade-in">
+                <div class="card-icon">💰</div>
+                <h3>Cutting Costs</h3>
+                <p>Eliminate unused tools, negotiate better licenses, and right-size your technology stack. Stop paying for software that doesn't deliver ROI.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">⚡</div>
+                <h3>Streamlining Workflows</h3>
+                <p>Build standard operating procedures across PM, Estimating, Field, and Finance. Create consistency that scales with your growth.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🔧</div>
+                <h3>Process Development</h3>
+                <p>Identify operational gaps and build repeatable processes. Train your teams to execute consistently, project after project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology & Training -->
+<section class="section" id="technology">
+    <div class="container">
+        <h2 class="section-title">Technology & Training</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-logo">PC</div>
+                <h3>Procore</h3>
+                <p>Implementation & Training</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-logo">BC</div>
+                <h3>BuildingConnected</h3>
+                <p>Bid Management</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-logo">PG</div>
+                <h3>PlanGrid/Autodesk</h3>
+                <p>Field Collaboration</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-logo">SP</div>
+                <h3>SharePoint/Teams</h3>
+                <p>Document Management</p>
+            </div>
+        </div>
+        <p style="text-align: center; color: var(--text-light); font-style: italic;">We train your teams and harden adoption—field to front office.</p>
+    </div>
+</section>
+
+<!-- Who We Serve -->
+<section class="section" id="sectors">
+    <div class="container">
+        <h2 class="section-title">Who We Serve</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 1rem;">Small Commercial, Mid-Market, and Growth-Stage Contractors</p>
+        <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;"><em>Not residential-only contractors</em></p>
+        
+        <div class="serve-grid">
+            <div class="serve-card">
+                <h3>General Contractors</h3>
+                <p>Commercial and industrial projects requiring integrated project management and cost control systems.</p>
+            </div>
+            <div class="serve-card">
+                <h3>Specialty Trades</h3>
+                <p>Electrical, mechanical, and specialty contractors looking to standardize operations and improve margins.</p>
+            </div>
+            <div class="serve-card">
+                <h3>Developers/Owners</h3>
+                <p>Development companies managing multiple projects and seeking better visibility into costs and timelines.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+    <div class="container">
+        <h2 class="section-title">Services</h2>
+        <div class="grid grid-3">
+            <div class="card fade-in">
+                <div class="card-icon">📊</div>
+                <h3>Tool Stack Evaluation</h3>
+                <p>Audit your current tools. Identify what to keep, cut, or add. Get a clear roadmap for technology investments.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🗺️</div>
+                <h3>Workflow Mapping & SOPs</h3>
+                <p>Document and standardize processes across PM, Estimating, Procurement, and AP. Build consistency that scales.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">⚙️</div>
+                <h3>Procore & App Implementation</h3>
+                <p>Configure platforms properly from day one. Set up standards, permissions, and workflows that stick.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">📈</div>
+                <h3>Data & Dashboards</h3>
+                <p>Build meaningful reports for job cost, WIP, and labor productivity. Turn data into actionable insights.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🎯</div>
+                <h3>Change Management & Training</h3>
+                <p>On-site and remote training that ensures adoption. Help your teams embrace new processes and tools.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">💼</div>
+                <h3>License & Vendor Management</h3>
+                <p>Negotiate better deals, consolidate vendors, and eliminate redundant subscriptions. Optimize your software spend.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="section" id="process">
+    <div class="container">
+        <h2 class="section-title">Our Process</h2>
+        <div class="process-timeline">
+            <div class="process-step fade-in">
+                <div class="process-number">1</div>
+                <h3>Discover</h3>
+                <p>Understand your current state, pain points, and growth objectives through stakeholder interviews and system audits.</p>
+            </div>
+            <div class="process-step fade-in">
+                <div class="process-number">2</div>
+                <h3>Diagnose</h3>
+                <p>Identify gaps, inefficiencies, and opportunities. Prioritize improvements based on impact and feasibility.</p>
+            </div>
+            <div class="process-step fade-in">
+                <div class="process-number">3</div>
+                <h3>Design</h3>
+                <p>Create detailed implementation plans, process maps, and training materials tailored to your organization.</p>
+            </div>
+            <div class="process-step fade-in">
+                <div class="process-number">4</div>
+                <h3>Deploy & Train</h3>
+                <p>Execute the plan with hands-on support. Train your teams and ensure sustainable adoption of new processes.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn btn-secondary" onclick="openModal()">See Sample Playbook</button>
+        </div>
+    </div>
+</section>
+
+<!-- Results -->
+<section class="section" id="results">
+    <div class="container">
+        <h2 class="section-title">Results</h2>
+        <div class="results-grid">
+            <div class="result-card fade-in">
+                <h3>"Standardized 5 divisions → cut software spend 27%"</h3>
+                <p>Mid-market GC reduced tool redundancy and negotiated enterprise pricing across divisions.</p>
+                <ul class="result-kpis">
+                    <li>• Eliminated 12 redundant software licenses</li>
+                    <li>• Standardized on 3 core platforms</li>
+                    <li>• Reduced training time by 40%</li>
+                    <li>• Improved data consistency across projects</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Read the Story</a>
+            </div>
+            <div class="result-card fade-in">
+                <h3>"Bid handoff process → 2 hrs saved per project kickoff"</h3>
+                <p>Specialty contractor streamlined estimating-to-PM handoff with standardized workflows.</p>
+                <ul class="result-kpis">
+                    <li>• Created standard handoff checklist</li>
+                    <li>• Automated data transfer from estimating</li>
+                    <li>• Reduced project setup errors by 60%</li>
+                    <li>• Improved PM satisfaction scores</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Read the Story</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+    <div class="container">
+        <h2 class="section-title">Transparent Pricing</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Assessment</h3>
+                <p class="pricing-type">Fixed Fee</p>
+                <p>Comprehensive evaluation of your current state with deliverable roadmap and cost model. Know exactly where you stand and where to go next.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-secondary">Get the Roadmap</a>
+                </div>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Implementation</h3>
+                <p class="pricing-type">Project-Based</p>
+                <p>Milestone-based implementation of your technology and process improvements. Pay as we deliver results, with clear success criteria.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-primary">Talk to an Expert</a>
+                </div>
+            </div>
+            <div class="pricing-card">
+                <h3>Fractional CIO</h3>
+                <p class="pricing-type">Monthly Retainer</p>
+                <p>Ongoing IT leadership for growing teams without a full-time IT executive. Strategic guidance and hands-on support as needed.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="grid grid-3">
+            <div class="card fade-in">
+                <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"They told us what not to buy."</p>
+                <p style="color: var(--text-light);">— Operations Director, Commercial GC</p>
+            </div>
+            <div class="card fade-in">
+                <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"Field adoption finally stuck."</p>
+                <p style="color: var(--text-light);">— Project Manager, Specialty Contractor</p>
+            </div>
+            <div class="card fade-in">
+                <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;">"ROI was clear within 6 months."</p>
+                <p style="color: var(--text-light);">— CFO, Mid-Market Developer</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="insights">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do you maintain vendor neutrality?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    We don't sell software or receive commissions from vendors. Our recommendations are based solely on what's best for your business, not what pays us the most.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Are you Procore specialists?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    We're experienced with Procore but platform-agnostic. We'll recommend Procore when it fits, but we're equally comfortable with other solutions if they better serve your needs.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What's the typical project timeline?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Assessment: 2-3 weeks. Implementation varies by scope, typically 3-6 months for comprehensive process improvements. We work in phases to minimize disruption.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do you handle data security?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    We follow construction industry security standards, sign NDAs, and work within your existing security protocols. Your data stays yours—we don't retain or share it.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Who owns the processes we develop?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    You do. All documentation, processes, and training materials become your property. We're here to help you build capabilities, not create dependencies.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" id="contact">
+    <div class="container">
+        <h2>Ready to grow without wasting budget?</h2>
+        <div class="final-cta-buttons">
+            <a href="#" class="btn btn-primary">Book a Call</a>
+            <a href="mailto:hello@dogework.com" class="btn btn-secondary">Email Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>hello@dogework.com</p>
+                <p>+1-555-DOGE-WORK</p>
+                <p>Serving US Commercial Construction</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#services">Tool Stack Evaluation</a>
+                <a href="#services">Workflow Mapping</a>
+                <a href="#services">Implementation</a>
+                <a href="#services">Training</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="#process">How We Work</a>
+                <a href="#results">Case Studies</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#">Construction Tech Guide</a>
+                <a href="#">Process Templates</a>
+                <a href="#">ROI Calculator</a>
+                <a href="#">Newsletter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DOGE Work. Independent IT consulting for construction growth.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal for Sample Playbook -->
+<div id="playbookModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+    <div style="background: white; padding: 3rem; border-radius: 16px; max-width: 600px; margin: 2rem;">
+        <h3 style="color: var(--navy); margin-bottom: 1rem;">Sample Implementation Playbook</h3>
+        <p style="margin-bottom: 2rem;">Our playbooks include detailed process maps, training materials, and implementation timelines. Here's what you get:</p>
+        <ul style="margin-bottom: 2rem; color: var(--text-light);">
+            <li>• Current state assessment findings</li>
+            <li>• Prioritized improvement roadmap</li>
+            <li>• Step-by-step implementation guide</li>
+            <li>• Training materials and checklists</li>
+            <li>• Success metrics and KPIs</li>
+        </ul>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="#contact" class="btn btn-primary">Get Your Playbook</a>
+            <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // AI Helper Search Functionality
+    function handleSearch() {
+        const searchInput = document.getElementById('aiSearch');
+        const query = searchInput.value.toLowerCase();
+        
+        // Simple keyword matching to sections
+        if (query.includes('cost') || query.includes('save') || query.includes('budget')) {
+            navigateToSection('pillars');
+        } else if (query.includes('procore') || query.includes('software') || query.includes('tool')) {
+            navigateToSection('technology');
+        } else if (query.includes('process') || query.includes('workflow') || query.includes('sop')) {
+            navigateToSection('services');
+        } else if (query.includes('training') || query.includes('adoption')) {
+            navigateToSection('services');
+        } else if (query.includes('price') || query.includes('pricing')) {
+            navigateToSection('pricing');
+        } else {
+            navigateToSection('services'); // Default to services
+        }
+        
+        searchInput.value = '';
+    }
+    
+    function navigateToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Enter key support for search
+    document.getElementById('aiSearch').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    });
+    
+    // FAQ Toggle
+    function toggleFaq(button) {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('span');
+        
+        if (answer.classList.contains('active')) {
+            answer.classList.remove('active');
+            icon.textContent = '+';
+        } else {
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer.active').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.faq-question span').forEach(span => {
+                span.textContent = '+';
+            });
+            
+            answer.classList.add('active');
+            icon.textContent = '−';
+        }
+    }
+    
+    // Modal Functions
+    function openModal() {
+        const modal = document.getElementById('playbookModal');
+        modal.style.display = 'flex';
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('playbookModal');
+        modal.style.display = 'none';
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('playbookModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+    
+    // Fade-in animation on scroll
+    function observeElements() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    }
+    
+    // Initialize animations when page loads
+    document.addEventListener('DOMContentLoaded', observeElements);
+    
+    // Smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
