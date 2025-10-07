@@ -562,8 +562,8 @@
       .case-grid{ grid-template-columns:1fr; }
       .contact-options{ grid-template-columns:1fr; gap:2rem; }
       .contact{ padding:4rem 1.5rem; }
-      .contact-form{ padding:2rem 1.5rem; }
-      .calendar-box{ padding:2rem 1.5rem; }
+      .contact-form{ padding:2rem 1.5rem; max-width:100%; }
+      .calendar-box{ padding:2rem 1.5rem; max-width:100%; }
       .calc-box{ padding:2rem 1.5rem; }
       .calc-results{ grid-template-columns:1fr; gap:1.5rem; }
       .calc-result-value{ font-size:2.5rem; }
@@ -575,6 +575,15 @@
       .sticky-phone,.sticky-book{ width:100%; }
       .search-box{ flex-direction:column; }
       .hard-hat-icon{ align-self:flex-start; }
+      
+      /* Fix mobile overflow issues */
+      .contact-form input,
+      .contact-form textarea,
+      .form-group input,
+      .form-group textarea{ width:100%; max-width:100%; box-sizing:border-box; }
+      .contact-form, .calendar-box{ overflow:hidden; }
+      .cta-primary{ padding:1rem 2rem; font-size:1.25rem; word-wrap:break-word; }
+      .footer-section p, .footer-section a{ word-wrap:break-word; overflow-wrap:break-word; }
     }
 
     /* Animations helper */
@@ -920,36 +929,45 @@
       <div class="case-grid">
         <div class="case-card fade-up">
           <div class="testimonial-header">
-            <div class="testimonial-avatar">JD</div>
+            <div class="testimonial-avatar">💼</div>
             <div class="testimonial-info">
-              <h4>John Doe</h4>
-              <p>CFO, Mid-Market GC</p>
+              <h4>Commercial Contractor</h4>
+              <p>Large-Scale Estimating</p>
             </div>
           </div>
-          <h3 class="case-title">Mid-Market GC — 5 divisions</h3>
+          <h3 class="case-title">From Days to Minutes — Estimating Transformation</h3>
           <ul class="case-list">
-            <li>Consolidated 11 tools → 4 standards</li>
-            <li>Negotiated 18% lower license costs</li>
-            <li>SOP playbook for Estimating→PM handoff</li>
+            <li>Built custom tool and workflow for quoting</li>
+            <li>Cleansed and organized estimating data</li>
+            <li>Enabled large job quotes in minutes instead of weeks</li>
+            <li>Streamlined bid process for complex projects</li>
           </ul>
-          <div class="case-result"><span>−27%</span> total software spend in 90 days</div>
+          <div class="case-result"><span>$1,000,000</span> Contract Awarded</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "Client was having estimating and quoting issues that were taking days or weeks to complete. We built a custom tool and workflow, cleansed their data, and enabled them to quote large jobs in a matter of minutes. This efficiency allowed them to successfully bid on and win a $1,000,000 contract."
+          </p>
         </div>
 
         <div class="case-card fade-up">
           <div class="testimonial-header">
-            <div class="testimonial-avatar">MS</div>
+            <div class="testimonial-avatar">EQ</div>
             <div class="testimonial-info">
-              <h4>Maria Silva</h4>
-              <p>Operations Manager, Specialty Electrical</p>
+              <h4>Eric Quidort</h4>
+              <p>Principal, Triumph Atlantic</p>
             </div>
           </div>
-          <h3 class="case-title">Specialty Electrical — bid→build</h3>
+          <h3 class="case-title">200+ Person Team — Hundreds of Thousands Saved</h3>
           <ul class="case-list">
-            <li>Standard kickoff checklist + templates</li>
-            <li>Automated estimate → job setup</li>
-            <li>60% fewer setup errors</li>
+            <li>Analyzed tools for 200+ person construction team</li>
+            <li>Made impactful optimization suggestions</li>
+            <li>Improved team communication and workflows</li>
+            <li>Positioned company for increased revenue</li>
           </ul>
-          <div class="case-result"><span>2 hrs</span> saved per project start</div>
+          <div class="case-result"><span>$100K+</span> Saved in Phase 1</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "The Cecola Development team has made impactful suggestions to the tools our 200+ person team uses saving us well over hundreds of thousands of dollars in their first phase. Their suggestions also helped us communicate better which ultimately will save us time but more importantly help us communicate better to increase our revenue."
+            <strong style="display:block; margin-top:.5rem; color:var(--navy); font-style:normal;">— Eric Quidort, Principal, Triumph Atlantic</strong>
+          </p>
         </div>
       </div>
     </div>
