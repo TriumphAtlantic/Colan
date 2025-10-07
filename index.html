@@ -566,7 +566,7 @@
     .calendar-box p a{ color:var(--amber) !important; text-decoration:none; }
 
     /* Footer */
-    footer{ background:var(--navy); color:rgba(255,255,255,.65); padding:4rem 2rem 2rem; border-top:1px solid rgba(255,255,255,.1); }
+    footer{ background:var(--navy); color:rgba(255,255,255,.65); padding:4rem 2rem 2rem; border-top:1px solid rgba(255,255,255,.1); margin-bottom:120px; }
     .footer-grid{ max-width:1200px; margin:0 auto 3rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; }
     .footer-section h4{ color:var(--amber); font-weight:700; margin-bottom:1rem; font-size:1.1rem; }
     .footer-section p,.footer-section a{ color:rgba(255,255,255,.65); text-decoration:none; display:block; margin-bottom:.75rem; line-height:1.6; }
@@ -1261,11 +1261,19 @@
       updateCalculator();
     });
 
-    // Sticky CTA reveal
+    // Sticky CTA reveal (hide when near footer)
     window.addEventListener('scroll', function(){
       const stickyCta=document.getElementById('stickyCta');
-      if(window.scrollY>800){ stickyCta.classList.add('visible'); }
-      else{ stickyCta.classList.remove('visible'); }
+      const footer=document.querySelector('footer');
+      const footerTop=footer.offsetTop;
+      const scrollPosition=window.scrollY + window.innerHeight;
+      
+      // Show sticky CTA after scrolling 800px, but hide when reaching footer
+      if(window.scrollY>800 && scrollPosition < footerTop + 100){
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
     });
 
     // Close sticky CTA (mobile)
