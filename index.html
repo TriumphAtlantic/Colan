@@ -67,6 +67,7 @@
       color:var(--navy);
       background:#fff;
       -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
     }
 
     a:focus,button:focus,input:focus,textarea:focus{
@@ -268,7 +269,7 @@
     .search-input{
       flex:1; padding:.875rem; border:2px solid rgba(255,255,255,.3); border-radius:12px;
       font-size:1rem; font-family:'Inter',sans-serif; background:rgba(255,255,255,.95); color:var(--navy);
-      resize:none; min-height:3.5rem; line-height:1.5; transition:all .3s ease;
+      resize:none; min-height:3.5rem; line-height:1.5; transition:all .3s ease; max-width:100%;
     }
     .search-input::placeholder{ color:var(--gray); }
     .search-input:focus{
@@ -512,7 +513,7 @@
     .contact h2{ font-family:'Merriweather Sans',sans-serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:900; margin-bottom:2rem; color:#fff; }
     .contact p{ font-size:1.5rem; margin-bottom:3rem; color:rgba(255,255,255,.85); }
 
-    .contact-options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:3rem; max-width:1000px; margin:0 auto; }
+    .contact-options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; max-width:1000px; margin:0 auto; }
     .contact-form{
       background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2);
       border-radius:24px; padding:3rem; text-align:left;
@@ -521,7 +522,7 @@
     .form-group{ margin-bottom:1.5rem; }
     .form-group label{ display:block; margin-bottom:.5rem; font-weight:600; color:rgba(255,255,255,.9); }
     .form-group input,.form-group textarea{
-      width:100%; padding:.875rem; border:2px solid rgba(255,255,255,.3); border-radius:8px;
+      width:100%; max-width:100%; padding:.875rem; border:2px solid rgba(255,255,255,.3); border-radius:8px;
       background:rgba(255,255,255,.95); color:var(--navy); font-family:'Inter',sans-serif; font-size:1rem;
     }
     .form-group textarea{ resize:vertical; min-height:100px; }
@@ -559,7 +560,10 @@
       .cards{ grid-template-columns:1fr; }
       .steps{ grid-template-columns:1fr; }
       .case-grid{ grid-template-columns:1fr; }
-      .contact-options{ grid-template-columns:1fr; }
+      .contact-options{ grid-template-columns:1fr; gap:2rem; }
+      .contact{ padding:4rem 1.5rem; }
+      .contact-form{ padding:2rem 1.5rem; }
+      .calendar-box{ padding:2rem 1.5rem; }
       .calc-box{ padding:2rem 1.5rem; }
       .calc-results{ grid-template-columns:1fr; gap:1.5rem; }
       .calc-result-value{ font-size:2.5rem; }
