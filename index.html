@@ -174,13 +174,14 @@
     /* Video Background */
     .hero-video-bg{
       position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
-      opacity:0.25;
+      opacity:0.25; /* Adjust this value: 0.1 = very subtle, 0.5 = half visible, 1.0 = fully visible */
       z-index:0;
     }
     
     /* Dark overlay to ensure text readability */
     .hero::before{
       content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+      /* Adjust the 0.85 value to make overlay darker (0.95) or lighter (0.7) */
       background:linear-gradient(135deg,rgba(11,27,52,0.85) 0%,rgba(31,51,88,0.85) 100%);
       z-index:0;
     }
@@ -620,6 +621,9 @@
     @media (max-width:968px){
       .nav{ display:none; }
       
+      /* Optional: Hide video on mobile to improve performance */
+      /* .hero-video-bg{ display:none; } */
+      
       .hero-grid{ grid-template-columns:1fr; gap:1.5rem; }
       .split{ grid-template-columns:1fr; gap:3rem; }
       .problem-image{ order:-1; min-height:300px; }
@@ -718,18 +722,31 @@
 
   <!-- Hero -->
   <section class="hero">
-    <!-- Video Background - UPDATED WITH MP4 SUPPORT -->
-    <video 
+    <!--
+      🔍 Troubleshooting Checklist (dev notes)
+      1) Ensure files exist:
+         /videos/36_aEMwMDA5.mp4
+         /videos/36_aEMwMDA5.webm
+      2) Open DevTools → Console for 404/MIME errors.
+      3) Visit /videos/36_aEMwMDA5.mp4 directly to confirm it loads.
+      4) To temporarily boost visibility, add #video-debug to the URL.
+    -->
+    <!-- Background Video -->
+    <video
       id="heroVideo"
-      autoplay 
-      muted 
-      loop 
-      playsinline 
       class="hero-video-bg"
+      autoplay
+      muted
+      loop
+      playsinline
       preload="auto"
+      aria-hidden="true"
     >
+      <!-- MP4 first for Safari/iOS -->
       <source src="videos/36_aEMwMDA5.mp4" type="video/mp4">
+      <!-- WebM for Chrome/Edge/etc -->
       <source src="videos/36_aEMwMDA5.webm" type="video/webm">
+      <!-- Fallback message if no HTML5 video support -->
       Your browser does not support the video tag.
     </video>
     
@@ -836,7 +853,7 @@
     </div>
   </section>
 
-  <!-- Rest of sections remain the same... -->
+  <!-- Photo Gallery Section - NEW -->
   <section class="photo-gallery">
     <div class="gallery-content">
       <h3 class="gallery-title">We Know Construction IT</h3>
@@ -845,7 +862,9 @@
       </p>
 
       <div class="gallery-grid">
+        <!-- Photo 1: Construction site overview -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-site-1.jpg' with your actual image path -->
           <img src="images/construction-site-1.jpg" alt="Construction site with project manager reviewing plans" loading="lazy">
           <div class="gallery-caption">
             <h4>On-Site Project Management</h4>
@@ -853,7 +872,9 @@
           </div>
         </div>
 
+        <!-- Photo 2: Team meeting or collaboration -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/team-meeting.jpg' with your actual image path -->
           <img src="images/team-meeting.jpg" alt="Construction team collaborating in office" loading="lazy">
           <div class="gallery-caption">
             <h4>Office to Field Coordination</h4>
@@ -861,7 +882,9 @@
           </div>
         </div>
 
+        <!-- Photo 3: Technology/equipment -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-tech.jpg' with your actual image path -->
           <img src="images/construction-tech.jpg" alt="Modern construction technology and equipment" loading="lazy">
           <div class="gallery-caption">
             <h4>Technology Implementation</h4>
@@ -869,7 +892,9 @@
           </div>
         </div>
 
+        <!-- Photo 4: Commercial building project -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/commercial-project.jpg' with your actual image path -->
           <img src="images/commercial-project.jpg" alt="Large commercial construction project" loading="lazy">
           <div class="gallery-caption">
             <h4>Commercial Scale Expertise</h4>
@@ -877,7 +902,9 @@
           </div>
         </div>
 
+        <!-- Photo 5: Superintendent or foreman -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/field-leader.jpg' with your actual image path -->
           <img src="images/field-leader.jpg" alt="Construction superintendent on jobsite" loading="lazy">
           <div class="gallery-caption">
             <h4>Field-Tested Solutions</h4>
@@ -885,7 +912,9 @@
           </div>
         </div>
 
+        <!-- Photo 6: Business owner/executive -->
         <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-executive.jpg' with your actual image path -->
           <img src="images/construction-executive.jpg" alt="Construction business owner in office" loading="lazy">
           <div class="gallery-caption">
             <h4>Executive-Level Strategy</h4>
@@ -896,6 +925,7 @@
     </div>
   </section>
 
+  <!-- Proof (simplified - removed logo wall) -->
   <section class="proof">
     <div class="proof-content">
       <h3 class="proof-title">Construction-first, not tool-first</h3>
@@ -913,6 +943,7 @@
     </div>
   </section>
 
+  <!-- Problem -->
   <section class="problem">
     <div class="container">
       <div class="split">
@@ -936,14 +967,356 @@
             </div>
           </div>
         </div>
+        <!-- REPLACED emoji with photo -->
+        <!-- REPLACE 'images/wasted-money-construction.jpg' with your actual image -->
         <img src="images/wasted-money-construction.jpg" alt="Construction project management showing cost inefficiency" class="problem-image fade-up">
       </div>
     </div>
   </section>
 
-  <!-- Continuing with remaining sections unchanged... -->
-  
+  <!-- Calculator -->
+  <section class="calculator" id="calculator">
+    <div class="container">
+      <div class="calc-wrapper">
+        <h2 class="section-title">Detailed Waste Calculator</h2>
+        <p class="calc-subtitle">Get a complete breakdown of your costs and potential savings</p>
+
+        <div class="calc-box">
+          <div class="calc-inputs">
+            <div class="calc-input-group">
+              <label class="calc-label">Annual Revenue</label>
+              <div class="calc-input-wrapper">
+                <input type="range" id="revenueSlider" class="calc-slider" min="1000000" max="1000000000" step="1000000" value="10000000" oninput="updateCalculator()">
+                <div class="calc-value" id="revenueDisplay">$10M</div>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label class="calc-label">Project Managers / Estimators</label>
+              <div class="calc-input-wrapper">
+                <input type="range" id="teamSlider" class="calc-slider" min="1" max="500" step="1" value="5" oninput="updateCalculator()">
+                <div class="calc-value" id="teamDisplay">5</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-result-box">
+              <div class="calc-result-label">Annual Waste</div>
+              <div class="calc-result-value" id="wasteAmount">$0</div>
+              <div class="calc-result-subtext">Software + Process inefficiency</div>
+            </div>
+
+            <div class="calc-result-box">
+              <div class="calc-result-label">Potential Gains</div>
+              <div class="calc-result-value" id="gainsAmount">$0</div>
+              <div class="calc-result-subtext">Better communication + tools</div>
+            </div>
+          </div>
+
+          <div class="calc-total">
+            <div class="calc-total-label">Total Opportunity</div>
+            <div class="calc-total-value" id="totalOpportunity">$0</div>
+          </div>
+
+          <div class="calc-cta">
+            <a href="#contact" class="cta-primary">Get the Free Assessment</a>
+          </div>
+
+          <p class="calc-disclaimer">
+            Estimates based on industry benchmarks: 0.10% of revenue (range: 0.08–0.19%) to direct software waste from unused licenses and redundant tools;
+            7.5 hrs/week avoidable friction per PM/Estimator at $100/hr (range: 5–10 hrs/week from searching for info, duplicate entry, status updates, and rework);
+            2% revenue potential from better communication; 3% revenue potential from reduced rework and better planning.
+          </p>
+
+          <div style="margin-top:2rem; padding:1.5rem; background:rgba(0,204,255,.1); border-radius:12px; border-left:4px solid var(--cyan);">
+            <details>
+              <summary style="cursor:pointer; font-weight:700; color:#fff; font-size:1rem; margin-bottom:0;">📊 How We Calculate This (Click to Expand)</summary>
+              <div style="margin-top:1rem; color:rgba(255,255,255,.9); font-size:.9rem; line-height:1.7;">
+                <p style="margin-bottom:1rem;"><strong>Software Waste Formula:</strong><br/>Revenue × 0.10% = Direct license waste<br/><em>Example: $250M × 0.001 = $250K/year in unused software</em></p>
+                <p style="margin-bottom:1rem;"><strong>Process Waste Formula:</strong><br/>PMs × 7.5 hrs/week × 52 weeks × $100/hr = Process friction cost<br/><em>Example: 100 PMs × 7.5 × 52 × $100 = $3.9M/year in wasted time</em></p>
+                <p style="margin-bottom:1rem;"><strong>Why 7.5 hours per week?</strong><br/>Industry research shows PMs spend 5–10 hrs/week on avoidable friction: searching for documents, duplicate data entry, chasing status updates, fixing handoff errors. We use the midpoint (7.5 hrs) for conservative estimates.</p>
+                <p style="margin-bottom:0;"><strong>Total Opportunity:</strong><br/>Software Waste + Process Waste + Communication Gains (2% revenue) + Tool Optimization (3% revenue)<br/><em>This is the full potential value of fixing your IT and process issues.</em></p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution (kept simple - "Three things") -->
+  <section class="solution" id="solution">
+    <div class="container">
+      <h2 class="section-title">Three things</h2>
+      <p class="subtitle">Nothing else.</p>
+
+      <div class="cards">
+        <div class="card fade-up">
+          <span class="card-emoji">🔍</span>
+          <h3>Audit</h3>
+          <p>Find the waste</p>
+        </div>
+        <div class="card fade-up">
+          <span class="card-emoji">⚡</span>
+          <h3>Fix</h3>
+          <p>Cut it, keep what works</p>
+        </div>
+        <div class="card fade-up">
+          <span class="card-emoji">📈</span>
+          <h3>Optimize</h3>
+          <p>Make teams use it</p>
+        </div>
+      </div>
+
+      <div class="card promise-card fade-up">
+        <h3>Cost-First™ Promise</h3>
+        <ul class="promise-list">
+          <li>We don't take commissions from software vendors</li>
+          <li>We recommend the cheapest option that meets requirements</li>
+          <li>If the assessment can't show at least 10% savings or a hard ROI, you don't proceed</li>
+        </ul>
+        <div class="what-we-dont"><strong>What we don't do:</strong> Network support, one-off IT troubleshooting, reselling software, residential work</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment -->
+  <section class="assessment">
+    <div class="container">
+      <h2 class="section-title">Assessment</h2>
+      <p class="assessment-subtitle">2 weeks. Here's what you get:</p>
+
+      <div class="assessment-content">
+        <div class="deliverables">
+          <div class="deliverable-item fade-up">Current-state map</div>
+          <div class="deliverable-item fade-up">License & cost table</div>
+          <div class="deliverable-item fade-up">Waste report</div>
+          <div class="deliverable-item fade-up">Keep / Cut / Add plan</div>
+          <div class="deliverable-item fade-up">Standard operating procedures (SOPs) & handoff gaps</div>
+          <div class="deliverable-item fade-up">Target metrics (KPIs)</div>
+          <div class="deliverable-item fade-up">Phased roadmap</div>
+          <div class="deliverable-item fade-up">Executive summary for owners/board</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section class="cases" id="cases">
+    <div class="container">
+      <h2 class="section-title">Real results</h2>
+      <div class="case-grid">
+        <div class="case-card fade-up">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">💼</div>
+            <div class="testimonial-info">
+              <h4>Commercial Contractor</h4>
+              <p>Large-Scale Estimating</p>
+            </div>
+          </div>
+          <h3 class="case-title">From Days to Minutes — Estimating Transformation</h3>
+          <ul class="case-list">
+            <li>Built custom tool and workflow for quoting</li>
+            <li>Cleansed and organized estimating data</li>
+            <li>Enabled large job quotes in minutes instead of weeks</li>
+            <li>Streamlined bid process for complex projects</li>
+          </ul>
+          <div class="case-result"><span>$1,000,000</span> Contract Awarded</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "Client was having estimating and quoting issues that were taking days or weeks to complete. We built a custom tool and workflow, cleansed their data, and enabled them to quote large jobs in a matter of minutes. This efficiency allowed them to successfully bid on and win a $1,000,000 contract."
+          </p>
+        </div>
+
+        <div class="case-card fade-up">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">EQ</div>
+            <div class="testimonial-info">
+              <h4>Eric Quidort</h4>
+              <p>Principal, Triumph Atlantic</p>
+            </div>
+          </div>
+          <h3 class="case-title">200+ Person Team — Hundreds of Thousands Saved</h3>
+          <ul class="case-list">
+            <li>Analyzed tools for 200+ person construction team</li>
+            <li>Made impactful optimization suggestions</li>
+            <li>Improved team communication and workflows</li>
+            <li>Positioned company for increased revenue</li>
+          </ul>
+          <div class="case-result"><span>$100K+</span> Saved in Phase 1</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "The Cecola Development team has made impactful suggestions to the tools our 200+ person team uses saving us well over hundreds of thousands of dollars in their first phase. Their suggestions also helped us communicate better which ultimately will save us time but more importantly help us communicate better to increase our revenue."
+            <strong style="display:block; margin-top:.5rem; color:var(--navy); font-style:normal;">— Eric Quidort, Principal, Triumph Atlantic</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How -->
+  <section class="how" id="how">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Audit</h3>
+        <p>2-week assessment</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h3>Fix</h3>
+        <p>Cut waste, implement</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h3>Train</h3>
+        <p>Get adoption</p>
+      </div>
+    </div>
+
+    <div class="training-note fade-up">
+      <h4>Training & getting the team to use the tools consistently</h4>
+      <p>Training paths for Project Managers, Project Engineers, Superintendents, and Foremen—office and field. Quick guides, follow-ups at 30/60/90 days, and skills checks.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <p class="subtitle">No surprises. No commissions.</p>
+
+      <div class="price-cards">
+        <div class="price-card fade-up">
+          <div class="price-label">Assessment</div>
+          <div class="price-value">$5K</div>
+          <div class="price-term">Fixed fee</div>
+          <ul class="price-features">
+            <li>Complete tech audit</li>
+            <li>Cost breakdown</li>
+            <li>Action plan</li>
+            <li>2 weeks</li>
+          </ul>
+          <a href="#contact" class="price-cta">Get the Free Assessment</a>
+        </div>
+
+        <div class="price-card featured fade-up">
+          <div class="price-label">Implementation</div>
+          <div class="price-value">$15K+</div>
+          <div class="price-term">Project-based</div>
+          <ul class="price-features">
+            <li>Full implementation</li>
+            <li>Team training</li>
+            <li>Step-by-step guides</li>
+            <li>3–6 months</li>
+          </ul>
+          <a href="#contact" class="price-cta">Get the Free Assessment</a>
+        </div>
+
+        <div class="price-card fade-up">
+          <div class="price-label">Ongoing</div>
+          <div class="price-value">$3K</div>
+          <div class="price-term">Per month</div>
+          <ul class="price-features">
+            <li>Part-time head of IT (Fractional CIO)</li>
+            <li>Strategic guidance</li>
+            <li>Vendor management</li>
+            <li>On-demand support</li>
+          </ul>
+          <a href="#contact" class="price-cta">Get the Free Assessment</a>
+        </div>
+      </div>
+
+      <div class="pricing-notes">
+        <strong>Fixed scope</strong> • Any tool purchases billed by vendors directly • No markups • Milestone billing • Pause/cancel between phases
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Stop wasting money</h2>
+      <p>15-minute call. No pitch, just diagnosis.</p>
+
+      <div class="contact-options">
+        <div class="contact-form">
+          <h3>Quick Contact</h3>
+          <form onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="problem">What's the problem? (1 line)</label>
+              <textarea id="problem" name="problem" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Get the Free Assessment</button>
+          </form>
+        </div>
+
+        <div class="calendar-box">
+          <h3>Book a Call</h3>
+          <p>Schedule directly on our calendar</p>
+          <a href="mailto:info@cecoladevelopment.com" class="cta-primary" style="padding:1rem 2rem; border-radius:12px; text-decoration:none;">info@cecoladevelopment.com</a>
+          <p style="margin-top:1.5rem; font-size:.9rem;">Or call: <strong style="color:var(--amber);">609-318-3470</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Cecola Development — DOGE Work</h4>
+        <p>Independent IT consulting for commercial and industrial construction.</p>
+        <p style="margin-top:1rem;">Philadelphia, PA Region<br/>Serving US Commercial Construction</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#solution">Software audit</a>
+        <a href="#solution">Workflow Mapping & standard operating procedures (SOPs)</a>
+        <a href="#solution">Implementation & Training</a>
+        <a href="#pricing">Part-time head of IT (Fractional CIO)</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Company</h4>
+        <a href="#how">How We Work</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <a href="mailto:info@cecoladevelopment.com">info@cecoladevelopment.com</a>
+        <p>609-318-3470</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Cecola Development LLC. Independent IT consulting for construction growth. All rights reserved.</p>
+      <p class="footer-dev-credit">
+        <span class="footer-dev-text">Custom Web Development</span> powered by<br class="footer-break-mobile"> 
+        <a href="https://www.reddoormarketingco.com" target="_blank" rel="noopener noreferrer" class="footer-dev-link">Red Door Marketing Co</a>
+      </p>
+    </div>
+  </footer>
+
   <script>
+    // Money helpers (K/M/B)
     function formatMoney(amount){
       if(amount>=1000000000){ return '$'+(amount/1000000000).toFixed(1)+'B'; }
       if(amount>=1000000){ return '$'+(amount/1000000).toFixed(1)+'M'; }
@@ -956,17 +1329,19 @@
       return '$'+(amount/1000).toFixed(0)+'K';
     }
 
+    // Hero mini calculator
     function updateHeroCalculator(){
       const revenue=parseInt(document.getElementById('revenueSliderHero').value);
       const teamSize=parseInt(document.getElementById('teamSliderHero').value);
       document.getElementById('revenueDisplayHero').textContent=formatRevenue(revenue);
       document.getElementById('teamDisplayHero').textContent=teamSize;
-      const softwareWaste=revenue*0.0010;
-      const processWaste=teamSize*7.5*52*100;
+      const softwareWaste=revenue*0.0010; // 0.10% direct software waste
+      const processWaste=teamSize*7.5*52*100; // 7.5hrs/wk @ $100
       const totalWaste=softwareWaste+processWaste;
       document.getElementById('totalOpportunityHero').textContent=formatMoney(totalWaste);
     }
 
+    // Detailed calculator
     function updateCalculator(){
       const revenue=parseInt(document.getElementById('revenueSlider').value);
       const teamSize=parseInt(document.getElementById('teamSlider').value);
@@ -988,17 +1363,60 @@
       document.getElementById('totalOpportunity').textContent=formatMoney(totalOpportunity);
     }
 
+    // Ensure video autoplays and provide simple debug helpers
+    function initHeroVideo(){
+      const v = document.getElementById('heroVideo');
+      if(!v){
+        console.warn('[heroVideo] element not found');
+        return;
+      }
+
+      // If URL includes #video-debug, temporarily crank up opacity to verify visibility.
+      if (location.hash.includes('video-debug')) {
+        v.style.opacity = '0.8';
+        console.info('[heroVideo] Debug mode: opacity set to 0.8 for visibility.');
+      }
+
+      // Always ensure muted BEFORE play() for iOS autoplay policy.
+      v.muted = true;
+
+      // Try to start playback
+      const tryPlay = () => v.play().then(() => {
+        console.info('[heroVideo] Playing. paused=', v.paused);
+      }).catch(err => {
+        console.warn('[heroVideo] Autoplay blocked or error:', err && err.message ? err.message : err);
+      });
+
+      // If metadata isn't ready yet, wait for it; otherwise play immediately.
+      if (v.readyState < 2) {
+        v.addEventListener('loadeddata', tryPlay, { once: true });
+      } else {
+        tryPlay();
+      }
+
+      // Basic error listeners to surface file path/MIME issues
+      v.addEventListener('error', () => {
+        const s = v.currentSrc || (v.querySelector('source') && v.querySelector('source').src);
+        console.error('[heroVideo] Error loading source:', s);
+      });
+      v.addEventListener('stalled', () => console.warn('[heroVideo] Stalled while fetching data.'));
+      v.addEventListener('abort', () => console.warn('[heroVideo] Fetch aborted.'));
+    }
+
     document.addEventListener('DOMContentLoaded', function(){
       updateHeroCalculator();
       updateCalculator();
+      initHeroVideo();
     });
 
+    // Sticky CTA reveal (hide when near footer)
     window.addEventListener('scroll', function(){
       const stickyCta=document.getElementById('stickyCta');
       const footer=document.querySelector('footer');
       const footerTop=footer.offsetTop;
       const scrollPosition=window.scrollY + window.innerHeight;
       
+      // Show sticky CTA after scrolling 800px, but hide when reaching footer
       if(window.scrollY>800 && scrollPosition < footerTop + 100){
         stickyCta.classList.add('visible');
       } else {
@@ -1006,12 +1424,14 @@
       }
     });
 
+    // Close sticky CTA (mobile)
     function closeStickyCta(){
       const stickyCta=document.getElementById('stickyCta');
       stickyCta.classList.add('hidden');
       stickyCta.classList.remove('visible');
     }
 
+    // Simple AI keyword classifier
     const keywordGroups={
       'workflow':{
         keywords:['bid','estimat','handoff','sop','process','workflow','messy','chaotic','duplicate'],
@@ -1083,17 +1503,20 @@
       handleSearch();
     }
 
+    // Enter to submit AI helper
     document.getElementById('aiSearch').addEventListener('keypress', function(e){
       if(e.key==='Enter' && !e.shiftKey){
         e.preventDefault(); handleSearch();
       }
     });
 
+    // Auto-resize textarea
     document.getElementById('aiSearch').addEventListener('input', function(){
       this.style.height='auto';
       this.style.height=Math.min(this.scrollHeight,200)+'px';
     });
 
+    // Contact form
     function handleFormSubmit(e){
       e.preventDefault();
       const formData=new FormData(e.target);
@@ -1103,6 +1526,7 @@
       e.target.reset();
     }
 
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
       anchor.addEventListener('click', function(e){
         e.preventDefault();
@@ -1111,6 +1535,7 @@
       });
     });
 
+    // Scroll animations
     const observer=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
     }, { threshold:0.1, rootMargin:'0px 0px -100px 0px' });
