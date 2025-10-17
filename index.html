@@ -170,11 +170,28 @@
       background:linear-gradient(135deg,var(--navy) 0%,var(--indigo) 100%);
       color:#fff; text-align:center; padding:8rem 2rem 4rem; position:relative; overflow:hidden;
     }
+    
+    /* Video Background */
+    .hero-video-bg{
+      position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
+      opacity:0.25; /* Adjust this value: 0.1 = very subtle, 0.5 = half visible, 1.0 = fully visible */
+      z-index:0;
+    }
+    
+    /* Dark overlay to ensure text readability */
+    .hero::before{
+      content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+      /* Adjust the 0.85 value to make overlay darker (0.95) or lighter (0.7) */
+      background:linear-gradient(135deg,rgba(11,27,52,0.85) 0%,rgba(31,51,88,0.85) 100%);
+      z-index:0;
+    }
+    
     .hero::after{
       content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
       background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(0,204,255,.03) 20px,rgba(0,204,255,.03) 40px);
+      z-index:1;
     }
-    .hero-content{ max-width:1400px; position:relative; z-index:1; width:100%; }
+    .hero-content{ max-width:1400px; position:relative; z-index:2; width:100%; }
 
     .hero h1{
       font-family:'Merriweather Sans',sans-serif;
@@ -603,6 +620,11 @@
     /* Mobile */
     @media (max-width:968px){
       .nav{ display:none; }
+      
+      /* Optional: Hide video on mobile to improve performance */
+      /* Uncomment the lines below if video causes performance issues on mobile */
+      /* .hero-video-bg{ display:none; } */
+      
       .hero-grid{ grid-template-columns:1fr; gap:1.5rem; }
       .split{ grid-template-columns:1fr; gap:3rem; }
       .problem-image{ order:-1; min-height:300px; }
@@ -626,7 +648,7 @@
       .sticky-cta-buttons{ width:100%; flex-direction:column; }
       .sticky-phone,.sticky-book{ width:100%; }
       .search-box{ flex-direction:column; }
-      .hard-hat-icon{ align-self:flex-start; }
+      .hard-hat-icon{ align-self:center; width:56px; height:56px; font-size:1.75rem; }
       
       /* Fix mobile overflow issues */
       .contact-form input,
@@ -649,10 +671,14 @@
         flex:none !important;
       }
       .ai-helper .search-btn{ 
-        padding:1rem 1.5rem !important; 
+        padding:1.25rem 1.5rem !important; 
         width:100% !important;
         white-space:normal !important;
+        min-height:auto !important;
+        flex-direction:row !important;
+        gap:.75rem !important;
       }
+      .ai-helper .search-btn .search-hint{ margin-top:0 !important; }
       .ai-helper .search-box{ width:100%; }
       
       /* Show close button on sticky CTA on mobile only */
@@ -697,6 +723,13 @@
 
   <!-- Hero -->
   <section class="hero">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="hero-video-bg">
+      <source src="videos/hero-background.mp4" type="video/mp4">
+      <source src="videos/hero-background.webm" type="video/webm">
+      <!-- Fallback for browsers that don't support video -->
+    </video>
+    
     <div class="hero-content">
       <h1>Cut IT Costs <span class="hero-number">30%</span></h1>
       <p class="hero-subtitle">Construction companies waste money on software they don't use.</p>
@@ -717,7 +750,7 @@
               aria-label="Describe your challenge"
             ></textarea>
             <button class="search-btn" onclick="handleSearch()">
-              Ask AI
+              <span style="font-size:1.125rem; font-weight:700;">Ask AI</span>
               <span class="search-hint">Press Enter</span>
             </button>
           </div>
