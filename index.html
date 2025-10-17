@@ -175,7 +175,7 @@
     .hero-video-bg{
       position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
       opacity:1 ; /* Adjust this value: 0.1 = very subtle, 0.5 = half visible, 1.0 = fully visible */
-      z-index:0;
+      z-index:1;
     }
     
     /* Dark overlay to ensure text readability */
@@ -183,7 +183,7 @@
       content:''; position:absolute; top:0; left:0; right:0; bottom:0;
       /* Adjust the 0.85 value to make overlay darker (0.95) or lighter (0.7) */
       background:linear-gradient(135deg,rgba(11,27,52,0.4) 0%,rgba(31,51,88,0.4) 100%);
-      z-index:0;
+      z-index:2;
     }
     
     .hero::after{
