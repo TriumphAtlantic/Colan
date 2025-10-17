@@ -58,9 +58,6 @@
       --light:#F4F6F8;
       --red:#EF4444;
       --green:#10B981;
-
-      /* images */
-      --hero-image:url('assets/img/hero-jobsite.jpg');   /* <-- place your hero photo here */
     }
 
     html{ scroll-behavior:smooth; }
@@ -99,11 +96,13 @@
     }
 
     .nav{ display:flex; gap:2rem; align-items:center; }
+
     .nav a{
       text-decoration:none; color:var(--navy);
       font-weight:600; transition:color .2s; font-size:1.05rem;
     }
     .nav a:hover{ color:var(--cyan); }
+
     .nav .cta-btn{
       background:var(--amber); color:var(--navy);
       padding:.75rem 2rem; border-radius:8px; font-weight:800;
@@ -119,23 +118,45 @@
     }
     .sticky-cta.visible{ transform:translateY(0); }
     .sticky-cta.hidden{ display:none; }
+
     .sticky-cta-close{
-      display:none; position:absolute; top:8px; right:8px; width:32px; height:32px;
-      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
-      border-radius:6px; color:#fff; font-size:1.25rem; line-height:1; cursor:pointer;
-      transition:all .2s; align-items:center; justify-content:center;
+      display:none;
+      position:absolute;
+      top:8px;
+      right:8px;
+      width:32px;
+      height:32px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:6px;
+      color:#fff;
+      font-size:1.25rem;
+      line-height:1;
+      cursor:pointer;
+      transition:all .2s;
+      align-items:center;
+      justify-content:center;
     }
-    .sticky-cta-close:hover{ background:rgba(255,255,255,.2); transform:scale(1.1); }
-    .sticky-cta-content{ max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:2rem; }
+    .sticky-cta-close:hover{
+      background:rgba(255,255,255,.2);
+      transform:scale(1.1);
+    }
+
+    .sticky-cta-content{
+      max-width:1400px; margin:0 auto; display:flex;
+      justify-content:space-between; align-items:center; gap:2rem;
+    }
     .sticky-cta-text{ color:#fff; font-weight:700; font-size:1.1rem; }
     .sticky-cta-text span{ color:var(--amber); }
     .sticky-cta-buttons{ display:flex; gap:1rem; align-items:center; }
+
     .sticky-phone{
       background:var(--amber); color:var(--navy);
       padding:.875rem 2rem; border-radius:8px; text-decoration:none;
       font-weight:900; font-size:1.1rem; white-space:nowrap; transition:all .2s;
     }
     .sticky-phone:hover{ transform:translateY(-2px); box-shadow:0 4px 16px rgba(246,167,1,.4); }
+
     .sticky-book{
       background:transparent; border:2px solid #fff; color:#fff;
       padding:.875rem 2rem; border-radius:8px; text-decoration:none;
@@ -143,18 +164,11 @@
     }
     .sticky-book:hover{ background:#fff; color:var(--navy); }
 
-    /* Hero (now with background photo support) */
+    /* Hero */
     .hero{
       min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,var(--navy) 0%,var(--indigo) 100%);
       color:#fff; text-align:center; padding:8rem 2rem 4rem; position:relative; overflow:hidden;
-
-      /* gradient overlay + photo */
-      background-image:
-        linear-gradient(135deg, rgba(11,27,52,.92) 0%, rgba(31,51,88,.92) 100%),
-        var(--hero-image);
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
     }
     .hero::after{
       content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
@@ -164,39 +178,20 @@
 
     .hero h1{
       font-family:'Merriweather Sans',sans-serif;
-      font-size:clamp(2.6rem,7vw,6rem); font-weight:900; line-height:1;
-      margin-bottom:1rem; letter-spacing:-.03em;
+      font-size:clamp(3rem,9vw,8rem); font-weight:900; line-height:1;
+      margin-bottom:1.5rem; letter-spacing:-.03em;
     }
     .hero-number{ color:var(--amber); }
-    .hero-subtitle{ font-size:clamp(1.1rem,2.2vw,1.5rem); color:rgba(255,255,255,.9); margin-bottom:2rem; font-weight:500; }
+    .hero-subtitle{ font-size:clamp(1.25rem,2.5vw,1.75rem); color:rgba(255,255,255,.85); margin-bottom:2rem; font-weight:400; }
 
     .badge{
       display:inline-block; background:rgba(0,204,255,.1); border:1px solid rgba(0,204,255,.3);
       color:var(--cyan); padding:.5rem 1.25rem; border-radius:24px; font-size:.9rem; margin-bottom:2rem; font-weight:600;
     }
 
-    .urgency-badge{
-      display:inline-block; background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.3);
-      color:#FCA5A5; padding:.5rem 1.25rem; border-radius:24px; font-size:.9rem; margin:2rem 0 2.5rem; font-weight:600;
-    }
+    .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1400px; margin:0 auto 3rem; }
 
-    /* Buttons under hero */
-    .problem-buttons{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:1rem; max-width:900px; margin:0 auto 0;
-    }
-    .problem-btn{
-      background:rgba(255,255,255,.08); backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.2); color:#fff;
-      padding:1rem 1.25rem; border-radius:12px; font-size:1.05rem; font-weight:700;
-      text-align:center; text-decoration:none; transition:all .25s;
-    }
-    .problem-btn:hover{ background:var(--amber); color:var(--navy); transform:translateY(-2px); }
-
-    /* two-column hero grid */
-    .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1400px; margin:0 auto 2rem; }
-
-    /* ---------- AI Helper ---------- */
+    /* ---------- AI Helper (improved) ---------- */
     .ai-helper{
       background:rgba(255,255,255,0.08);
       backdrop-filter:blur(20px);
@@ -204,14 +199,18 @@
       padding:2rem;
       position:relative;
       overflow:hidden;
+
+      /* Animated gradient border */
       border:2px solid transparent;
       background-clip:padding-box;
+
+      /* Glow */
       box-shadow:
         0 8px 32px rgba(0,204,255,0.25),
         0 0 60px rgba(0,204,255,0.15),
         inset 0 0 0 1px rgba(0,204,255,0.2);
+
       transition:all .4s cubic-bezier(0.4,0,0.2,1);
-      text-align:left;
     }
     .ai-helper::before{
       content:''; position:absolute; inset:0; border-radius:16px; padding:2px;
@@ -221,227 +220,461 @@
       animation:borderRotate 3s linear infinite; pointer-events:none;
     }
     @keyframes borderRotate{ 0%{ transform:rotate(0) } 100%{ transform:rotate(360deg) } }
-    .ai-helper h3{
-      color:#fff; margin-bottom:1rem; font-size:1.2rem; font-weight:700; display:flex; align-items:center; gap:.5rem;
+    .ai-helper::after{
+      content:''; position:absolute; inset:-50%;
+      background:radial-gradient(circle at center, rgba(0,204,255,.15) 0%, transparent 70%);
+      animation:pulse 4s ease-in-out infinite; pointer-events:none;
     }
-    .search-box{ display:flex; gap:.75rem; margin-bottom:1rem; align-items:flex-start; position:relative; z-index:1; }
-    .hard-hat-icon{
-      width:44px; height:44px; background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
-      border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.35rem; flex-shrink:0;
-      box-shadow:0 4px 16px rgba(246,167,1,.4), inset 0 1px 0 rgba(255,255,255,.3);
+    @keyframes pulse{ 0%,100%{ opacity:.5; transform:scale(1) } 50%{ opacity:1; transform:scale(1.1) } }
+    .ai-helper:hover{
+      box-shadow:
+        0 12px 48px rgba(0,204,255,.35),
+        0 0 80px rgba(0,204,255,.2),
+        inset 0 0 0 1px rgba(0,204,255,.3);
+      transform:translateY(-4px);
     }
-    .search-input{
-      flex:1; padding:.875rem; border:2px solid rgba(255,255,255,.3); border-radius:12px;
-      font-size:1rem; font-family:'Inter',sans-serif; background:rgba(255,255,255,.95); color:var(--navy);
-      resize:none; min-height:3.5rem; line-height:1.5; transition:all .3s ease; max-width:100%;
-    }
-    .search-input::placeholder{ color:var(--gray); }
-    .search-btn{
-      background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
-      color:var(--navy); border:none; padding:.875rem 1.25rem; border-radius:12px; cursor:pointer;
-      font-weight:800; font-size:1rem; transition:all .2s; white-space:nowrap;
-    }
-    .ai-result{
-      display:none; background:rgba(255,255,255,.95); border-radius:12px; padding:1rem; margin-top:1rem; color:var(--navy);
-      border-left:4px solid var(--cyan); box-shadow:0 4px 20px rgba(0,204,255,.2);
-    }
-    .ai-result.show{ display:block; }
 
-    /* Hero mini calculator */
     .hero-calculator{
       background:rgba(255,255,255,.1); backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,.2); border-radius:16px; padding:2rem;
-      box-shadow:0 8px 32px rgba(246,167,1,.15); text-align:left;
-    }
-    .calc-label{ font-size:1rem; font-weight:700; color:#fff; margin-bottom:.4rem; display:block; }
-    .calc-input-wrapper{ display:flex; align-items:center; gap:1rem; }
-    .calc-slider{ flex:1; height:8px; border-radius:4px; background:rgba(255,255,255,.2); outline:none; -webkit-appearance:none; }
-    .calc-slider::-webkit-slider-thumb{ -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--amber); cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2); }
-    .calc-slider::-moz-range-thumb{ width:22px; height:22px; border-radius:50%; background:var(--amber); cursor:pointer; border:none; box-shadow:0 2px 8px rgba(0,0,0,.2); }
-    .calc-value{ font-size:1.1rem; font-weight:800; color:var(--amber); min-width:110px; text-align:right; }
-    .calc-total-hero{ background:rgba(255,255,255,.1); border:2px solid rgba(246,167,1,.3); border-radius:12px; padding:1rem; text-align:center; margin:1rem 0; }
-    .calc-total-hero .label{ font-size:.8rem; color:rgba(255,255,255,.8); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.35rem; }
-    .calc-total-hero .value{ font-size:2.25rem; font-weight:900; color:var(--amber); line-height:1; }
-
-    /* Proof (logos removed, replaced with photo-strip) */
-    .proof{ background:#fff; min-height:auto; padding:4rem 2rem; border-bottom:1px solid var(--light); }
-    .proof-content{ max-width:1200px; margin:0 auto; text-align:center; }
-    .proof-title{ font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:1rem; }
-    .proof-text{ font-size:1.1rem; line-height:1.7; color:var(--gray); max-width:820px; margin:0 auto 2rem; }
-
-    .photo-strip{
-      display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin:2rem auto 0; max-width:1200px;
-    }
-    .photo{
-      position:relative; overflow:hidden; border-radius:14px; aspect-ratio:16/10; background:#eee;
-      box-shadow:0 10px 30px rgba(0,0,0,.06);
-    }
-    .photo img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.02) contrast(1.02); }
-    .photo figcaption{
-      position:absolute; left:0; right:0; bottom:0; padding:.5rem .75rem;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.55));
-      color:#fff; font-size:.9rem; font-weight:700;
+      box-shadow:0 8px 32px rgba(246,167,1,.15);
     }
 
-    /* Problem, Calculator, etc. (unchanged structure-wise) */
+    .ai-helper h3{
+      color:#fff; margin-bottom:1rem; font-size:1.2rem; font-weight:600;
+      position:relative; z-index:1; display:flex; align-items:center; gap:.75rem;
+    }
+    .ai-helper h3::before{ content:'✨'; font-size:1.5rem; animation:sparkle 2s ease-in-out infinite; }
+    @keyframes sparkle{
+      0%,100%{ opacity:1; transform:scale(1) rotate(0) }
+      50%{ opacity:.7; transform:scale(1.1) rotate(10deg) }
+    }
+
+    .search-box{ display:flex; gap:.75rem; margin-bottom:1rem; align-items:flex-start; position:relative; z-index:1; }
+
+    .hard-hat-icon{
+      width:60px; height:60px;
+      background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
+      border-radius:12px; display:flex; align-items:center; justify-content:center;
+      font-size:2rem; flex-shrink:0;
+      box-shadow:0 4px 16px rgba(246,167,1,.4), inset 0 1px 0 rgba(255,255,255,.3);
+      transition:all .3s ease;
+    }
+    .hard-hat-icon:hover{ transform:rotate(-10deg) scale(1.1); box-shadow:0 6px 24px rgba(246,167,1,.5), inset 0 1px 0 rgba(255,255,255,.3); }
+
+    .search-input{
+      flex:1; padding:1.25rem; border:2px solid rgba(255,255,255,.3); border-radius:12px;
+      font-size:1.125rem; font-family:'Inter',sans-serif; background:rgba(255,255,255,.95); color:var(--navy);
+      resize:none; min-height:120px; line-height:1.6; transition:all .3s ease; max-width:100%;
+    }
+    .search-input::placeholder{ color:var(--gray); font-size:1rem; opacity:0.8; }
+    .search-input:focus{
+      border-color:var(--cyan);
+      box-shadow:0 0 0 3px rgba(0,204,255,.2), 0 4px 12px rgba(0,204,255,.15);
+      background:#fff;
+    }
+
+    .search-btn{
+      background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
+      color:var(--navy); border:none; padding:1.25rem 1.75rem; border-radius:12px; cursor:pointer;
+      font-weight:600; font-size:1.05rem; transition:all .3s ease; white-space:nowrap;
+      position:relative; overflow:hidden; box-shadow:0 4px 12px rgba(246,167,1,.3); min-height:120px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+    }
+    .search-btn::before{
+      content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      transition:left .5s ease;
+    }
+    .search-btn:hover::before{ left:100%; }
+    .search-btn:hover{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(246,167,1,.4); }
+    .search-btn:active{ transform:translateY(0); }
+
+    .search-hint{ font-size:.7rem; color:rgba(11,27,52,.7); display:block; margin-top:.5rem; font-weight:500; }
+
+    .suggestions{ display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+
+    .chip{
+      background:rgba(255,255,255,.15); color:#fff; padding:.5rem 1rem; border-radius:20px; font-size:.875rem;
+      cursor:pointer; transition:all .3s ease; border:1px solid rgba(255,255,255,.2); position:relative; z-index:1;
+    }
+    .chip:hover{ background:var(--amber); color:var(--navy); border-color:var(--amber); transform:translateY(-2px); box-shadow:0 4px 12px rgba(246,167,1,.3); }
+
+    .ai-result{
+      display:none; background:rgba(255,255,255,.95); border-radius:12px; padding:1.5rem; margin-top:1rem; color:var(--navy);
+      position:relative; z-index:1; border-left:4px solid var(--cyan); box-shadow:0 4px 20px rgba(0,204,255,.2);
+    }
+    .ai-result.show{ display:block; animation:slideIn .3s ease, glow 2s ease-in-out infinite; }
+    @keyframes slideIn{ from{ opacity:0; transform:translateY(-10px) } to{ opacity:1; transform:translateY(0) } }
+    @keyframes glow{
+      0%,100%{ box-shadow:0 4px 20px rgba(0,204,255,.2) }
+      50%{ box-shadow:0 4px 30px rgba(0,204,255,.4) }
+    }
+
+    .ai-result h4{ color:var(--navy); margin-bottom:.75rem; font-size:1rem; font-weight:700; }
+    .ai-result-buttons{ display:flex; gap:.75rem; margin-top:1rem; flex-wrap:wrap; }
+    .ai-result .btn-small{ padding:.6rem 1.25rem; font-size:.9rem; border-radius:8px; text-decoration:none; font-weight:700; transition:all .2s; display:inline-block; }
+    .ai-result .btn-primary-small{ background:var(--amber); color:var(--navy); }
+    .ai-result .btn-secondary-small{ background:transparent; border:2px solid var(--navy); color:var(--navy); }
+
+    .ai-privacy{
+      font-size:.8rem; color:rgba(255,255,255,.6); margin-top:.75rem; font-style:italic;
+      position:relative; z-index:1; display:flex; align-items:center; gap:.5rem;
+    }
+    .ai-privacy::before{ content:'🔒'; font-size:.9rem; }
+
+    /* ---------- /AI Helper ---------- */
+
+    .hero-cta-buttons{ display:flex; gap:1rem; justify-content:center; margin-bottom:4rem; flex-wrap:wrap; }
+    .cta-primary{
+      background:var(--amber); color:var(--navy); padding:1.5rem 4rem; border-radius:12px; text-decoration:none;
+      font-weight:900; font-size:1.5rem; display:inline-block; transition:all .2s; box-shadow:0 8px 24px rgba(246,167,1,.3);
+    }
+    .cta-primary:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(246,167,1,.4); }
+
+    .cta-secondary{
+      background:transparent; color:#fff; border:2px solid #fff; padding:1.5rem 3.5rem; border-radius:12px;
+      text-decoration:none; font-weight:700; font-size:1.3rem; display:inline-block; transition:all .2s;
+    }
+    .cta-secondary:hover{ background:#fff; color:var(--navy); }
+
+    /* Video */
+    .video-section{ max-width:900px; margin:0 auto 3rem; }
+    .video-wrapper{ position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:16px; box-shadow:0 16px 48px rgba(0,204,255,.2); }
+    .video-wrapper iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+    /* Sections base */
     section{ min-height:100vh; display:flex; align-items:center; padding:5rem 2rem; }
     .container{ max-width:1400px; margin:0 auto; width:100%; }
 
-    .problem{ background:var(--light); }
-    .split{ display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .split h2{ font-family:'Merriweather Sans',sans-serif; font-size:clamp(2.2rem,6vw,4.75rem); font-weight:900; line-height:1.05; margin-bottom:2rem; color:var(--navy); }
-    .stat-box{ display:grid; gap:1.25rem; }
-    .stat{ background:#fff; padding:2rem; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,.06); }
-    .stat-number{ font-size:3rem; font-weight:900; color:var(--navy); margin-bottom:.4rem; line-height:1; }
-    .stat-text{ font-size:1.05rem; color:var(--gray); font-weight:500; }
-    .visual-box{ background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); border-radius:26px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:6rem; box-shadow:0 20px 60px rgba(0,0,0,.15); }
+    /* Photo Gallery Section - NEW */
+    .photo-gallery{
+      background:#fff; min-height:auto; padding:4rem 2rem;
+      border-bottom:1px solid var(--light);
+    }
+    .gallery-content{ max-width:1400px; margin:0 auto; }
+    .gallery-title{
+      text-align:center; font-size:2rem; font-weight:700; color:var(--navy);
+      margin-bottom:1rem;
+    }
+    .gallery-subtitle{
+      text-align:center; font-size:1.125rem; color:var(--gray);
+      margin-bottom:3rem; max-width:800px; margin-left:auto; margin-right:auto;
+    }
+    .gallery-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem; margin-bottom:2rem;
+    }
+    .gallery-item{
+      border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.08);
+      transition:all .3s ease;
+    }
+    .gallery-item:hover{
+      transform:translateY(-8px); box-shadow:0 12px 40px rgba(0,0,0,.15);
+    }
+    .gallery-item img{
+      width:100%; height:300px; object-fit:cover; display:block;
+    }
+    .gallery-caption{
+      padding:1.5rem; background:#fff;
+    }
+    .gallery-caption h4{
+      font-size:1.125rem; font-weight:700; color:var(--navy); margin-bottom:.5rem;
+    }
+    .gallery-caption p{
+      font-size:.95rem; color:var(--gray); line-height:1.6;
+    }
 
+    /* Proof */
+    .proof{ background:var(--light); min-height:auto; padding:4rem 2rem; border-bottom:1px solid rgba(0,0,0,.05); }
+    .proof-content{ max-width:1100px; margin:0 auto; text-align:center; }
+    .proof-title{ font-size:1.5rem; font-weight:700; color:var(--navy); margin-bottom:1.5rem; }
+    .proof-badges{ display:flex; justify-content:center; gap:2rem; margin-bottom:2rem; flex-wrap:wrap; }
+    .badge-item{ background:#fff; padding:1rem 2rem; border-radius:12px; font-weight:600; color:var(--navy); font-size:.9rem; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+    .proof-text{ font-size:1.125rem; line-height:1.7; color:var(--gray); max-width:800px; margin:0 auto 1rem; }
+    .proof-note{ font-size:1rem; color:var(--cyan); font-weight:600; }
+
+    /* Calculator section */
     .calculator{ background:linear-gradient(135deg,var(--navy) 0%,var(--indigo) 100%); color:#fff; position:relative; overflow:hidden; }
+    .calculator::after{
+      content:''; position:absolute; bottom:0; left:0; right:0; height:100px;
+      background:repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(246,167,1,.03) 20px, rgba(246,167,1,.03) 40px);
+    }
     .calculator h2{ color:#fff; }
+
     .calc-wrapper{ max-width:900px; margin:0 auto; position:relative; z-index:1; }
-    .calc-subtitle{ text-align:center; font-size:1.2rem; color:rgba(255,255,255,.85); margin-bottom:2rem; }
+    .calc-subtitle{ text-align:center; font-size:1.25rem; color:rgba(255,255,255,.8); margin-bottom:3rem; }
     .calc-box{
       background:rgba(255,255,255,.1); backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,.2); border-radius:24px; padding:3rem; box-shadow:0 8px 32px rgba(246,167,1,.15);
     }
-    .calc-inputs{ display:grid; gap:2rem; margin-bottom:2rem; }
-    .calc-input-group{ display:flex; flex-direction:column; gap:.75rem; }
-    .calc-results{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
-    .calc-result-box{ background:rgba(255,255,255,.1); border:2px solid rgba(246,167,1,.3); border-radius:16px; padding:1.5rem; text-align:center; }
-    .calc-result-label{ font-size:.9rem; color:rgba(255,255,255,.85); margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em; }
-    .calc-result-value{ font-size:3rem; font-weight:900; color:var(--amber); line-height:1; margin-bottom:.25rem; }
-    .calc-result-subtext{ font-size:.9rem; color:rgba(255,255,255,.75); }
-    .calc-total{ background:var(--amber); color:var(--navy); border-radius:16px; padding:1.5rem; text-align:center; margin:1rem 0 1.25rem; }
-    .calc-total-label{ font-size:.95rem; font-weight:700; margin-bottom:.25rem; text-transform:uppercase; letter-spacing:.05em; }
-    .calc-total-value{ font-size:3.2rem; font-weight:900; line-height:1; }
-    .calc-cta{ text-align:center; }
-    .calc-disclaimer{ font-size:.85rem; color:rgba(255,255,255,.7); text-align:center; margin-top:1.25rem; font-style:italic; }
+    .calc-inputs{ display:grid; gap:2.5rem; margin-bottom:3rem; }
+    .calc-input-group{ display:flex; flex-direction:column; gap:1rem; }
+    .calc-label{ font-size:1.125rem; font-weight:600; color:#fff; }
+    .calc-input-wrapper{ display:flex; align-items:center; gap:1rem; }
+    .calc-slider{ flex:1; height:8px; border-radius:4px; background:rgba(255,255,255,.2); outline:none; -webkit-appearance:none; }
+    .calc-slider::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:var(--amber); cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+    .calc-slider::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:var(--amber); cursor:pointer; border:none; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+    .calc-value{ font-size:1.25rem; font-weight:700; color:var(--amber); min-width:120px; text-align:right; }
 
-    /* Solution (simplified copy to reduce repetition) */
+    .calc-results{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem; }
+    .calc-result-box{ background:rgba(255,255,255,.1); border:2px solid rgba(246,167,1,.3); border-radius:16px; padding:2rem; text-align:center; }
+    .calc-result-label{ font-size:.95rem; color:rgba(255,255,255,.8); margin-bottom:.75rem; text-transform:uppercase; letter-spacing:.05em; }
+    .calc-result-value{ font-size:3.5rem; font-weight:900; color:var(--amber); line-height:1; margin-bottom:.5rem; }
+    .calc-result-subtext{ font-size:.9rem; color:rgba(255,255,255,.7); }
+
+    .calc-total{ background:var(--amber); color:var(--navy); border-radius:16px; padding:2rem; text-align:center; margin-bottom:2rem; }
+    .calc-total-label{ font-size:1rem; font-weight:600; margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em; }
+    .calc-total-value{ font-size:4rem; font-weight:900; line-height:1; }
+    .calc-cta{ text-align:center; }
+    .calc-disclaimer{ font-size:.85rem; color:rgba(255,255,255,.6); text-align:center; margin-top:1.5rem; font-style:italic; }
+
+    /* Problem */
+    .problem{ background:var(--light); }
+    .split{ display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .split h2{
+      font-family:'Merriweather Sans',sans-serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:900;
+      line-height:1.05; margin-bottom:2.5rem; color:var(--navy);
+    }
+    .stat-box{ display:grid; gap:2rem; }
+    .stat{ background:#fff; padding:2.5rem; border-radius:20px; box-shadow:0 4px 24px rgba(0,0,0,.06); }
+    .stat-number{ font-size:3.5rem; font-weight:900; color:var(--navy); margin-bottom:.5rem; line-height:1; }
+    .stat-text{ font-size:1.125rem; color:var(--gray); font-weight:500; }
+    
+    /* Photo on right side of problem section */
+    .problem-image{
+      width:100%; height:100%; min-height:500px; border-radius:32px;
+      object-fit:cover; box-shadow:0 20px 60px rgba(0,0,0,.15);
+    }
+
+    /* Solution */
     .solution{ background:#fff; }
     .section-title{
-      font-family:'Merriweather Sans',sans-serif; text-align:center; font-size:clamp(2.2rem,6vw,4.75rem);
-      font-weight:900; margin-bottom:.75rem; color:var(--navy);
+      font-family:'Merriweather Sans',sans-serif; text-align:center; font-size:clamp(2.5rem,6vw,5rem);
+      font-weight:900; margin-bottom:1rem; color:var(--navy);
     }
-    .subtitle{ text-align:center; font-size:1.15rem; color:var(--gray); margin-bottom:3rem; }
-    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; max-width:1100px; margin:0 auto 3rem; }
-    .card{ background:#fff; border:2px solid var(--light); border-radius:24px; padding:2.25rem 2rem; text-align:center; transition:all .3s; }
-    .card:hover{ border-color:var(--cyan); transform:translateY(-8px); box-shadow:0 24px 64px rgba(0,204,255,.12); }
-    .card-emoji{ font-size:3.6rem; display:block; margin-bottom:1rem; }
-    .card h3{ font-family:'Merriweather Sans',sans-serif; font-size:1.75rem; font-weight:800; margin-bottom:.5rem; color:var(--navy); }
-    .card p{ font-size:1.05rem; color:var(--gray); line-height:1.6; }
-    .promise-card{ background:linear-gradient(135deg,var(--cyan) 0%,#00A3CC 100%); color:#fff; border:none; max-width:880px; margin:0 auto; }
-    .promise-card h3{ color:#fff; font-size:2.1rem; }
-    .promise-list{ list-style:none; text-align:left; margin:1rem 0; }
-    .promise-list li{ padding:.6rem 0; font-size:1.05rem; border-bottom:1px solid rgba(255,255,255,.25); }
-    .promise-list li:last-child{ border-bottom:none; }
-    .promise-list li::before{ content:"✓"; margin-right:.6rem; font-weight:900; font-size:1.15rem; }
+    .subtitle{ text-align:center; font-size:1.25rem; color:var(--gray); margin-bottom:4rem; }
+    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2.5rem; max-width:1200px; margin:0 auto 4rem; }
+    .card{ background:#fff; border:2px solid var(--light); border-radius:24px; padding:3.5rem 2.5rem; text-align:center; transition:all .3s; }
+    .card:hover{ border-color:var(--cyan); transform:translateY(-12px); box-shadow:0 24px 64px rgba(0,204,255,.15); }
+    .card-emoji{ font-size:4.5rem; display:block; margin-bottom:1.5rem; }
+    .card h3{ font-family:'Merriweather Sans',sans-serif; font-size:2rem; font-weight:800; margin-bottom:1rem; color:var(--navy); }
+    .card p{ font-size:1.125rem; color:var(--gray); line-height:1.6; }
 
-    /* Assessment, Cases, How, Pricing, Contact (kept from your original) */
+    .promise-card{ background:linear-gradient(135deg,var(--cyan) 0%,#00A3CC 100%); color:#fff; border:none; max-width:900px; margin:0 auto; }
+    .promise-card:hover{ border-color:var(--cyan); }
+    .promise-card h3{ color:#fff; font-size:2.5rem; }
+    .promise-list{ list-style:none; text-align:left; margin:1.5rem 0; }
+    .promise-list li{ padding:.75rem 0; font-size:1.125rem; border-bottom:1px solid rgba(255,255,255,.2); }
+    .promise-list li:last-child{ border-bottom:none; }
+    .promise-list li::before{ content:"✓"; margin-right:.75rem; font-weight:900; font-size:1.25rem; }
+    .promise-card .what-we-dont{ margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,.2); font-size:1rem; opacity:.9; }
+
+    /* Assessment */
     .assessment{ background:var(--navy); color:#fff; }
     .assessment h2{ color:#fff; }
     .assessment-content{ max-width:1000px; margin:0 auto; }
-    .assessment-subtitle{ text-align:center; font-size:1.4rem; color:rgba(255,255,255,.85); margin-bottom:2.5rem; }
-    .deliverables{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.1rem; }
-    .deliverable-item{ background:rgba(255,255,255,.1); padding:1.2rem; border-radius:14px; border:1px solid rgba(255,255,255,.2); }
-    .deliverable-item::before{ content:"✓"; color:var(--amber); font-size:1.4rem; font-weight:900; display:block; margin-bottom:.35rem; }
+    .assessment-subtitle{ text-align:center; font-size:1.5rem; color:rgba(255,255,255,.8); margin-bottom:3rem; }
+    .deliverables{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+    .deliverable-item{ background:rgba(255,255,255,.1); padding:1.5rem; border-radius:16px; border:1px solid rgba(255,255,255,.2); }
+    .deliverable-item::before{ content:"✓"; color:var(--amber); font-size:1.5rem; font-weight:900; display:block; margin-bottom:.5rem; }
 
+    /* Cases */
     .cases{ background:#fff; }
-    .case-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(450px,1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
-    .case-card{ background:var(--light); border-radius:24px; padding:2.25rem; border:2px solid var(--light); transition:all .3s; }
-    .case-card:hover{ border-color:var(--cyan); transform:translateY(-6px); }
-    .testimonial-header{ display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; padding-bottom:1.25rem; border-bottom:2px solid rgba(0,0,0,.05); }
-    .testimonial-avatar{ width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,var(--cyan) 0%,var(--indigo) 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:1.7rem; flex-shrink:0; }
-    .testimonial-info h4{ font-size:1.1rem; font-weight:800; color:var(--navy); margin-bottom:.1rem; }
-    .testimonial-info p{ font-size:.95rem; color:var(--gray); }
-    .case-title{ font-family:'Merriweather Sans',sans-serif; font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:1rem; }
+    .case-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(450px,1fr)); gap:3rem; max-width:1200px; margin:0 auto; }
+    .case-card{ background:var(--light); border-radius:24px; padding:3rem; border:2px solid var(--light); transition:all .3s; }
+    .case-card:hover{ border-color:var(--cyan); transform:translateY(-8px); }
+
+    .testimonial-header{ display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:2px solid rgba(0,0,0,.05); }
+    .testimonial-avatar{
+      width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,var(--cyan) 0%,var(--indigo) 100%);
+      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:2rem; flex-shrink:0;
+    }
+    .testimonial-info h4{ font-size:1.25rem; font-weight:800; color:var(--navy); margin-bottom:.25rem; }
+    .testimonial-info p{ font-size:1rem; color:var(--gray); }
+
+    .case-title{ font-family:'Merriweather Sans',sans-serif; font-size:1.75rem; font-weight:800; color:var(--navy); margin-bottom:1.5rem; }
     .case-list{ list-style:none; }
-    .case-list li{ padding:.6rem 0; font-size:1.05rem; color:var(--navy); border-bottom:1px solid rgba(0,0,0,.05); }
+    .case-list li{ padding:.75rem 0; font-size:1.125rem; color:var(--navy); border-bottom:1px solid rgba(0,0,0,.05); }
     .case-list li:last-child{ border-bottom:none; }
-    .case-list li::before{ content:"→"; color:var(--amber); font-weight:900; margin-right:.6rem; }
-    .case-result{ background:var(--navy); color:#fff; padding:1rem; border-radius:10px; margin-top:1rem; font-size:1.2rem; font-weight:800; text-align:center; }
-    .case-result span{ color:var(--amber); font-size:1.4rem; }
+    .case-list li::before{ content:"→"; color:var(--amber); font-weight:900; margin-right:.75rem; }
+    .case-result{ background:var(--navy); color:#fff; padding:1.5rem; border-radius:12px; margin-top:1.5rem; font-size:1.35rem; font-weight:700; text-align:center; }
+    .case-result span{ color:var(--amber); font-size:2rem; }
 
+    /* How */
     .how{ background:var(--light); }
-    .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2.5rem; max-width:1200px; margin:0 auto; }
+    .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3.5rem; max-width:1200px; margin:0 auto; }
     .step{ text-align:center; }
-    .step-num{ width:90px; height:90px; background:var(--amber); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:900; color:var(--navy); margin:0 auto 1rem; }
-    .training-note{ max-width:900px; margin:2rem auto 0; background:#fff; padding:1.5rem; border-radius:14px; border-left:4px solid var(--cyan); }
+    .step-num{ width:90px; height:90px; background:var(--amber); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:900; color:var(--navy); margin:0 auto 2rem; }
+    .step h3{ font-family:'Merriweather Sans',sans-serif; font-size:2rem; font-weight:800; margin-bottom:1rem; color:var(--navy); }
+    .step p{ font-size:1.125rem; color:var(--gray); line-height:1.6; }
 
+    .training-note{ max-width:900px; margin:3rem auto 0; background:#fff; padding:2rem; border-radius:16px; border-left:4px solid var(--cyan); }
+    .training-note h4{ font-size:1.25rem; font-weight:700; color:var(--navy); margin-bottom:1rem; }
+    .training-note p{ font-size:1rem; color:var(--gray); line-height:1.7; }
+
+    /* Pricing */
     .pricing{ background:#fff; }
-    .price-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem; max-width:1200px; margin:0 auto 2rem; }
-    .price-card{ background:#fff; border:2px solid var(--light); border-radius:24px; padding:2.5rem 2rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,.08); transition:all .3s; }
-    .price-card:hover{ transform:translateY(-8px); box-shadow:0 24px 64px rgba(0,0,0,.12); }
-    .price-card.featured{ background:var(--navy); color:#fff; border-color:var(--amber); transform:none; }
-    .price-label{ font-size:1.1rem; font-weight:600; margin-bottom:1rem; color:var(--gray); }
+    .price-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2.5rem; max-width:1200px; margin:0 auto 3rem; }
+    .price-card{ background:#fff; border:2px solid var(--light); border-radius:24px; padding:3.5rem 2.5rem; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,.08); transition:all .3s; }
+    .price-card:hover{ transform:translateY(-12px); box-shadow:0 24px 64px rgba(0,0,0,.12); }
+    .price-card.featured{ background:var(--navy); color:#fff; border-color:var(--amber); transform:scale(1.05); }
+    .price-card.featured:hover{ transform:scale(1.05) translateY(-12px); }
+    .price-label{ font-size:1.25rem; font-weight:600; margin-bottom:1.25rem; color:var(--gray); }
     .price-card.featured .price-label{ color:rgba(255,255,255,.75); }
-    .price-value{ font-size:3.6rem; font-weight:900; color:var(--navy); margin-bottom:.4rem; line-height:1; }
+    .price-value{ font-size:4.5rem; font-weight:900; color:var(--navy); margin-bottom:.5rem; line-height:1; }
     .price-card.featured .price-value{ color:var(--amber); }
-    .price-term{ font-size:.95rem; color:var(--gray); margin-bottom:1.6rem; }
-    .price-card.featured .price-term{ color:rgba(255,255,255,.7); }
-    .price-features{ list-style:none; margin-bottom:1.75rem; text-align:left; }
-    .price-features li{ padding:.75rem 0; font-size:1.05rem; color:var(--gray); }
+    .price-term{ font-size:1rem; color:var(--gray); margin-bottom:2.5rem; }
+    .price-card.featured .price-term{ color:rgba(255,255,255,.65); }
+    .price-features{ list-style:none; margin-bottom:2.5rem; text-align:left; }
+    .price-features li{ padding:.875rem 0; font-size:1.125rem; color:var(--gray); }
     .price-card.featured .price-features li{ color:rgba(255,255,255,.85); }
-    .price-features li::before{ content:"✓"; color:var(--cyan); font-weight:900; margin-right:.6rem; font-size:1.1rem; }
-    .price-cta{ display:block; background:var(--amber); color:var(--navy); padding:.9rem 2rem; border-radius:12px; text-decoration:none; font-weight:800; font-size:1.05rem; transition:all .2s; }
+    .price-features li::before{ content:"✓"; color:var(--cyan); font-weight:900; margin-right:.75rem; font-size:1.25rem; }
+    .price-cta{
+      display:block; background:var(--amber); color:var(--navy);
+      padding:1rem 2.5rem; border-radius:12px; text-decoration:none; font-weight:800; font-size:1.125rem; transition:all .2s;
+    }
     .price-cta:hover{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(246,167,1,.3); }
-    .pricing-notes{ max-width:900px; margin:0 auto; background:var(--light); padding:1.5rem; border-radius:14px; font-size:.95rem; color:var(--gray); line-height:1.7; }
+    .pricing-notes{ max-width:900px; margin:0 auto; background:var(--light); padding:2rem; border-radius:16px; font-size:.95rem; color:var(--gray); line-height:1.7; }
 
+    /* Contact */
     .contact{ background:var(--navy); color:#fff; text-align:center; min-height:auto; padding:5rem 2rem; }
-    .contact h2{ font-family:'Merriweather Sans',sans-serif; font-size:clamp(2.2rem,6vw,4.75rem); font-weight:900; margin-bottom:1.4rem; color:#fff; }
-    .contact p{ font-size:1.3rem; margin-bottom:2rem; color:rgba(255,255,255,.88); }
-    .contact-options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1000px; margin:0 auto; }
-    .contact-form{ background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2); border-radius:24px; padding:2rem; text-align:left; }
-    .form-group{ margin-bottom:1.1rem; }
-    .form-group label{ display:block; margin-bottom:.4rem; font-weight:700; color:rgba(255,255,255,.95); }
-    .form-group input,.form-group textarea{ width:100%; padding:.85rem; border:2px solid rgba(255,255,255,.3); border-radius:8px; background:rgba(255,255,255,.95); color:var(--navy); font-family:'Inter',sans-serif; font-size:1rem; }
+    .contact h2{ font-family:'Merriweather Sans',sans-serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:900; margin-bottom:2rem; color:#fff; }
+    .contact p{ font-size:1.5rem; margin-bottom:3rem; color:rgba(255,255,255,.85); }
+
+    .contact-options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; max-width:1000px; margin:0 auto; }
+    .contact-form{
+      background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2);
+      border-radius:24px; padding:3rem; text-align:left;
+    }
+    .contact-form h3{ font-size:1.5rem; margin-bottom:2rem; color:#fff; }
+    .form-group{ margin-bottom:1.5rem; }
+    .form-group label{ display:block; margin-bottom:.5rem; font-weight:600; color:rgba(255,255,255,.9); }
+    .form-group input,.form-group textarea{
+      width:100%; max-width:100%; padding:.875rem; border:2px solid rgba(255,255,255,.3); border-radius:8px;
+      background:rgba(255,255,255,.95); color:var(--navy); font-family:'Inter',sans-serif; font-size:1rem;
+    }
     .form-group textarea{ resize:vertical; min-height:100px; }
-    .submit-btn{ background:var(--amber); color:var(--navy); padding:1rem 2rem; border:none; border-radius:12px; font-weight:800; font-size:1.05rem; cursor:pointer; width:100%; transition:all .2s; }
+    .submit-btn{
+      background:var(--amber); color:var(--navy); padding:1rem 2.5rem; border:none; border-radius:12px; font-weight:800; font-size:1.125rem;
+      cursor:pointer; width:100%; transition:all .2s;
+    }
     .submit-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(246,167,1,.3); }
-    .calendar-box{ background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2); border-radius:24px; padding:2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-    .calendar-box h3{ font-size:1.4rem; margin-bottom:.75rem; color:#fff; }
-    .calendar-box p{ font-size:1rem; margin-bottom:1.25rem; color:rgba(255,255,255,.85); }
+
+    .calendar-box{
+      background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2);
+      border-radius:24px; padding:3rem; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    }
+    .calendar-box h3{ font-size:1.5rem; margin-bottom:1rem; color:#fff; }
+    .calendar-box p{ font-size:1rem; margin-bottom:2rem; color:rgba(255,255,255,.8); }
     .calendar-box p strong{ color:var(--amber) !important; }
     .calendar-box p a{ color:var(--amber) !important; text-decoration:none; }
 
+    /* Footer */
     footer{ background:var(--navy); color:rgba(255,255,255,.65); padding:4rem 2rem 2rem; border-top:1px solid rgba(255,255,255,.1); margin-bottom:120px; }
-    .footer-grid{ max-width:1200px; margin:0 auto 2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-    .footer-section h4{ color:var(--amber); font-weight:700; margin-bottom:.75rem; font-size:1.05rem; }
-    .footer-section p,.footer-section a{ color:rgba(255,255,255,.7); text-decoration:none; display:block; margin-bottom:.65rem; line-height:1.6; }
+    .footer-grid{ max-width:1200px; margin:0 auto 3rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; }
+    .footer-section h4{ color:var(--amber); font-weight:700; margin-bottom:1rem; font-size:1.1rem; }
+    .footer-section p,.footer-section a{ color:rgba(255,255,255,.65); text-decoration:none; display:block; margin-bottom:.75rem; line-height:1.6; }
     .footer-section a:hover{ color:var(--cyan); }
-    .footer-bottom{ text-align:center; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.1); font-size:.9rem; }
+    .footer-bottom{ text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); font-size:.9rem; }
+    
     .footer-dev-credit{ font-size:.85rem; margin-top:.5rem; }
-    .footer-dev-text{ background:linear-gradient(135deg, var(--cyan) 0%, #00A3CC 50%, var(--amber) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700; letter-spacing:.02em; text-shadow:0 0 20px rgba(0,204,255,.3); }
+    .footer-dev-text{
+      background:linear-gradient(135deg, var(--cyan) 0%, #00A3CC 50%, var(--amber) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      font-weight:700;
+      letter-spacing:.02em;
+      text-shadow:0 0 20px rgba(0,204,255,.3);
+    }
+    .footer-dev-link{
+      color:var(--amber);
+      text-decoration:none;
+      font-weight:600;
+      transition:all .3s;
+    }
+    .footer-dev-link:hover{
+      color:var(--cyan);
+      text-shadow:0 0 10px rgba(0,204,255,.5);
+    }
+    .footer-break-mobile{ display:none; }
 
-    /* Mobile adjustments */
+    /* Mobile */
     @media (max-width:968px){
       .nav{ display:none; }
-      section{ min-height:auto; padding:4rem 1.25rem; }
-      .hero{ min-height:auto; padding:6rem 1.25rem 3rem; }
-      .hero-grid{ grid-template-columns:1fr; gap:1rem; }
-      .problem-buttons{ grid-template-columns:1fr; }
-      .split{ grid-template-columns:1fr; gap:2rem; }
-      .visual-box{ order:-1; font-size:4.5rem; }
-      .calc-box{ padding:2rem 1.25rem; }
-      .calc-results{ grid-template-columns:1fr; gap:1rem; }
-      .calc-result-value{ font-size:2.2rem; }
-      .calc-total-value{ font-size:2.6rem; }
-      .photo-strip{ grid-template-columns:1fr; }
+      .hero-grid{ grid-template-columns:1fr; gap:1.5rem; }
+      .split{ grid-template-columns:1fr; gap:3rem; }
+      .problem-image{ order:-1; min-height:300px; }
+      section{ min-height:auto; padding:4rem 1.5rem; }
+      .hero{ min-height:100vh; padding:6rem 1.5rem 4rem; }
+      .price-card.featured{ transform:none; }
+      .header-content{ padding:1rem 1.5rem; }
+      .cards{ grid-template-columns:1fr; }
+      .steps{ grid-template-columns:1fr; }
+      .case-grid{ grid-template-columns:1fr; }
+      .contact-options{ grid-template-columns:1fr; gap:2rem; }
+      .contact{ padding:4rem 1.5rem; }
+      .contact-form{ padding:2rem 1.5rem; max-width:100%; }
+      .calendar-box{ padding:2rem 1.5rem; max-width:100%; }
+      .calc-box{ padding:2rem 1.5rem; }
+      .calc-results{ grid-template-columns:1fr; gap:1.5rem; }
+      .calc-result-value{ font-size:2.5rem; }
+      .calc-total-value{ font-size:3rem; }
+      .gallery-grid{ grid-template-columns:1fr; }
+      .sticky-cta-content{ flex-direction:column; text-align:center; }
+      .sticky-cta-buttons{ width:100%; flex-direction:column; }
+      .sticky-phone,.sticky-book{ width:100%; }
+      .search-box{ flex-direction:column; }
+      .hard-hat-icon{ align-self:flex-start; }
+      
+      /* Fix mobile overflow issues */
+      .contact-form input,
+      .contact-form textarea,
+      .form-group input,
+      .form-group textarea{ width:100%; max-width:100%; box-sizing:border-box; }
+      .contact-form, .calendar-box{ overflow:hidden; }
+      .cta-primary{ padding:1rem 2rem; font-size:1.25rem; word-wrap:break-word; }
+      .footer-section p, .footer-section a{ word-wrap:break-word; overflow-wrap:break-word; }
+      
+      /* Make AI search textarea bigger and more prominent */
+      .ai-helper .search-input,
+      #aiSearch{ 
+        min-height:180px !important; 
+        height:180px !important;
+        width:100% !important;
+        max-width:100% !important;
+        font-size:1.125rem !important; 
+        padding:1.25rem !important;
+        flex:none !important;
+      }
+      .ai-helper .search-btn{ 
+        padding:1rem 1.5rem !important; 
+        width:100% !important;
+        white-space:normal !important;
+      }
+      .ai-helper .search-box{ width:100%; }
+      
+      /* Show close button on sticky CTA on mobile only */
       .sticky-cta-close{ display:flex !important; }
+      
+      /* Footer credit line break on mobile */
+      .footer-break-mobile{ display:inline; }
     }
 
-    /* Small fade-up helper */
-    .fade-up{ opacity:0; transform:translateY(22px); transition:all .7s ease; }
+    /* Animations helper */
+    .fade-up{ opacity:0; transform:translateY(30px); transition:all .8s ease; }
     .fade-up.visible{ opacity:1; transform:translateY(0); }
   </style>
 </head>
 <body>
-
   <!-- Sticky CTA -->
   <div class="sticky-cta" id="stickyCta">
     <button class="sticky-cta-close" onclick="closeStickyCta()" aria-label="Close">✕</button>
     <div class="sticky-cta-content">
-      <div class="sticky-cta-text">Stop wasting money on unused software • <span>Most save $50K+/year</span></div>
+      <div class="sticky-cta-text">
+        Stop wasting money on unused software • <span>Most save $50K+/year</span>
+      </div>
       <div class="sticky-cta-buttons">
         <a href="tel:6093183470" class="sticky-phone">📞 609-318-3470</a>
         <a href="#contact" class="sticky-book">Get the Free Assessment</a>
@@ -462,94 +695,198 @@
     </div>
   </header>
 
-  <!-- HERO (AI + Calculator FIRST, then light CTA bits) -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1>Cut IT Costs <span class="hero-number">30%</span></h1>
-      <p class="hero-subtitle">Construction companies waste money on software they don't use. We fix the business side.</p>
-      <div class="badge">Vendor-neutral • Cost-First™</div>
+      <p class="hero-subtitle">Construction companies waste money on software they don't use.</p>
+      <div class="badge">We don't take commissions from software vendors • Cost-First™</div>
 
-      <!-- Top-of-page tools -->
+      <!-- MOVED TO TOP: AI Helper and Calculator -->
       <div class="hero-grid">
         <!-- AI Helper -->
         <div class="ai-helper">
           <h3>Describe your specific challenge:</h3>
           <div class="search-box">
             <div class="hard-hat-icon">🏗️</div>
-            <textarea id="aiSearch" class="search-input" rows="3"
-              placeholder="Examples: 'Too many Procore permissions', 'Bid handoff chaos', 'Timesheets don't match WIP'"></textarea>
-            <button class="search-btn" onclick="handleSearch()">Ask AI</button>
+            <textarea
+              id="aiSearch"
+              class="search-input"
+              placeholder="Examples: 'Our subs send wrong bids,' 'Too many Procore permissions,' 'Timesheets don't match work-in-progress report (WIP)'"
+              rows="5"
+              aria-label="Describe your challenge"
+            ></textarea>
+            <button class="search-btn" onclick="handleSearch()">
+              Ask AI
+              <span class="search-hint">Press Enter</span>
+            </button>
           </div>
 
-          <div class="suggestions" style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.75rem;">
-            <button class="problem-btn" style="padding:.4rem .75rem; font-weight:700;" onclick="fillSearch('Procore setup help')">Procore setup</button>
-            <button class="problem-btn" style="padding:.4rem .75rem; font-weight:700;" onclick="fillSearch('Standardize systems & SOPs')">Standardize SOPs</button>
-            <button class="problem-btn" style="padding:.4rem .75rem; font-weight:700;" onclick="fillSearch('License cleanup and cost control')">License cleanup</button>
+          <div class="suggestions">
+            <button class="chip" onclick="fillSearch('Need to standardize systems')">Standardize systems</button>
+            <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
+            <button class="chip" onclick="fillSearch('Bid handoff chaos')">Bid handoff</button>
+            <button class="chip" onclick="fillSearch('Cost control')">Cost control</button>
+            <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
+            <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
+            <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
+            <button class="chip" onclick="fillSearch('Document chaos')">Documents</button>
           </div>
 
           <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
-          <p style="font-size:.8rem; color:rgba(255,255,255,.7); margin-top:.5rem;"><strong>Privacy:</strong> We translate plain language to a plan. We don’t store or share queries.</p>
+          <p class="ai-privacy">We translate plain language to a plan. We don't store or share queries.</p>
         </div>
 
         <!-- Mini Calculator in Hero -->
         <div class="hero-calculator">
-          <h3 style="color:#fff; margin-bottom:1rem; font-size:1.1rem; font-weight:800;">Calculate Your Waste</h3>
-          <div style="margin-bottom:1rem;">
-            <label class="calc-label">Annual Revenue</label>
+          <h3 style="color:#fff; margin-bottom:1.5rem; font-size:1.2rem; font-weight:600;">Calculate Your Waste</h3>
+
+          <div style="margin-bottom:1.5rem;">
+            <label class="calc-label" style="font-size:1rem; margin-bottom:.5rem; display:block;">Annual Revenue</label>
             <div class="calc-input-wrapper">
               <input type="range" id="revenueSliderHero" class="calc-slider" min="1000000" max="1000000000" step="1000000" value="10000000" oninput="updateHeroCalculator()">
               <div class="calc-value" id="revenueDisplayHero">$10M</div>
             </div>
           </div>
-          <div style="margin-bottom:1rem;">
-            <label class="calc-label">Project Managers / Estimators</label>
+
+          <div style="margin-bottom:1.5rem;">
+            <label class="calc-label" style="font-size:1rem; margin-bottom:.5rem; display:block;">Project Managers / Estimators</label>
             <div class="calc-input-wrapper">
               <input type="range" id="teamSliderHero" class="calc-slider" min="1" max="500" step="1" value="5" oninput="updateHeroCalculator()">
               <div class="calc-value" id="teamDisplayHero">5</div>
             </div>
           </div>
-          <div class="calc-total-hero">
-            <div class="label">Total Annual Waste</div>
-            <div class="value" id="totalOpportunityHero">$0</div>
+
+          <div style="background:rgba(255,255,255,.1); border:2px solid rgba(246,167,1,.3); border-radius:12px; padding:1.5rem; text-align:center; margin-bottom:1rem;">
+            <div style="font-size:.85rem; color:rgba(255,255,255,.7); margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em;">Total Annual Waste</div>
+            <div style="font-size:2.5rem; font-weight:900; color:var(--amber); line-height:1;" id="totalOpportunityHero">$0</div>
           </div>
-          <a href="#contact" class="problem-btn" style="display:block;">Get the Free Assessment</a>
+
+          <a href="#contact" style="display:block; background:var(--amber); color:var(--navy); padding:.875rem 2rem; border-radius:8px; text-decoration:none; font-weight:800; text-align:center; font-size:1rem; transition:all .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Get the Free Assessment</a>
+
+          <div style="margin-top:1rem; padding:1rem; background:rgba(0,204,255,.1); border-radius:8px; border:1px solid rgba(0,204,255,.2);">
+            <details>
+              <summary style="cursor:pointer; font-weight:600; color:#fff; font-size:.85rem;">ℹ️ How is this calculated?</summary>
+              <div style="margin-top:.75rem; color:rgba(255,255,255,.85); font-size:.75rem; line-height:1.6;">
+                <strong>Software:</strong> Revenue × 0.10%<br>
+                <strong>Process:</strong> PMs × 7.5 hrs/week × 52 × $100/hr<br>
+                <em style="opacity:.7;">Based on 5–10 hrs/week of avoidable friction per PM (searching docs, duplicate entry, status chasing)</em>
+              </div>
+            </details>
+          </div>
+
+          <p style="font-size:.75rem; color:rgba(255,255,255,.5); text-align:center; margin-top:1rem; font-style:italic;">
+            Based on 0.10% revenue software waste + 7.5 hrs/week process friction per PM
+          </p>
         </div>
       </div>
 
-      <!-- Light CTA items (kept brief to avoid repetition) -->
-      <div class="urgency-badge">⚡ Only 3 assessment slots available this month</div>
+      <div class="video-section">
+        <h3 style="margin-bottom:1.5rem; font-size:1.5rem;">See How We Cut Software Waste in 2 Weeks</h3>
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&rel=0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="How We Cut Construction IT Costs">
+          </iframe>
+        </div>
+      </div>
 
-      <div class="problem-buttons" style="margin-top:.25rem;">
-        <a href="#solution" class="problem-btn">See the Approach</a>
-        <a href="#cases" class="problem-btn">See Results</a>
-        <a href="#contact" class="problem-btn">Talk to a Human</a>
+      <div class="hero-cta-buttons">
+        <a href="tel:6093183470" class="cta-primary">📞 Call Now: 609-318-3470</a>
+        <a href="#calculator" class="cta-secondary">See Detailed Breakdown</a>
       </div>
     </div>
   </section>
 
-  <!-- “Proof” (logos removed). Add a construction photo strip instead. -->
-  <section class="proof">
-    <div class="proof-content">
-      <h3 class="proof-title">Commercial & industrial experience</h3>
-      <p class="proof-text">
-        Borrowing real shots from Byers and Stable Works helps visitors feel “we’re in the right place—these folks know construction and IT.”
-        Replace the placeholders below with your photos.
+  <!-- Photo Gallery Section - NEW -->
+  <section class="photo-gallery">
+    <div class="gallery-content">
+      <h3 class="gallery-title">We Know Construction IT</h3>
+      <p class="gallery-subtitle">
+        From active jobsites to executive offices—we understand your business because we've been there.
       </p>
 
-      <div class="photo-strip">
-        <figure class="photo">
-          <img src="assets/img/byers-bridge-01.jpg" alt="Byers crew staging on a marine/bridge job" loading="lazy" decoding="async">
-          <figcaption>Byers — Bridge / Marine</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="assets/img/stableworks-crew-01.jpg" alt="Stable Works team on site with tools and PPE" loading="lazy" decoding="async">
-          <figcaption>Stable Works — Field Team</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="assets/img/byers-yard-01.jpg" alt="Byers yard & equipment" loading="lazy" decoding="async">
-          <figcaption>Byers — Yard & Equipment</figcaption>
-        </figure>
+      <div class="gallery-grid">
+        <!-- Photo 1: Construction site overview -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-site-1.jpg' with your actual image path -->
+          <img src="images/construction-site-1.jpg" alt="Construction site with project manager reviewing plans" loading="lazy">
+          <div class="gallery-caption">
+            <h4>On-Site Project Management</h4>
+            <p>We've worked directly with PMs and superintendents on active jobsites, understanding real workflow challenges.</p>
+          </div>
+        </div>
+
+        <!-- Photo 2: Team meeting or collaboration -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/team-meeting.jpg' with your actual image path -->
+          <img src="images/team-meeting.jpg" alt="Construction team collaborating in office" loading="lazy">
+          <div class="gallery-caption">
+            <h4>Office to Field Coordination</h4>
+            <p>Bridging the gap between estimating, project management, and field operations with unified systems.</p>
+          </div>
+        </div>
+
+        <!-- Photo 3: Technology/equipment -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-tech.jpg' with your actual image path -->
+          <img src="images/construction-tech.jpg" alt="Modern construction technology and equipment" loading="lazy">
+          <div class="gallery-caption">
+            <h4>Technology Implementation</h4>
+            <p>From Procore to custom dashboards—we implement tools that construction teams actually use.</p>
+          </div>
+        </div>
+
+        <!-- Photo 4: Commercial building project -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/commercial-project.jpg' with your actual image path -->
+          <img src="images/commercial-project.jpg" alt="Large commercial construction project" loading="lazy">
+          <div class="gallery-caption">
+            <h4>Commercial Scale Expertise</h4>
+            <p>Experience with projects ranging from $1M to $100M+ across commercial and industrial sectors.</p>
+          </div>
+        </div>
+
+        <!-- Photo 5: Superintendent or foreman -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/field-leader.jpg' with your actual image path -->
+          <img src="images/field-leader.jpg" alt="Construction superintendent on jobsite" loading="lazy">
+          <div class="gallery-caption">
+            <h4>Field-Tested Solutions</h4>
+            <p>Our implementations work in the real world—rugged tablets, mobile apps, and offline-capable systems.</p>
+          </div>
+        </div>
+
+        <!-- Photo 6: Business owner/executive -->
+        <div class="gallery-item fade-up">
+          <!-- REPLACE 'images/construction-executive.jpg' with your actual image path -->
+          <img src="images/construction-executive.jpg" alt="Construction business owner in office" loading="lazy">
+          <div class="gallery-caption">
+            <h4>Executive-Level Strategy</h4>
+            <p>We speak the language of owners and CFOs—ROI, cost reduction, and strategic technology planning.</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Proof (simplified - removed logo wall) -->
+  <section class="proof">
+    <div class="proof-content">
+      <h3 class="proof-title">Construction-first, not tool-first</h3>
+      <div class="proof-badges">
+        <span class="badge-item">✓ Commercial GC</span>
+        <span class="badge-item">✓ Specialty Trades</span>
+        <span class="badge-item">✓ Developers</span>
+        <span class="badge-item">Procore Certified</span>
+      </div>
+
+      <p class="proof-text">
+        We've led process work on active jobsites across GC and specialty trades. Procore-ready, BuildingConnected-fluent, and vendor-neutral.
+      </p>
+      <p class="proof-note">We coordinate with your managed IT provider (MSP) to fix the business side</p>
     </div>
   </section>
 
@@ -560,29 +897,31 @@
         <div>
           <h2>You're overpaying</h2>
           <div class="stat-box">
-            <div class="stat fade-up" style="border-left:4px solid var(--amber);">
-              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.35rem; font-weight:700;">$10M Revenue • 5 PMs</div>
+            <div class="stat fade-up" style="background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%); border-left:4px solid var(--amber);">
+              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.5rem; font-weight:600;">$10M Revenue • 5 PMs</div>
               <div class="stat-number">$530K</div>
               <div class="stat-text">Annual waste</div>
             </div>
-            <div class="stat fade-up" style="border-left:4px solid var(--cyan);">
-              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.35rem; font-weight:700;">$50M Revenue • 15 PMs</div>
+            <div class="stat fade-up" style="background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%); border-left:4px solid var(--cyan);">
+              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.5rem; font-weight:600;">$50M Revenue • 15 PMs</div>
               <div class="stat-number">$1.6M</div>
               <div class="stat-text">Annual waste</div>
             </div>
-            <div class="stat fade-up" style="border-left:4px solid var(--navy);">
-              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.35rem; font-weight:700;">$100M Revenue • 25 PMs</div>
+            <div class="stat fade-up" style="background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%); border-left:4px solid var(--navy);">
+              <div style="font-size:.9rem; color:var(--gray); margin-bottom:.5rem; font-weight:600;">$100M Revenue • 25 PMs</div>
               <div class="stat-number">$2.7M</div>
               <div class="stat-text">Annual waste</div>
             </div>
           </div>
         </div>
-        <div class="visual-box fade-up">💸</div>
+        <!-- REPLACED emoji with photo -->
+        <!-- REPLACE 'images/wasted-money-construction.jpg' with your actual image -->
+        <img src="images/wasted-money-construction.jpg" alt="Construction project management showing cost inefficiency" class="problem-image fade-up">
       </div>
     </div>
   </section>
 
-  <!-- Calculator (unchanged content) -->
+  <!-- Calculator -->
   <section class="calculator" id="calculator">
     <div class="container">
       <div class="calc-wrapper">
@@ -628,48 +967,63 @@
           </div>
 
           <div class="calc-cta">
-            <a href="#contact" class="price-cta">Get the Free Assessment</a>
+            <a href="#contact" class="cta-primary">Get the Free Assessment</a>
           </div>
 
           <p class="calc-disclaimer">
-            Estimates based on industry benchmarks: 0.10% of revenue (range: 0.08–0.19%) to direct software waste; 7.5 hrs/week avoidable friction per PM/Estimator at $100/hr; 2% revenue potential from better communication; 3% revenue potential from reduced rework and better planning.
+            Estimates based on industry benchmarks: 0.10% of revenue (range: 0.08–0.19%) to direct software waste from unused licenses and redundant tools;
+            7.5 hrs/week avoidable friction per PM/Estimator at $100/hr (range: 5–10 hrs/week from searching for info, duplicate entry, status updates, and rework);
+            2% revenue potential from better communication; 3% revenue potential from reduced rework and better planning.
           </p>
+
+          <div style="margin-top:2rem; padding:1.5rem; background:rgba(0,204,255,.1); border-radius:12px; border-left:4px solid var(--cyan);">
+            <details>
+              <summary style="cursor:pointer; font-weight:700; color:#fff; font-size:1rem; margin-bottom:0;">📊 How We Calculate This (Click to Expand)</summary>
+              <div style="margin-top:1rem; color:rgba(255,255,255,.9); font-size:.9rem; line-height:1.7;">
+                <p style="margin-bottom:1rem;"><strong>Software Waste Formula:</strong><br/>Revenue × 0.10% = Direct license waste<br/><em>Example: $250M × 0.001 = $250K/year in unused software</em></p>
+                <p style="margin-bottom:1rem;"><strong>Process Waste Formula:</strong><br/>PMs × 7.5 hrs/week × 52 weeks × $100/hr = Process friction cost<br/><em>Example: 100 PMs × 7.5 × 52 × $100 = $3.9M/year in wasted time</em></p>
+                <p style="margin-bottom:1rem;"><strong>Why 7.5 hours per week?</strong><br/>Industry research shows PMs spend 5–10 hrs/week on avoidable friction: searching for documents, duplicate data entry, chasing status updates, fixing handoff errors. We use the midpoint (7.5 hrs) for conservative estimates.</p>
+                <p style="margin-bottom:0;"><strong>Total Opportunity:</strong><br/>Software Waste + Process Waste + Communication Gains (2% revenue) + Tool Optimization (3% revenue)<br/><em>This is the full potential value of fixing your IT and process issues.</em></p>
+              </div>
+            </details>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Solution (less repetitive) -->
+  <!-- Solution (kept simple - "Three things") -->
   <section class="solution" id="solution">
     <div class="container">
-      <h2 class="section-title">Our approach</h2>
-      <p class="subtitle">Simple, repeatable, construction-first.</p>
+      <h2 class="section-title">Three things</h2>
+      <p class="subtitle">Nothing else.</p>
 
       <div class="cards">
         <div class="card fade-up">
           <span class="card-emoji">🔍</span>
           <h3>Audit</h3>
-          <p>Systems, licenses, workflows, handoffs.</p>
+          <p>Find the waste</p>
         </div>
         <div class="card fade-up">
           <span class="card-emoji">⚡</span>
           <h3>Fix</h3>
-          <p>Cut waste, standardize SOPs, right-size tools.</p>
+          <p>Cut it, keep what works</p>
         </div>
         <div class="card fade-up">
           <span class="card-emoji">📈</span>
-          <h3>Adopt</h3>
-          <p>Field-ready training and accountability.</p>
+          <h3>Optimize</h3>
+          <p>Make teams use it</p>
         </div>
       </div>
 
       <div class="card promise-card fade-up">
         <h3>Cost-First™ Promise</h3>
         <ul class="promise-list">
-          <li>No vendor commissions—ever.</li>
-          <li>Recommend the cheapest option that meets requirements.</li>
-          <li>If the assessment can’t show a hard ROI, don’t proceed.</li>
+          <li>We don't take commissions from software vendors</li>
+          <li>We recommend the cheapest option that meets requirements</li>
+          <li>If the assessment can't show at least 10% savings or a hard ROI, you don't proceed</li>
         </ul>
+        <div class="what-we-dont"><strong>What we don't do:</strong> Network support, one-off IT troubleshooting, reselling software, residential work</div>
       </div>
     </div>
   </section>
@@ -678,7 +1032,7 @@
   <section class="assessment">
     <div class="container">
       <h2 class="section-title">Assessment</h2>
-      <p class="assessment-subtitle">Two weeks. Deliverables you can act on.</p>
+      <p class="assessment-subtitle">2 weeks. Here's what you get:</p>
 
       <div class="assessment-content">
         <div class="deliverables">
@@ -686,10 +1040,10 @@
           <div class="deliverable-item fade-up">License & cost table</div>
           <div class="deliverable-item fade-up">Waste report</div>
           <div class="deliverable-item fade-up">Keep / Cut / Add plan</div>
-          <div class="deliverable-item fade-up">SOPs & handoff gaps</div>
-          <div class="deliverable-item fade-up">Target KPIs</div>
+          <div class="deliverable-item fade-up">Standard operating procedures (SOPs) & handoff gaps</div>
+          <div class="deliverable-item fade-up">Target metrics (KPIs)</div>
           <div class="deliverable-item fade-up">Phased roadmap</div>
-          <div class="deliverable-item fade-up">Executive summary</div>
+          <div class="deliverable-item fade-up">Executive summary for owners/board</div>
         </div>
       </div>
     </div>
@@ -716,6 +1070,9 @@
             <li>Streamlined bid process for complex projects</li>
           </ul>
           <div class="case-result"><span>$1,000,000</span> Contract Awarded</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "Client was having estimating and quoting issues that were taking days or weeks to complete. We built a custom tool and workflow, cleansed their data, and enabled them to quote large jobs in a matter of minutes. This efficiency allowed them to successfully bid on and win a $1,000,000 contract."
+          </p>
         </div>
 
         <div class="case-card fade-up">
@@ -734,6 +1091,10 @@
             <li>Positioned company for increased revenue</li>
           </ul>
           <div class="case-result"><span>$100K+</span> Saved in Phase 1</div>
+          <p style="margin-top:1.5rem; font-style:italic; color:var(--gray); font-size:.95rem;">
+            "The Cecola Development team has made impactful suggestions to the tools our 200+ person team uses saving us well over hundreds of thousands of dollars in their first phase. Their suggestions also helped us communicate better which ultimately will save us time but more importantly help us communicate better to increase our revenue."
+            <strong style="display:block; margin-top:.5rem; color:var(--navy); font-style:normal;">— Eric Quidort, Principal, Triumph Atlantic</strong>
+          </p>
         </div>
       </div>
     </div>
@@ -743,28 +1104,28 @@
   <section class="how" id="how">
     <div class="container">
       <h2 class="section-title">How it works</h2>
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step-num">1</div>
-          <h3>Audit</h3>
-          <p>2-week assessment</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">2</div>
-          <h3>Fix</h3>
-          <p>Cut waste, implement</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">3</div>
-          <h3>Train</h3>
-          <p>Get adoption</p>
-        </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Audit</h3>
+        <p>2-week assessment</p>
       </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <h3>Fix</h3>
+        <p>Cut waste, implement</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <h3>Train</h3>
+        <p>Get adoption</p>
+      </div>
+    </div>
 
-      <div class="training-note fade-up">
-        <h4>Training & adoption</h4>
-        <p>Specific paths for PMs, PEs, Supers, and Foremen—quick guides, 30/60/90 follow-ups, skills checks.</p>
-      </div>
+    <div class="training-note fade-up">
+      <h4>Training & getting the team to use the tools consistently</h4>
+      <p>Training paths for Project Managers, Project Engineers, Superintendents, and Foremen—office and field. Quick guides, follow-ups at 30/60/90 days, and skills checks.</p>
+    </div>
     </div>
   </section>
 
@@ -806,7 +1167,7 @@
           <div class="price-value">$3K</div>
           <div class="price-term">Per month</div>
           <ul class="price-features">
-            <li>Fractional CIO</li>
+            <li>Part-time head of IT (Fractional CIO)</li>
             <li>Strategic guidance</li>
             <li>Vendor management</li>
             <li>On-demand support</li>
@@ -816,7 +1177,7 @@
       </div>
 
       <div class="pricing-notes">
-        <strong>Fixed scope</strong> • Purchases billed by vendors directly • No markups • Milestone billing • Pause/cancel between phases
+        <strong>Fixed scope</strong> • Any tool purchases billed by vendors directly • No markups • Milestone billing • Pause/cancel between phases
       </div>
     </div>
   </section>
@@ -854,8 +1215,8 @@
         <div class="calendar-box">
           <h3>Book a Call</h3>
           <p>Schedule directly on our calendar</p>
-          <a href="mailto:info@cecoladevelopment.com" class="price-cta" style="text-decoration:none;">info@cecoladevelopment.com</a>
-          <p style="margin-top:1rem; font-size:.95rem;">Or call: <strong>609-318-3470</strong></p>
+          <a href="mailto:info@cecoladevelopment.com" class="cta-primary" style="padding:1rem 2rem; border-radius:12px; text-decoration:none;">info@cecoladevelopment.com</a>
+          <p style="margin-top:1.5rem; font-size:.9rem;">Or call: <strong style="color:var(--amber);">609-318-3470</strong></p>
         </div>
       </div>
     </div>
@@ -867,21 +1228,24 @@
       <div class="footer-section">
         <h4>Cecola Development — DOGE Work</h4>
         <p>Independent IT consulting for commercial and industrial construction.</p>
-        <p style="margin-top:.6rem;">Philadelphia, PA Region • Serving US Commercial Construction</p>
+        <p style="margin-top:1rem;">Philadelphia, PA Region<br/>Serving US Commercial Construction</p>
       </div>
+
       <div class="footer-section">
         <h4>Services</h4>
         <a href="#solution">Software audit</a>
-        <a href="#solution">Workflow mapping & SOPs</a>
+        <a href="#solution">Workflow Mapping & standard operating procedures (SOPs)</a>
         <a href="#solution">Implementation & Training</a>
-        <a href="#pricing">Fractional CIO</a>
+        <a href="#pricing">Part-time head of IT (Fractional CIO)</a>
       </div>
+
       <div class="footer-section">
         <h4>Company</h4>
         <a href="#how">How We Work</a>
         <a href="#cases">Case Studies</a>
         <a href="#pricing">Pricing</a>
       </div>
+
       <div class="footer-section">
         <h4>Contact</h4>
         <a href="mailto:info@cecoladevelopment.com">info@cecoladevelopment.com</a>
@@ -892,42 +1256,42 @@
     <div class="footer-bottom">
       <p>© 2025 Cecola Development LLC. Independent IT consulting for construction growth. All rights reserved.</p>
       <p class="footer-dev-credit">
-        <span class="footer-dev-text">Custom Web Development</span> powered by
-        <a href="https://www.reddoormarketingco.com" target="_blank" rel="noopener noreferrer" style="color:var(--amber); font-weight:700;"> Red Door Marketing Co</a>
+        <span class="footer-dev-text">Custom Web Development</span> powered by<br class="footer-break-mobile"> 
+        <a href="https://www.reddoormarketingco.com" target="_blank" rel="noopener noreferrer" class="footer-dev-link">Red Door Marketing Co</a>
       </p>
     </div>
   </footer>
 
   <script>
-    /* money helpers */
+    // Money helpers (K/M/B)
     function formatMoney(amount){
-      if(amount>=1_000_000_000) return '$'+(amount/1_000_000_000).toFixed(1)+'B';
-      if(amount>=1_000_000) return '$'+(amount/1_000_000).toFixed(1)+'M';
-      if(amount>=1_000) return '$'+(amount/1_000).toFixed(0)+'K';
+      if(amount>=1000000000){ return '$'+(amount/1000000000).toFixed(1)+'B'; }
+      if(amount>=1000000){ return '$'+(amount/1000000).toFixed(1)+'M'; }
+      if(amount>=1000){ return '$'+(amount/1000).toFixed(0)+'K'; }
       return '$'+amount.toFixed(0);
     }
     function formatRevenue(amount){
-      if(amount>=1_000_000_000) return '$'+(amount/1_000_000_000).toFixed(1)+'B';
-      if(amount>=1_000_000) return '$'+(amount/1_000_000).toFixed(0)+'M';
-      return '$'+(amount/1_000).toFixed(0)+'K';
+      if(amount>=1000000000){ return '$'+(amount/1000000000).toFixed(1)+'B'; }
+      if(amount>=1000000){ return '$'+(amount/1000000).toFixed(0)+'M'; }
+      return '$'+(amount/1000).toFixed(0)+'K';
     }
 
-    /* hero calculator */
+    // Hero mini calculator
     function updateHeroCalculator(){
-      const revenue=+document.getElementById('revenueSliderHero').value;
-      const teamSize=+document.getElementById('teamSliderHero').value;
+      const revenue=parseInt(document.getElementById('revenueSliderHero').value);
+      const teamSize=parseInt(document.getElementById('teamSliderHero').value);
       document.getElementById('revenueDisplayHero').textContent=formatRevenue(revenue);
       document.getElementById('teamDisplayHero').textContent=teamSize;
-      const softwareWaste=revenue*0.0010; // 0.10%
-      const processWaste=teamSize*7.5*52*100; // hours * weeks * rate
+      const softwareWaste=revenue*0.0010; // 0.10% direct software waste
+      const processWaste=teamSize*7.5*52*100; // 7.5hrs/wk @ $100
       const totalWaste=softwareWaste+processWaste;
       document.getElementById('totalOpportunityHero').textContent=formatMoney(totalWaste);
     }
 
-    /* detailed calculator */
+    // Detailed calculator
     function updateCalculator(){
-      const revenue=+document.getElementById('revenueSlider').value;
-      const teamSize=+document.getElementById('teamSlider').value;
+      const revenue=parseInt(document.getElementById('revenueSlider').value);
+      const teamSize=parseInt(document.getElementById('teamSlider').value);
       document.getElementById('revenueDisplay').textContent=formatRevenue(revenue);
       document.getElementById('teamDisplay').textContent=teamSize;
 
@@ -938,6 +1302,7 @@
       const communicationGains=revenue*0.02;
       const toolGains=revenue*0.03;
       const totalGains=communicationGains+toolGains;
+
       const totalOpportunity=totalWaste+totalGains;
 
       document.getElementById('wasteAmount').textContent=formatMoney(totalWaste);
@@ -950,71 +1315,136 @@
       updateCalculator();
     });
 
-    /* sticky CTA reveal / hide near footer */
+    // Sticky CTA reveal (hide when near footer)
     window.addEventListener('scroll', function(){
       const stickyCta=document.getElementById('stickyCta');
       const footer=document.querySelector('footer');
       const footerTop=footer.offsetTop;
-      const viewportBottom=window.scrollY + window.innerHeight;
-      if(window.scrollY>800 && viewportBottom < footerTop + 100){
+      const scrollPosition=window.scrollY + window.innerHeight;
+      
+      // Show sticky CTA after scrolling 800px, but hide when reaching footer
+      if(window.scrollY>800 && scrollPosition < footerTop + 100){
         stickyCta.classList.add('visible');
       } else {
         stickyCta.classList.remove('visible');
       }
     });
-    function closeStickyCta(){ document.getElementById('stickyCta').classList.add('hidden'); }
 
-    /* AI helper */
+    // Close sticky CTA (mobile)
+    function closeStickyCta(){
+      const stickyCta=document.getElementById('stickyCta');
+      stickyCta.classList.add('hidden');
+      stickyCta.classList.remove('visible');
+    }
+
+    // Simple AI keyword classifier
     const keywordGroups={
-      'workflow':{ keywords:['bid','estimat','handoff','sop','process','workflow','duplicate'], result:'Workflow Mapping & SOPs', section:'solution' },
-      'implementation':{ keywords:['procore','buildingconnected','plangrid','implement','setup','configure','permissions'], result:'Platform Implementation', section:'solution' },
-      'license':{ keywords:['cost','license','subscription','redundant','vendor','spend','expensive'], result:'License & Cost Optimization', section:'solution' },
-      'data':{ keywords:['dashboard','wip','job cost','report','analytics','kpi','timesheet'], result:'Data & Dashboards', section:'solution' },
-      'training':{ keywords:['adoption','training','field team','subs','won\'t use'], result:'Training & Adoption', section:'how' },
-      'documents':{ keywords:['document','docs','versioning','file','storage'], result:'Document Management', section:'solution' }
+      'workflow':{
+        keywords:['bid','estimat','handoff','sop','process','workflow','messy','chaotic','duplicate'],
+        result:'Workflow Mapping & standard operating procedures (SOPs)',
+        section:'solution'
+      },
+      'implementation':{
+        keywords:['procore','buildingconnected','plangrid','implement','setup','configure','platform','permissions'],
+        result:'Platform Implementation',
+        section:'solution'
+      },
+      'license':{
+        keywords:['cost','license','subscription','too many','redundant','vendor','spend','expensive'],
+        result:'License & Cost Optimization',
+        section:'solution'
+      },
+      'data':{
+        keywords:['dashboard','wip','job cost','report','analytics','data','kpi','timesheet','match'],
+        result:'Data & Dashboards',
+        section:'solution'
+      },
+      'training':{
+        keywords:['adoption','training','resistance','won\'t use','field team','subs'],
+        result:'Training & getting teams to use tools consistently',
+        section:'how'
+      },
+      'documents':{
+        keywords:['document','docs','versioning','file','storage'],
+        result:'Document Management',
+        section:'solution'
+      }
     };
+
     function handleSearch(){
       const input=document.getElementById('aiSearch');
       const query=input.value.toLowerCase().trim();
       const resultDiv=document.getElementById('aiResult');
       if(!query) return;
-      let best=null, score=0;
-      for(const data of Object.values(keywordGroups)){
-        let s=0; for(const k of data.keywords) if(query.includes(k)) s++;
-        if(s>score){ score=s; best=data; }
+
+      let bestMatch=null; let highestScore=0;
+      for(const [category,data] of Object.entries(keywordGroups)){
+        let score=0;
+        for(const keyword of data.keywords){ if(query.includes(keyword)) score++; }
+        if(score>highestScore){ highestScore=score; bestMatch=data; }
       }
-      if(best && score>0){
-        resultDiv.innerHTML=`<h4>Likely need: ${best.result}</h4><p>Here’s how we’d approach it.</p><div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;"><a href="#${best.section}" class="problem-btn">See solution</a><a href="#contact" class="problem-btn">Talk to a human</a></div>`;
-      } else {
-        resultDiv.innerHTML=`<h4>Let’s talk it through</h4><p>We’ll help diagnose and map next steps.</p><div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;"><a href="#contact" class="problem-btn">Get the free assessment</a></div>`;
+
+      if(bestMatch && highestScore>0){
+        resultDiv.innerHTML=`
+          <h4>Sounds like: ${bestMatch.result}</h4>
+          <p>We can help with that.</p>
+          <div class="ai-result-buttons">
+            <a href="#${bestMatch.section}" class="btn-small btn-primary-small">See Solution</a>
+            <a href="#contact" class="btn-small btn-secondary-small">Get the Free Assessment</a>
+          </div>`;
+      }else{
+        resultDiv.innerHTML=`
+          <h4>Let's talk about it</h4>
+          <p>We'll figure out what you need.</p>
+          <div class="ai-result-buttons">
+            <a href="#contact" class="btn-small btn-primary-small">Get the Free Assessment</a>
+          </div>`;
       }
       resultDiv.classList.add('show');
       input.value='';
     }
-    function fillSearch(text){ document.getElementById('aiSearch').value=text; handleSearch(); }
-    document.getElementById('aiSearch').addEventListener('keypress', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); handleSearch(); } });
 
-    /* contact form (demo) */
+    function fillSearch(text){
+      document.getElementById('aiSearch').value=text;
+      handleSearch();
+    }
+
+    // Enter to submit AI helper
+    document.getElementById('aiSearch').addEventListener('keypress', function(e){
+      if(e.key==='Enter' && !e.shiftKey){
+        e.preventDefault(); handleSearch();
+      }
+    });
+
+    // Auto-resize textarea
+    document.getElementById('aiSearch').addEventListener('input', function(){
+      this.style.height='auto';
+      this.style.height=Math.min(this.scrollHeight,200)+'px';
+    });
+
+    // Contact form
     function handleFormSubmit(e){
       e.preventDefault();
-      const data=Object.fromEntries(new FormData(e.target));
+      const formData=new FormData(e.target);
+      const data=Object.fromEntries(formData);
       console.log('Form submitted:', data);
-      alert('Thanks! We’ll be in touch within 24 hours.');
+      alert('Thank you! We\'ll be in touch within 24 hours.');
       e.target.reset();
     }
 
-    /* smooth scroll for anchor links */
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const target=document.querySelector(a.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
-      })
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+      anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        const target=document.querySelector(this.getAttribute('href'));
+        if(target){ target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+      });
     });
 
-    /* fade-up on scroll */
+    // Scroll animations
     const observer=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
-    }, { threshold:0.1, rootMargin:'0px 0px -80px 0px' });
+    }, { threshold:0.1, rootMargin:'0px 0px -100px 0px' });
     document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
   </script>
 </body>
