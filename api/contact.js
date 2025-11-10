@@ -43,17 +43,32 @@ const handler = async (req, res) => {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for 587
+      secure: process.env.SMTP_SECURE === 'true', // false for 587, true for 465
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
+      },
+      tls: {
+        minVersion: 'TLSv1.2'
       }
     });
 
+    // Verify connection
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified');
+    } catch (verifyError) {
+      console.error('SMTP verification failed:', verifyError);
+      return res.status(500).json({ 
+        error: 'Email service configuration error',
+        details: process.env.NODE_ENV === 'development' ? verifyError.message : undefined
+      });
+    }
+
     // Email content
     const mailOptions = {
-      from: process.env.SMTP_FROM || `"Cecola Development Website" <${process.env.TIP_FROM_EMAIL}>`,
-      to: process.env.TIP_TO_EMAIL,
+      from: `"Cecola Development Website" <${process.env.SMTP_USER}>`, // Must match SMTP_USER domain
+      to: process.env.TIP_TO_EMAIL || process.env.SMTP_USER, // Where to send the email
       replyTo: email, // When you reply, it goes to the form submitter
       subject: 'New Contact Form Submission - Cecola Development',
       text: `
@@ -117,12 +132,15 @@ From: cecoladevelopment.com
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    
+    console.log('Email sent successfully:', info.messageId);
 
     // Return success response
     return res.status(200).json({ 
       success: true, 
-      message: 'Email sent successfully' 
+      message: 'Email sent successfully',
+      messageId: info.messageId
     });
 
   } catch (error) {
@@ -135,3 +153,16 @@ From: cecoladevelopment.com
 };
 
 module.exports = allowCors(handler);
+```
+
+### **Step 3: Verify Your Vercel Environment Variables**
+
+Make sure you have ALL of these set in Vercel (Project Settings → Environment Variables):
+```
+SMTP_HOST=smtp.office365.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=sales@constructionmarket.org
+SMTP_PASS=Byers4040!
+TIP_TO_EMAIL=sales@constructionmarket.org
+TIP_FROM_EMAIL=sales@constructionmarket.org
