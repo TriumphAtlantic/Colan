@@ -174,14 +174,12 @@
     /* Video Background */
     .hero-video-bg{
       position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
-      opacity:.7 ; /* Adjust this value: 0.1 = very subtle, 0.5 = half visible, 1.0 = fully visible */
-      z-index:1;
+      opacity:.7 ; z-index:1;
     }
     
     /* Dark overlay to ensure text readability */
     .hero::before{
       content:''; position:absolute; top:0; left:0; right:0; bottom:0;
-      /* Adjust the 0.85 value to make overlay darker (0.95) or lighter (0.7) */
       background:linear-gradient(135deg,rgba(11,27,52,0.6) 0%,rgba(31,51,88,0.6) 100%);
       z-index:2;
     }
@@ -208,47 +206,21 @@
 
     .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1400px; margin:0 auto 3rem; }
 
-    /* ---------- AI Helper (improved) ---------- */
+    /* ---------- AI Helper (Chat Interface Style) ---------- */
     .ai-helper{
-      background:rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.95);
       backdrop-filter:blur(20px);
-      border-radius:16px;
-      padding:2rem;
+      border-radius:24px;
+      padding:3rem 2.5rem;
       position:relative;
       overflow:hidden;
-
-      /* Animated gradient border */
-      border:2px solid transparent;
-      background-clip:padding-box;
-
-      /* Glow */
-      box-shadow:
-        0 8px 32px rgba(0,204,255,0.25),
-        0 0 60px rgba(0,204,255,0.15),
-        inset 0 0 0 1px rgba(0,204,255,0.2);
-
-      transition:all .4s cubic-bezier(0.4,0,0.2,1);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 8px 32px rgba(0,0,0,.12);
+      transition:all .3s ease;
     }
-    .ai-helper::before{
-      content:''; position:absolute; inset:0; border-radius:16px; padding:2px;
-      background:linear-gradient(135deg, rgba(0,204,255,.8), rgba(0,204,255,.2), rgba(0,204,255,.8));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite:xor; mask-composite:exclude;
-      animation:borderRotate 3s linear infinite; pointer-events:none;
-    }
-    @keyframes borderRotate{ 0%{ transform:rotate(0) } 100%{ transform:rotate(360deg) } }
-    .ai-helper::after{
-      content:''; position:absolute; inset:-50%;
-      background:radial-gradient(circle at center, rgba(0,204,255,.15) 0%, transparent 70%);
-      animation:pulse 4s ease-in-out infinite; pointer-events:none;
-    }
-    @keyframes pulse{ 0%,100%{ opacity:.5; transform:scale(1) } 50%{ opacity:1; transform:scale(1.1) } }
     .ai-helper:hover{
-      box-shadow:
-        0 12px 48px rgba(0,204,255,.35),
-        0 0 80px rgba(0,204,255,.2),
-        inset 0 0 0 1px rgba(0,204,255,.3);
-      transform:translateY(-4px);
+      box-shadow:0 12px 48px rgba(0,0,0,.18);
+      transform:translateY(-2px);
     }
 
     .hero-calculator{
@@ -258,87 +230,162 @@
     }
 
     .ai-helper h3{
-      color:#fff; margin-bottom:1rem; font-size:1.2rem; font-weight:600;
-      position:relative; z-index:1; display:flex; align-items:center; gap:.75rem;
-    }
-    .ai-helper h3::before{ content:'✨'; font-size:1.5rem; animation:sparkle 2s ease-in-out infinite; }
-    @keyframes sparkle{
-      0%,100%{ opacity:1; transform:scale(1) rotate(0) }
-      50%{ opacity:.7; transform:scale(1.1) rotate(10deg) }
+      color:var(--navy);
+      margin-bottom:2rem;
+      font-size:2rem;
+      font-weight:400;
+      position:relative;
+      z-index:1;
+      text-align:center;
     }
 
-    .search-box{ display:flex; gap:.75rem; margin-bottom:1rem; align-items:flex-start; position:relative; z-index:1; }
-
-    .hard-hat-icon{
-      width:60px; height:60px;
-      background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
-      border-radius:12px; display:flex; align-items:center; justify-content:center;
-      font-size:2rem; flex-shrink:0;
-      box-shadow:0 4px 16px rgba(246,167,1,.4), inset 0 1px 0 rgba(255,255,255,.3);
-      transition:all .3s ease;
+    .search-box-wrapper{
+      position:relative;
+      margin-bottom:1.5rem;
     }
-    .hard-hat-icon:hover{ transform:rotate(-10deg) scale(1.1); box-shadow:0 6px 24px rgba(246,167,1,.5), inset 0 1px 0 rgba(255,255,255,.3); }
+
+    .search-box-container{
+      display:flex;
+      align-items:center;
+      background-color:#ffffff;
+      border:1px solid #d1d5db;
+      border-radius:24px;
+      padding:12px 20px;
+      transition:all .2s ease;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);
+    }
+
+    .search-box-container:focus-within{
+      border-color:#9ca3af;
+      box-shadow:0 4px 6px rgba(0,0,0,.07);
+    }
+
+    .icon-button{
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#6b7280;
+      transition:color .2s ease;
+      flex-shrink:0;
+    }
+
+    .icon-button:hover{ color:var(--navy); }
+    .icon-button svg{ width:20px; height:20px; }
 
     .search-input{
-      flex:1; padding:1.25rem; border:2px solid rgba(255,255,255,.3); border-radius:12px;
-      font-size:1.125rem; font-family:'Inter',sans-serif; background:rgba(255,255,255,.95); color:var(--navy);
-      resize:none; min-height:120px; line-height:1.6; transition:all .3s ease; max-width:100%;
-    }
-    .search-input::placeholder{ color:var(--gray); font-size:1rem; opacity:0.8; }
-    .search-input:focus{
-      border-color:var(--cyan);
-      box-shadow:0 0 0 3px rgba(0,204,255,.2), 0 4px 12px rgba(0,204,255,.15);
-      background:#fff;
+      flex:1;
+      border:none;
+      outline:none;
+      font-size:1rem;
+      padding:0 16px;
+      color:var(--navy);
+      background:transparent;
+      font-family:'Inter',sans-serif;
     }
 
-    .search-btn{
-      background:linear-gradient(135deg, var(--amber) 0%, #FF8C00 100%);
-      color:var(--navy); border:none; padding:1.25rem 1.75rem; border-radius:12px; cursor:pointer;
-      font-weight:600; font-size:1.05rem; transition:all .3s ease; white-space:nowrap;
-      position:relative; overflow:hidden; box-shadow:0 4px 12px rgba(246,167,1,.3); min-height:120px;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-    }
-    .search-btn::before{
-      content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
-      transition:left .5s ease;
-    }
-    .search-btn:hover::before{ left:100%; }
-    .search-btn:hover{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(246,167,1,.4); }
-    .search-btn:active{ transform:translateY(0); }
+    .search-input::placeholder{ color:#9ca3af; }
 
-    .search-hint{ font-size:.7rem; color:rgba(11,27,52,.7); display:block; margin-top:.5rem; font-weight:500; }
-
-    .suggestions{ display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .badge-container{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:1rem;
+      flex-wrap:wrap;
+    }
 
     .chip{
-      background:rgba(255,255,255,.15); color:#fff; padding:.5rem 1rem; border-radius:20px; font-size:.875rem;
-      cursor:pointer; transition:all .3s ease; border:1px solid rgba(255,255,255,.2); position:relative; z-index:1;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 16px;
+      background-color:#f9fafb;
+      border:1px solid #e5e7eb;
+      border-radius:20px;
+      font-size:.875rem;
+      color:#374151;
+      cursor:pointer;
+      transition:all .2s ease;
     }
-    .chip:hover{ background:var(--amber); color:var(--navy); border-color:var(--amber); transform:translateY(-2px); box-shadow:0 4px 12px rgba(246,167,1,.3); }
+
+    .chip:hover{
+      background-color:#f3f4f6;
+      border-color:#d1d5db;
+      transform:translateY(-2px);
+    }
+
+    .chip-icon{ width:16px; height:16px; }
+
+    .new-label{
+      background-color:#dbeafe;
+      color:#1e40af;
+      padding:2px 8px;
+      border-radius:10px;
+      font-size:.75rem;
+      font-weight:600;
+      text-transform:uppercase;
+    }
 
     .ai-result{
-      display:none; background:rgba(255,255,255,.95); border-radius:12px; padding:1.5rem; margin-top:1rem; color:var(--navy);
-      position:relative; z-index:1; border-left:4px solid var(--cyan); box-shadow:0 4px 20px rgba(0,204,255,.2);
-    }
-    .ai-result.show{ display:block; animation:slideIn .3s ease, glow 2s ease-in-out infinite; }
-    @keyframes slideIn{ from{ opacity:0; transform:translateY(-10px) } to{ opacity:1; transform:translateY(0) } }
-    @keyframes glow{
-      0%,100%{ box-shadow:0 4px 20px rgba(0,204,255,.2) }
-      50%{ box-shadow:0 4px 30px rgba(0,204,255,.4) }
+      display:none;
+      background:rgba(255,255,255,.95);
+      border-radius:12px;
+      padding:1.5rem;
+      margin-top:1rem;
+      color:var(--navy);
+      position:relative;
+      z-index:1;
+      border-left:4px solid var(--cyan);
+      box-shadow:0 4px 20px rgba(0,204,255,.2);
     }
 
-    .ai-result h4{ color:var(--navy); margin-bottom:.75rem; font-size:1rem; font-weight:700; }
-    .ai-result-buttons{ display:flex; gap:.75rem; margin-top:1rem; flex-wrap:wrap; }
-    .ai-result .btn-small{ padding:.6rem 1.25rem; font-size:.9rem; border-radius:8px; text-decoration:none; font-weight:700; transition:all .2s; display:inline-block; }
-    .ai-result .btn-primary-small{ background:var(--amber); color:var(--navy); }
-    .ai-result .btn-secondary-small{ background:transparent; border:2px solid var(--navy); color:var(--navy); }
-
-    .ai-privacy{
-      font-size:.8rem; color:rgba(255,255,255,.6); margin-top:.75rem; font-style:italic;
-      position:relative; z-index:1; display:flex; align-items:center; gap:.5rem;
+    .ai-result.show{
+      display:block;
+      animation:slideIn .3s ease;
     }
-    .ai-privacy::before{ content:'🔒'; font-size:.9rem; }
+
+    @keyframes slideIn{
+      from{ opacity:0; transform:translateY(-10px) }
+      to{ opacity:1; transform:translateY(0) }
+    }
+
+    .ai-result h4{
+      color:var(--navy);
+      margin-bottom:.75rem;
+      font-size:1rem;
+      font-weight:700;
+    }
+
+    .ai-result-buttons{
+      display:flex;
+      gap:.75rem;
+      margin-top:1rem;
+      flex-wrap:wrap;
+    }
+
+    .ai-result .btn-small{
+      padding:.6rem 1.25rem;
+      font-size:.9rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:700;
+      transition:all .2s;
+      display:inline-block;
+    }
+
+    .ai-result .btn-primary-small{
+      background:var(--amber);
+      color:var(--navy);
+    }
+
+    .ai-result .btn-secondary-small{
+      background:transparent;
+      border:2px solid var(--navy);
+      color:var(--navy);
+    }
 
     /* ---------- /AI Helper ---------- */
 
@@ -364,7 +411,7 @@
     section{ min-height:100vh; display:flex; align-items:center; padding:5rem 2rem; }
     .container{ max-width:1400px; margin:0 auto; width:100%; }
 
-    /* Photo Gallery Section - NEW */
+    /* Photo Gallery Section */
     .photo-gallery{
       background:#fff; min-height:auto; padding:4rem 2rem;
       border-bottom:1px solid var(--light);
@@ -458,7 +505,6 @@
     .stat-number{ font-size:3.5rem; font-weight:900; color:var(--navy); margin-bottom:.5rem; line-height:1; }
     .stat-text{ font-size:1.125rem; color:var(--gray); font-weight:500; }
     
-    /* Photo on right side of problem section */
     .problem-image{
       width:100%; height:100%; min-height:500px; border-radius:32px;
       object-fit:cover; box-shadow:0 20px 60px rgba(0,0,0,.15);
@@ -621,9 +667,6 @@
     @media (max-width:968px){
       .nav{ display:none; }
       
-      /* Optional: Hide video on mobile to improve performance */
-      /* .hero-video-bg{ display:none; } */
-      
       .hero-grid{ grid-template-columns:1fr; gap:1.5rem; }
       .split{ grid-template-columns:1fr; gap:3rem; }
       .problem-image{ order:-1; min-height:300px; }
@@ -646,10 +689,7 @@
       .sticky-cta-content{ flex-direction:column; text-align:center; }
       .sticky-cta-buttons{ width:100%; flex-direction:column; }
       .sticky-phone,.sticky-book{ width:100%; }
-      .search-box{ flex-direction:column; }
-      .hard-hat-icon{ align-self:center; width:56px; height:56px; font-size:1.75rem; }
       
-      /* Fix mobile overflow issues */
       .contact-form input,
       .contact-form textarea,
       .form-group input,
@@ -658,32 +698,7 @@
       .cta-primary{ padding:1rem 2rem; font-size:1.25rem; word-wrap:break-word; }
       .footer-section p, .footer-section a{ word-wrap:break-word; overflow-wrap:break-word; }
       
-      /* Make AI search textarea bigger and more prominent */
-      .ai-helper .search-input,
-      #aiSearch{ 
-        min-height:180px !important; 
-        height:180px !important;
-        width:100% !important;
-        max-width:100% !important;
-        font-size:1.125rem !important; 
-        padding:1.25rem !important;
-        flex:none !important;
-      }
-      .ai-helper .search-btn{ 
-        padding:1.25rem 1.5rem !important; 
-        width:100% !important;
-        white-space:normal !important;
-        min-height:auto !important;
-        flex-direction:row !important;
-        gap:.75rem !important;
-      }
-      .ai-helper .search-btn .search-hint{ margin-top:0 !important; }
-      .ai-helper .search-box{ width:100%; }
-      
-      /* Show close button on sticky CTA on mobile only */
       .sticky-cta-close{ display:flex !important; }
-      
-      /* Footer credit line break on mobile */
       .footer-break-mobile{ display:inline; }
     }
 
@@ -722,14 +737,6 @@
 
   <!-- Hero -->
   <section class="hero">
-    <!--
-      🔍 Troubleshooting Checklist (dev notes)
-      1) Ensure files exist:
-         /36_aEMwMDA5 (2).mp4
-      2) Open DevTools → Console for 404/MIME errors.
-      3) Visit /36_aEMwMDA5 (2).mp4 directly to confirm it loads.
-      4) To temporarily boost visibility, add #video-debug to the URL.
-    -->
     <!-- Background Video -->
     <video
       id="heroVideo"
@@ -741,11 +748,8 @@
       preload="auto"
       aria-hidden="true"
     >
-      <!-- MP4 first for Safari/iOS -->
       <source src="36_aEMwMDA5 (2).mp4" type="video/mp4">
-      <!-- WebM for Chrome/Edge/etc -->
       <source src="36_aEMwMDA5 (2).mp4" type="video/webm">
-      <!-- Fallback message if no HTML5 video support -->
       Your browser does not support the video tag.
     </video>
     
@@ -754,39 +758,52 @@
       <p class="hero-subtitle">Construction companies waste money on software they don't use.</p>
       <div class="badge">We don't take commissions from software vendors • Cost-First™</div>
 
-      <!-- MOVED TO TOP: AI Helper and Calculator -->
+      <!-- UPDATED: AI Helper with Chat Interface Style -->
       <div class="hero-grid">
-        <!-- AI Helper -->
+        <!-- AI Helper with new design -->
         <div class="ai-helper">
-          <h3>Describe your specific challenge:</h3>
-          <div class="search-box">
-            <div class="hard-hat-icon">🏗️</div>
-            <textarea
-              id="aiSearch"
-              class="search-input"
-              placeholder="Examples: 'Our subs send wrong bids,' 'Too many Procore permissions,' 'Timesheets don't match work-in-progress report (WIP)'"
-              rows="5"
-              aria-label="Describe your challenge"
-            ></textarea>
-            <button class="search-btn" onclick="handleSearch()">
-              <span style="font-size:1.125rem; font-weight:700;">Ask AI</span>
-              <span class="search-hint">Press Enter</span>
-            </button>
+          <h3>What can I help with?</h3>
+          
+          <div class="search-box-wrapper">
+            <div class="search-box-container">
+              <button class="icon-button" title="Add attachment">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+              
+              <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Ask anything"
+                id="aiSearch"
+                aria-label="Describe your challenge"
+              />
+              
+              <button class="icon-button" title="Voice input">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              </button>
+              
+              <button class="icon-button" title="Audio visualization">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
+              </button>
+            </div>
           </div>
 
-          <div class="suggestions">
+          <div class="badge-container">
             <button class="chip" onclick="fillSearch('Need to standardize systems')">Standardize systems</button>
             <button class="chip" onclick="fillSearch('Procore setup help')">Procore setup</button>
             <button class="chip" onclick="fillSearch('Bid handoff chaos')">Bid handoff</button>
             <button class="chip" onclick="fillSearch('Cost control')">Cost control</button>
             <button class="chip" onclick="fillSearch('Job cost dashboards')">Dashboards</button>
             <button class="chip" onclick="fillSearch('Too many licenses')">License cleanup</button>
-            <button class="chip" onclick="fillSearch('Field won\'t adopt')">Field adoption</button>
-            <button class="chip" onclick="fillSearch('Document chaos')">Documents</button>
           </div>
 
           <div id="aiResult" class="ai-result" role="status" aria-live="polite"></div>
-          <p class="ai-privacy">We translate plain language to a plan. We don't store or share queries.</p>
         </div>
 
         <!-- Mini Calculator in Hero -->
@@ -852,7 +869,7 @@
     </div>
   </section>
 
-  <!-- Photo Gallery Section - NEW -->
+  <!-- Photo Gallery Section -->
   <section class="photo-gallery">
     <div class="gallery-content">
       <h3 class="gallery-title">We Know Construction IT</h3>
@@ -861,9 +878,7 @@
       </p>
 
       <div class="gallery-grid">
-        <!-- Photo 1: Construction site overview -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/construction-site-1.jpg' with your actual image path -->
           <img src="construction-site-1.jpg" alt="Construction site with project manager reviewing plans" loading="lazy">
           <div class="gallery-caption">
             <h4>On-Site Project Management</h4>
@@ -871,9 +886,7 @@
           </div>
         </div>
 
-        <!-- Photo 2: Team meeting or collaboration -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/team-meeting.jpg' with your actual image path -->
           <img src="team-meeting.jpg" alt="Construction team collaborating in office" loading="lazy">
           <div class="gallery-caption">
             <h4>Office to Field Coordination</h4>
@@ -881,9 +894,7 @@
           </div>
         </div>
 
-        <!-- Photo 3: Technology/equipment -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/construction-tech.jpg' with your actual image path -->
           <img src="construction-tech.jpg" alt="Modern construction technology and equipment" loading="lazy">
           <div class="gallery-caption">
             <h4>Technology Implementation</h4>
@@ -891,9 +902,7 @@
           </div>
         </div>
 
-        <!-- Photo 4: Commercial building project -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/commercial-project.jpg' with your actual image path -->
           <img src="commercial-project.jpg" alt="Large commercial construction project" loading="lazy">
           <div class="gallery-caption">
             <h4>Commercial Scale Expertise</h4>
@@ -901,9 +910,7 @@
           </div>
         </div>
 
-        <!-- Photo 5: Superintendent or foreman -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/field-leader.jpg' with your actual image path -->
           <img src="field-leader.jpg" alt="Construction superintendent on jobsite" loading="lazy">
           <div class="gallery-caption">
             <h4>Field-Tested Solutions</h4>
@@ -911,9 +918,7 @@
           </div>
         </div>
 
-        <!-- Photo 6: Business owner/executive -->
         <div class="gallery-item fade-up">
-          <!-- REPLACE 'images/construction-executive.jpg' with your actual image path -->
           <img src="construction-executive.jpg" alt="Construction business owner in office" loading="lazy">
           <div class="gallery-caption">
             <h4>Executive-Level Strategy</h4>
@@ -924,7 +929,7 @@
     </div>
   </section>
 
-  <!-- Proof (simplified - removed logo wall) -->
+  <!-- Proof -->
   <section class="proof">
     <div class="proof-content">
       <h3 class="proof-title">Construction-first, not tool-first</h3>
@@ -966,8 +971,6 @@
             </div>
           </div>
         </div>
-        <!-- REPLACED emoji with photo -->
-        <!-- REPLACE 'images/wasted-money-construction.jpg' with your actual image -->
         <img src="wasted-money-construction.jpg" alt="Construction project management showing cost inefficiency" class="problem-image fade-up">
       </div>
     </div>
@@ -1044,7 +1047,7 @@
     </div>
   </section>
 
-  <!-- Solution (kept simple - "Three things") -->
+  <!-- Solution -->
   <section class="solution" id="solution">
     <div class="container">
       <h2 class="section-title">Three things</h2>
@@ -1507,12 +1510,6 @@
       if(e.key==='Enter' && !e.shiftKey){
         e.preventDefault(); handleSearch();
       }
-    });
-
-    // Auto-resize textarea
-    document.getElementById('aiSearch').addEventListener('input', function(){
-      this.style.height='auto';
-      this.style.height=Math.min(this.scrollHeight,200)+'px';
     });
 
     // Contact form
