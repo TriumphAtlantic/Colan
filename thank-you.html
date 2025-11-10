@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - Cecola Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Merriweather+Sans:wght@800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0B1B34 0%, #1F3358 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 600px;
+      background: white;
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #00CCFF 0%, #00A3CC 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: scaleIn 0.5s ease;
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    .checkmark svg {
+      width: 40px;
+      height: 40px;
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      animation: drawCheck 0.5s ease 0.3s both;
+    }
+    
+    @keyframes drawCheck {
+      from { stroke-dasharray: 100; stroke-dashoffset: 100; }
+      to { stroke-dasharray: 100; stroke-dashoffset: 0; }
+    }
+    
+    h1 {
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #0B1B34;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-info {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .contact-info strong {
+      color: #0B1B34;
+    }
+    
+    .phone {
+      color: #F6A701;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    
+    .btn-home {
+      display: inline-block;
+      background: #F6A701;
+      color: #0B1B34;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.125rem;
+      transition: all 0.2s;
+    }
+    
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(246, 167, 1, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="checkmark">
+      <svg viewBox="0 0 52 52">
+        <polyline points="14 27 22 35 38 19"/>
+      </svg>
+    </div>
+    
+    <h1>Thank You!</h1>
+    
+    <p>We've received your message and will get back to you within 24 hours.</p>
+    
+    <div class="contact-info">
+      <p><strong>Need immediate assistance?</strong></p>
+      <p>Call us: <a href="tel:6093183470" class="phone">609-318-3470</a></p>
+      <p>Email: <a href="mailto:info@cecoladevelopment.com" class="phone">info@cecoladevelopment.com</a></p>
+    </div>
+    
+    <a href="index.html" class="btn-home">Return to Home</a>
+  </div>
+</body>
+</html>
