@@ -1,0 +1,8 @@
+{
+  "name": "cecola-development-website",
+  "version": "1.0.0",
+  "description": "Cecola Development - DOGE Work Website",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}
