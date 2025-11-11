@@ -1556,40 +1556,7 @@
       if (stickyCta){ stickyCta.classList.add('hidden'); stickyCta.classList.remove('visible'); }
     }
 
-    // Simple AI keyword classifier
-    const keywordGroups={
-      'workflow':{
-        keywords:['bid','estimat','handoff','sop','process','workflow','messy','chaotic','duplicate'],
-        result:'Workflow Mapping & standard operating procedures (SOPs)',
-        section:'solution'
-      },
-      'implementation':{
-        keywords:['procore','buildingconnected','plangrid','implement','setup','configure','platform','permissions'],
-        result:'Platform Implementation',
-        section:'solution'
-      },
-      'license':{
-        keywords:['cost','license','subscription','too many','redundant','vendor','spend','expensive'],
-        result:'License & Cost Optimization',
-        section:'solution'
-      },
-      'data':{
-        keywords:['dashboard','wip','job cost','report','analytics','data','kpi','timesheet','match'],
-        result:'Data & Dashboards',
-        section:'solution'
-      },
-      'training':{
-        keywords:['adoption','training','resistance','won\'t use','field team','subs'],
-        result:'Training & getting teams to use tools consistently',
-        section:'how'
-      },
-      'documents':{
-        keywords:['document','docs','versioning','file','storage'],
-        result:'Document Management',
-        section:'solution'
-      }
-    };
-
+   
 async function handleSearch() {
   const input = document.getElementById('aiSearch');
   const resultDiv = document.getElementById('aiResult');
