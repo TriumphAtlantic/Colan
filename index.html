@@ -623,6 +623,8 @@
       cursor:pointer; width:100%; transition:all .2s;
     }
     .submit-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(246,167,1,.3); }
+    .form-status{ margin-top:.75rem; font-size:.95rem; color:var(--red); font-weight:600; }
+    .form-status.success{ color:var(--green); }
 
     .calendar-box{
       background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.2);
@@ -782,7 +784,7 @@
               
               <button class="icon-button" title="Voice input">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a 7 7 0 01-7 7m0 0a 7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a 3 3 0 01-3-3V5a 3 3 0 116 0v6a 3 3 0 01-3 3z" />
                 </svg>
               </button>
               
@@ -1187,7 +1189,7 @@
   <section class="pricing" id="pricing">
     <div class="container">
       <h2 class="section-title">Pricing</h2>
-      <p class="subtitle">No surprises. No commissions.</p>
+    <p class="subtitle">No surprises. No commissions.</p>
 
       <div class="price-cards">
         <div class="price-card fade-up">
@@ -1245,7 +1247,14 @@
       <div class="contact-options">
         <div class="contact-form">
           <h3>Quick Contact</h3>
-          <form onsubmit="handleFormSubmit(event)">
+
+          <!-- No-JS fallback will POST to /api/contact URL-encoded -->
+          <form id="contactForm" action="/api/contact" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="form-group" style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
@@ -1263,6 +1272,7 @@
               <textarea id="problem" name="problem" rows="2" required></textarea>
             </div>
             <button type="submit" class="submit-btn">Get the Free Assessment</button>
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
           </form>
         </div>
 
@@ -1367,35 +1377,20 @@
     // Ensure video autoplays and provide simple debug helpers
     function initHeroVideo(){
       const v = document.getElementById('heroVideo');
-      if(!v){
-        console.warn('[heroVideo] element not found');
-        return;
-      }
-
-      // If URL includes #video-debug, temporarily crank up opacity to verify visibility.
-      if (location.hash.includes('video-debug')) {
-        v.style.opacity = '0.8';
-        console.info('[heroVideo] Debug mode: opacity set to 0.8 for visibility.');
-      }
-
-      // Always ensure muted BEFORE play() for iOS autoplay policy.
+      if(!v){ return; }
+      if (location.hash.includes('video-debug')) v.style.opacity = '0.8';
       v.muted = true;
 
-      // Try to start playback
-      const tryPlay = () => v.play().then(() => {
-        console.info('[heroVideo] Playing. paused=', v.paused);
-      }).catch(err => {
+      const tryPlay = () => v.play().catch(err => {
         console.warn('[heroVideo] Autoplay blocked or error:', err && err.message ? err.message : err);
       });
 
-      // If metadata isn't ready yet, wait for it; otherwise play immediately.
       if (v.readyState < 2) {
         v.addEventListener('loadeddata', tryPlay, { once: true });
       } else {
         tryPlay();
       }
 
-      // Basic error listeners to surface file path/MIME issues
       v.addEventListener('error', () => {
         const s = v.currentSrc || (v.querySelector('source') && v.querySelector('source').src);
         console.error('[heroVideo] Error loading source:', s);
@@ -1404,68 +1399,150 @@
       v.addEventListener('abort', () => console.warn('[heroVideo] Fetch aborted.'));
     }
 
-    // Contact form — resilient to non-JSON error pages
+    // Contact form — resilient + multi-payload + timeout + mailto fallback
     async function handleFormSubmit(e) {
       e.preventDefault();
+      const form = e.target.closest('form') || e.target;
+      const submitBtn = form.querySelector('.submit-btn');
+      const statusEl = document.getElementById('formStatus');
 
-      const submitBtn = e.target.querySelector('.submit-btn');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
+      // Simple honeypot
+      if (document.getElementById('website') && document.getElementById('website').value.trim()) {
+        statusEl.textContent = 'Thanks!'; // silently drop bots
+        return;
+      }
 
-      const formData = {
-        name: document.getElementById('name').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        problem: document.getElementById('problem').value.trim()
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const problem = document.getElementById('problem').value.trim();
+
+      // naive email check (keeps native HTML5 validation too)
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        statusEl.textContent = 'Please enter a valid email.';
+        return;
+      }
+
+      const formDataObj = {
+        name, company, email, problem,
+        page: location.href,
+        userAgent: navigator.userAgent
       };
 
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 12000); // 12s
+      submitBtn.disabled = true;
+      const origText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+      statusEl.textContent = '';
 
-        const ct = (res.headers.get('content-type') || '').toLowerCase();
-        const raw = await res.text();
-
-        // If server sent JSON, parse it; otherwise treat as text/HTML error
-        const data = ct.includes('application/json') ? JSON.parse(raw) : { error: raw };
-
-        if (res.ok && data?.success) {
-          window.location.href = '/thank-you.html';
-          return;
+      const attempts = [
+        { // JSON
+          desc: 'json',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formDataObj)
+        },
+        { // URL-encoded
+          desc: 'urlencoded',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': 'application/json' },
+          body: new URLSearchParams(formDataObj).toString()
+        },
+        { // multipart/form-data
+          desc: 'formdata',
+          headers: {},
+          body: (() => { const fd = new FormData(); for (const [k,v] of Object.entries(formDataObj)) fd.append(k,v); return fd; })()
         }
+      ];
 
-        // Show a helpful message (include server text when not JSON)
-        alert(
-          'We couldn’t send your message. Please try again or call 609-318-3470.\n\n' +
-          (data?.error ? String(data.error).slice(0, 500) : 'Server error.')
-        );
-      } catch (err) {
-        console.error('Network or parsing error:', err);
-        alert('Network error. Please try again or call 609-318-3470.');
-      } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+      let delivered = false;
+      let lastErrorText = '';
+
+      for (const attempt of attempts) {
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: attempt.headers,
+            body: attempt.body,
+            signal: controller.signal,
+            cache: 'no-store',
+            redirect: 'follow',
+            credentials: 'same-origin'
+          });
+
+          const ct = (res.headers.get('content-type') || '').toLowerCase();
+          const raw = await res.text();
+          const parsed = ct.includes('application/json') ? (() => { try { return JSON.parse(raw); } catch { return null; } })() : null;
+
+          // Consider success if:
+          // - HTTP 204, or
+          // - OK + JSON with { success: true }, or
+          // - OK + JSON without explicit error field.
+          const okJson = parsed && (parsed.success === true || (typeof parsed.success === 'undefined' && !parsed.error));
+          if (res.status === 204 || (res.ok && (okJson || ct.includes('application/json')))) {
+            delivered = true;
+            break;
+          } else {
+            lastErrorText = parsed?.error || raw || (res.status + ' ' + res.statusText);
+          }
+        } catch (err) {
+          lastErrorText = (err && (err.message || err.name)) || 'Network error';
+          // Try next payload format
+        }
       }
+
+      clearTimeout(timeoutId);
+
+      if (delivered) {
+        submitBtn.textContent = 'Sent!';
+        statusEl.textContent = '';
+        statusEl.classList.add('success');
+        window.location.href = '/thank-you.html';
+        return;
+      }
+
+      // Fallback: offer mailto with prefilled content
+      const body = encodeURIComponent(
+        `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nProblem: ${problem}\n\nPage: ${location.href}\nUA: ${navigator.userAgent}\n\nServer response:\n${String(lastErrorText).slice(0,500)}`
+      );
+      const mailtoHref = `mailto:info@cecoladevelopment.com?subject=${encodeURIComponent('Website Contact (fallback)')}&body=${body}`;
+
+      statusEl.textContent = 'We couldn’t send your message. Please try again or call 609-318-3470.';
+      if (confirm('We couldn’t send your message.\n\nWould you like to send it via your email client instead?')) {
+        window.location.href = mailtoHref;
+      }
+
+      submitBtn.textContent = origText;
+      submitBtn.disabled = false;
     }
 
     document.addEventListener('DOMContentLoaded', function(){
       updateHeroCalculator();
       updateCalculator();
       initHeroVideo();
+
+      const aiInput = document.getElementById('aiSearch');
+      if (aiInput) {
+        aiInput.addEventListener('keypress', function(e){
+          if(e.key==='Enter' && !e.shiftKey){
+            e.preventDefault(); handleSearch();
+          }
+        });
+      }
+
+      // bind form submit
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
+      }
     });
 
     // Sticky CTA reveal (hide when near footer)
     window.addEventListener('scroll', function(){
       const stickyCta=document.getElementById('stickyCta');
       const footer=document.querySelector('footer');
+      if(!stickyCta || !footer) return;
       const footerTop=footer.offsetTop;
       const scrollPosition=window.scrollY + window.innerHeight;
-      
-      // Show sticky CTA after scrolling 800px, but hide when reaching footer
       if(window.scrollY>800 && scrollPosition < footerTop + 100){
         stickyCta.classList.add('visible');
       } else {
@@ -1476,8 +1553,7 @@
     // Close sticky CTA (mobile)
     function closeStickyCta(){
       const stickyCta=document.getElementById('stickyCta');
-      stickyCta.classList.add('hidden');
-      stickyCta.classList.remove('visible');
+      if (stickyCta){ stickyCta.classList.add('hidden'); stickyCta.classList.remove('visible'); }
     }
 
     // Simple AI keyword classifier
@@ -1516,12 +1592,13 @@
 
     function handleSearch(){
       const input=document.getElementById('aiSearch');
-      const query=input.value.toLowerCase().trim();
       const resultDiv=document.getElementById('aiResult');
+      if(!input || !resultDiv) return;
+      const query=input.value.toLowerCase().trim();
       if(!query) return;
 
       let bestMatch=null; let highestScore=0;
-      for(const [category,data] of Object.entries(keywordGroups)){
+      for(const [,data] of Object.entries(keywordGroups)){
         let score=0;
         for(const keyword of data.keywords){ if(query.includes(keyword)) score++; }
         if(score>highestScore){ highestScore=score; bestMatch=data; }
@@ -1548,23 +1625,22 @@
     }
 
     function fillSearch(text){
-      document.getElementById('aiSearch').value=text;
+      const el=document.getElementById('aiSearch');
+      if (!el) return;
+      el.value=text;
       handleSearch();
     }
-
-    // Enter to submit AI helper
-    document.getElementById('aiSearch').addEventListener('keypress', function(e){
-      if(e.key==='Enter' && !e.shiftKey){
-        e.preventDefault(); handleSearch();
-      }
-    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
       anchor.addEventListener('click', function(e){
-        e.preventDefault();
-        const target=document.querySelector(this.getAttribute('href'));
-        if(target){ target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+        const href=this.getAttribute('href');
+        if(!href || href==='#') return;
+        const target=document.querySelector(href);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
       });
     });
 
