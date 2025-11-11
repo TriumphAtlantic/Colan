@@ -1590,39 +1590,76 @@
       }
     };
 
-    function handleSearch(){
-      const input=document.getElementById('aiSearch');
-      const resultDiv=document.getElementById('aiResult');
-      if(!input || !resultDiv) return;
-      const query=input.value.toLowerCase().trim();
-      if(!query) return;
+async function handleSearch() {
+  const input = document.getElementById('aiSearch');
+  const resultDiv = document.getElementById('aiResult');
+  
+  if (!input || !resultDiv) return;
+  
+  const query = input.value.trim();
+  if (!query) return;
 
-      let bestMatch=null; let highestScore=0;
-      for(const [,data] of Object.entries(keywordGroups)){
-        let score=0;
-        for(const keyword of data.keywords){ if(query.includes(keyword)) score++; }
-        if(score>highestScore){ highestScore=score; bestMatch=data; }
-      }
+  // Show loading state
+  resultDiv.innerHTML = `
+    <div style="display: flex; align-items: center; gap: 10px; color: var(--navy);">
+      <div style="width: 20px; height: 20px; border: 3px solid var(--cyan); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <span style="font-weight: 600;">Analyzing your question...</span>
+    </div>
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>`;
+  resultDiv.classList.add('show');
 
-      if(bestMatch && highestScore>0){
-        resultDiv.innerHTML=`
-          <h4>Sounds like: ${bestMatch.result}</h4>
-          <p>We can help with that.</p>
-          <div class="ai-result-buttons">
-            <a href="#${bestMatch.section}" class="btn-small btn-primary-small">See Solution</a>
-            <a href="#contact" class="btn-small btn-secondary-small">Get the Free Assessment</a>
-          </div>`;
-      }else{
-        resultDiv.innerHTML=`
-          <h4>Let's talk about it</h4>
-          <p>We'll figure out what you need.</p>
-          <div class="ai-result-buttons">
-            <a href="#contact" class="btn-small btn-primary-small">Get the Free Assessment</a>
-          </div>`;
-      }
-      resultDiv.classList.add('show');
-      input.value='';
+  try {
+    // Call AI Helper API
+    const response = await fetch('/api/ai-helper', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: query })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}`);
     }
+
+    const data = await response.json();
+
+    // Display AI response
+    if (data.success) {
+      resultDiv.innerHTML = `
+        <h4>💡 Here's how we can help:</h4>
+        <p style="line-height: 1.6; margin: 0.75rem 0;">${data.response}</p>
+        <div class="ai-result-buttons">
+          <a href="${data.cta.primary.link}" class="btn-small btn-primary-small">${data.cta.primary.text}</a>
+          <a href="${data.cta.secondary.link}" class="btn-small btn-secondary-small">${data.cta.secondary.text}</a>
+        </div>`;
+    } else {
+      resultDiv.innerHTML = `
+        <h4>Let's talk about it</h4>
+        <p>We'll figure out what you need in a quick call.</p>
+        <div class="ai-result-buttons">
+          <a href="#contact" class="btn-small btn-primary-small">Get the Free Assessment</a>
+        </div>`;
+    }
+
+  } catch (error) {
+    console.error('AI Helper error:', error);
+    
+    // Fallback to generic response on error
+    resultDiv.innerHTML = `
+      <h4>Let's discuss your needs</h4>
+      <p>We can help with that. Get a free assessment to identify your biggest opportunities.</p>
+      <div class="ai-result-buttons">
+        <a href="#contact" class="btn-small btn-primary-small">Get the Free Assessment</a>
+        <a href="#solution" class="btn-small btn-secondary-small">See Solutions</a>
+      </div>`;
+  }
+
+  resultDiv.classList.add('show');
+  input.value = '';
+}
 
     function fillSearch(text){
       const el=document.getElementById('aiSearch');
