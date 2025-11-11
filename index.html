@@ -1512,7 +1512,6 @@
       }
     });
 
-<script>
 // Contact form — resilient to non-JSON error pages
 async function handleFormSubmit(e) {
   e.preventDefault();
@@ -1538,8 +1537,6 @@ async function handleFormSubmit(e) {
 
     const ct = (res.headers.get('content-type') || '').toLowerCase();
     const raw = await res.text();
-
-    // If server sent JSON, parse it; otherwise treat as text/HTML error
     const data = ct.includes('application/json') ? JSON.parse(raw) : { error: raw };
 
     if (res.ok && data?.success) {
@@ -1547,7 +1544,6 @@ async function handleFormSubmit(e) {
       return;
     }
 
-    // Show a helpful message (include server text when not JSON)
     alert(
       'We couldn’t send your message. Please try again or call 609-318-3470.\n\n' +
       (data?.error ? String(data.error).slice(0, 500) : 'Server error.')
@@ -1560,7 +1556,6 @@ async function handleFormSubmit(e) {
     submitBtn.disabled = false;
   }
 }
-</script>
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
