@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Cecola Development - DOGE Work Website",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "nodemailer": "^6.9.7"
   }
 }
