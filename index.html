@@ -1037,7 +1037,6 @@
               <div style="margin-top:1rem; color:rgba(255,255,255,.9); font-size:.9rem; line-height:1.7;">
                 <p style="margin-bottom:1rem;"><strong>Software Waste Formula:</strong><br/>Revenue × 0.10% = Direct license waste<br/><em>Example: $250M × 0.001 = $250K/year in unused software</em></p>
                 <p style="margin-bottom:1rem;"><strong>Process Waste Formula:</strong><br/>PMs × 7.5 hrs/week × 52 weeks × $100/hr = Process friction cost<br/><em>Example: 100 PMs × 7.5 × 52 × $100 = $3.9M/year in wasted time</em></p>
-                <p style="margin-bottom:1rem;"><strong>Why 7.5 hours per week?</strong><br/>Industry research shows PMs spend 5–10 hrs/week on avoidable friction: searching for documents, duplicate data entry, chasing status updates, fixing handoff errors. We use the midpoint (7.5 hrs) for conservative estimates.</p>
                 <p style="margin-bottom:0;"><strong>Total Opportunity:</strong><br/>Software Waste + Process Waste + Communication Gains (2% revenue) + Tool Optimization (3% revenue)<br/><em>This is the full potential value of fixing your IT and process issues.</em></p>
               </div>
             </details>
@@ -1405,6 +1404,54 @@
       v.addEventListener('abort', () => console.warn('[heroVideo] Fetch aborted.'));
     }
 
+    // Contact form — resilient to non-JSON error pages
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const submitBtn = e.target.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        problem: document.getElementById('problem').value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const ct = (res.headers.get('content-type') || '').toLowerCase();
+        const raw = await res.text();
+
+        // If server sent JSON, parse it; otherwise treat as text/HTML error
+        const data = ct.includes('application/json') ? JSON.parse(raw) : { error: raw };
+
+        if (res.ok && data?.success) {
+          window.location.href = '/thank-you.html';
+          return;
+        }
+
+        // Show a helpful message (include server text when not JSON)
+        alert(
+          'We couldn’t send your message. Please try again or call 609-318-3470.\n\n' +
+          (data?.error ? String(data.error).slice(0, 500) : 'Server error.')
+        );
+      } catch (err) {
+        console.error('Network or parsing error:', err);
+        alert('Network error. Please try again or call 609-318-3470.');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function(){
       updateHeroCalculator();
       updateCalculator();
@@ -1511,51 +1558,6 @@
         e.preventDefault(); handleSearch();
       }
     });
-
-// Contact form — resilient to non-JSON error pages
-async function handleFormSubmit(e) {
-  e.preventDefault();
-
-  const submitBtn = e.target.querySelector('.submit-btn');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-
-  const formData = {
-    name: document.getElementById('name').value.trim(),
-    company: document.getElementById('company').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    problem: document.getElementById('problem').value.trim()
-  };
-
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-
-    const ct = (res.headers.get('content-type') || '').toLowerCase();
-    const raw = await res.text();
-    const data = ct.includes('application/json') ? JSON.parse(raw) : { error: raw };
-
-    if (res.ok && data?.success) {
-      window.location.href = '/thank-you.html';
-      return;
-    }
-
-    alert(
-      'We couldn’t send your message. Please try again or call 609-318-3470.\n\n' +
-      (data?.error ? String(data.error).slice(0, 500) : 'Server error.')
-    );
-  } catch (err) {
-    console.error('Network or parsing error:', err);
-    alert('Network error. Please try again or call 609-318-3470.');
-  } finally {
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }
-}
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
