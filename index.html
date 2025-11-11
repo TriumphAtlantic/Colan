@@ -1512,54 +1512,55 @@
       }
     });
 
-    // Contact form - Updated for Vercel API
+<script>
+// Contact form — resilient to non-JSON error pages
 async function handleFormSubmit(e) {
   e.preventDefault();
-  
+
   const submitBtn = e.target.querySelector('.submit-btn');
   const originalText = submitBtn.textContent;
-  
-  // Show loading state
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
-  
-  // Get form data
+
   const formData = {
-    name: document.getElementById('name').value,
-    company: document.getElementById('company').value,
-    email: document.getElementById('email').value,
-    problem: document.getElementById('problem').value
+    name: document.getElementById('name').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    problem: document.getElementById('problem').value.trim()
   };
-  
+
   try {
-    // Send to Vercel API endpoint
-    const response = await fetch('/api/contact', {
+    const res = await fetch('/api/contact', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
-    
-    const result = await response.json();
-    
-    if (response.ok && result.success) {
-      // Success - redirect to thank you page
+
+    const ct = (res.headers.get('content-type') || '').toLowerCase();
+    const raw = await res.text();
+
+    // If server sent JSON, parse it; otherwise treat as text/HTML error
+    const data = ct.includes('application/json') ? JSON.parse(raw) : { error: raw };
+
+    if (res.ok && data?.success) {
       window.location.href = '/thank-you.html';
-    } else {
-      // Error from API
-      alert('Oops! Something went wrong. Please try again or call us at 609-318-3470.');
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
+      return;
     }
-  } catch (error) {
-    // Network error
-    console.error('Error:', error);
-    alert('Oops! Something went wrong. Please try again or call us at 609-318-3470.');
+
+    // Show a helpful message (include server text when not JSON)
+    alert(
+      'We couldn’t send your message. Please try again or call 609-318-3470.\n\n' +
+      (data?.error ? String(data.error).slice(0, 500) : 'Server error.')
+    );
+  } catch (err) {
+    console.error('Network or parsing error:', err);
+    alert('Network error. Please try again or call 609-318-3470.');
+  } finally {
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   }
 }
+</script>
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
